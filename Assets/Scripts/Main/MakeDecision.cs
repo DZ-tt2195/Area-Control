@@ -171,7 +171,7 @@ public class MakeDecision : PhotonCompatible
             }
         }
     }
-    public void ChooseDisplayOnScreen(List<TroopScoutDisplay> listOfDisplays, string instructions, Action<(int troops, int scouts)> action = null, bool autoResolve = true)
+    public void ChooseDisplayOnScreen(List<TroopScoutDisplay> listOfDisplays, string instructions, Action<(int area, int troops, int scouts)> action = null, bool autoResolve = true)
     {
         if (listOfDisplays.Count == 1 && autoResolve && !PermaUI.inst.NeedClick())
         {

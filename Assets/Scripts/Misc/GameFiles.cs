@@ -2,7 +2,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using System;
 using System.Reflection;
-public enum TypesOfCards {Customer, Twist}
+public enum TypesOfCards {Card, Area}
 [Serializable]
 public class CardData
 {

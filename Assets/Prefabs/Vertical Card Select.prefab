@@ -1059,10 +1059,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Do twice: +1 <link="TokenIcon"><sprite="TokenIcon" name="TokenIcon"> (1);
-    or advance 1 <link="TokenIcon"><sprite="TokenIcon" name="TokenIcon">. \n You
-    may submit 2-4 <link="TokenIcon"><sprite="TokenIcon" name="TokenIcon"> and 2-4
-    <link="CardIcon"><sprite="CardIcon" name="CardIcon">.'
+  m_text: 
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 31e79ddad7b2d41c395ada76a18cbcdd, type: 2}
   m_sharedMaterial: {fileID: -3852492252101762229, guid: 31e79ddad7b2d41c395ada76a18cbcdd, type: 2}

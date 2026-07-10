@@ -8,16 +8,16 @@ public class TroopScoutDisplay : MonoBehaviour
 {
     public ButtonSelect selectMe { get; private set; }
     [SerializeField] TMP_Text description;
-    public (int troops, int scouts) info {get; private set;}
+    public (int area, int troops, int scouts) info {get; private set;}
 
     private void Awake()
     {
         selectMe = GetComponent<ButtonSelect>();
     }
 
-    public void ChangeInfo(int troops, int scouts, string text)
+    public void ChangeInfo(int area, int troops, int scouts, string text)
     {
-        description.text = text;
-        info = (troops, scouts);
+        description.text = KeywordTooltip.instance.EditText(text);
+        info = (area, troops, scouts);
     }
 }

@@ -262,7 +262,7 @@ public class ConnectToLobby : MonoBehaviourPunCallbacks
         {
             { ConstantStrings.GameName, Application.productName },
             { ConstantStrings.CurrentPhase, nameof(WaitForJoiners) },
-            { ConstantStrings.NextPhase, nameof(DisplayTwists) },
+            { ConstantStrings.NextPhase, nameof(DisplayStart) },
             { ConstantStrings.CanPlay, numPlayers },
             { ConstantStrings.JoinAsSpec, false },
             { ConstantStrings.GameOver, false },
@@ -277,6 +277,7 @@ public class ConnectToLobby : MonoBehaviourPunCallbacks
     {
         Debug.Log("assigned player props");
         int numRanks = 4+1; //index 0 is ignored in the code
+        int[] startingTroops = new int[5] {0, 8, 0, 0, 0};
 
         ExitGames.Client.Photon.Hashtable playerProps = new()
         {
@@ -286,7 +287,7 @@ public class ConnectToLobby : MonoBehaviourPunCallbacks
             [ConstantStrings.MyCoins] = 0,
             [ConstantStrings.MyActions] = 0,
             [ConstantStrings.MyScouts] = new int[numRanks],
-            [ConstantStrings.MyTroops] = new int[numRanks],
+            [ConstantStrings.MyTroops] = startingTroops,
 
             [ConstantStrings.MyHand] = new int[0],
             [ConstantStrings.MyDeck] = new int[0],

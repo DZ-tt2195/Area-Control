@@ -9,6 +9,13 @@ using MyBox;
 using UnityEngine.UI;
 using TMPro;
 using System.Linq;
+[Serializable]
+public class PlayerUI
+{
+    public GameObject parentObject;
+    public TMP_Text playerText;
+    public List<TroopScoutDisplay> listOfDisplays = new();
+}
 public class CreateGame : PhotonCompatible
 {
 
@@ -27,7 +34,10 @@ public class CreateGame : PhotonCompatible
     public float opacity { get; private set; }
     bool decrease = true;
     public Canvas canvas { get; private set; }
-    [SerializeField] List<Card> listOfAreas = new(); public List<Card> GetAreas() => listOfAreas;
+    [SerializeField] List<Card> listOfAreas = new();
+    Dictionary<int, Card> areaDict = new();
+    [SerializeField] List<PlayerUI> listOfPlayerUI = new();
+    List<Player> whoControls = new();
     [Foldout("Texts", true)]
     [SerializeField] TMP_Text switchPlayer;
     [SerializeField] TMP_Text rules;
@@ -41,6 +51,15 @@ public class CreateGame : PhotonCompatible
         Translations();
         PhotonNetwork.AutomaticallySyncScene = true;
         canvas = GameObject.Find("Canvas").GetComponent<Canvas>();
+
+        for (int i = 0; i<listOfAreas.Count; i++)
+        {
+            whoControls.Add(null);
+            if (listOfAreas[i] != null)
+                areaDict.Add(i, listOfAreas[i]);
+        }
+        foreach (PlayerUI ui in listOfPlayerUI)
+            ui.parentObject.SetActive(false);
     }
     void Translations()
     {
@@ -106,6 +125,7 @@ public class CreateGame : PhotonCompatible
         VisualCards((int[])GetRoomProperty(ConstantStrings.AreaList));
         playerDropdown.onValueChanged.AddListener(SwitchToPlayer);        
     }
+
     #endregion
 
 #region Online
@@ -190,9 +210,58 @@ public class CreateGame : PhotonCompatible
         }
     }
 
+#endregion
+
+#region Player UI
+    public List<TroopScoutDisplay> GetDisplays(Player player)
+    {
+        int num = listOfPlayers.IndexOf(player);
+        return listOfPlayerUI[num].listOfDisplays;
+    }
+    public void UpdatePlayerUI(Player player, string playerText)
+    {
+        int num = listOfPlayers.IndexOf(player);
+        PlayerUI ui = listOfPlayerUI[num];
+        ui.parentObject.SetActive(true);
+        ui.playerText.text = KeywordTooltip.instance.EditText(playerText);
+
+        int[] troops = player.GetTroops();
+        int[] scouts = player.GetScouts();
+
+        for (int i = 1; i<=4; i++)
+            ui.listOfDisplays[i].ChangeInfo(i, troops[i], scouts[i], $"{troops[i]} {AutoTranslate.TroopIcon()} {scouts[i]} {AutoTranslate.ScoutIcon()}");
+    }
+    public void CalculateControllers()
+    {
+        for (int i = 1; i<=4; i++)
+        {
+            (int highestNum, Player controller) best = (0, null);
+            foreach (Player player in listOfPlayers)
+            {
+                int myNum = player.GetTroops()[i] + player.GetScouts()[i];
+                if (myNum > best.highestNum)
+                    best = (myNum, player);
+                else if (myNum == best.highestNum)
+                    best = (myNum, null);
+            }
+            whoControls[i] = best.controller;
+            for (int j = 0; j<listOfPlayers.Count; j++)
+            {
+                if (listOfPlayers[j] == best.controller)
+                    listOfPlayerUI[j].listOfDisplays[i].selectMe.button.image.color = Color.yellow;
+                else
+                    listOfPlayerUI[j].listOfDisplays[i].selectMe.button.image.color = Color.gray;
+            }
+        }
+    }
+    public bool IsControlling(Player player)
+    {
+        int num = listOfPlayers.IndexOf(player);
+        return whoControls[num] == player;        
+    }
 #endregion 
 
-#region  Twists
+#region Areas
     public void CreateAreas()
     {
         List<int> areaIDs = new();
@@ -200,16 +269,15 @@ public class CreateGame : PhotonCompatible
             areaIDs.Add(i);
         areaIDs = areaIDs.Shuffle();
 
-        int forcedTwists = 4;
-        for (int i = 0; i<forcedTwists; i++)
+        for (int i = 1; i<=4; i++)
         {
             int chosenNumber = PlayerPrefs.GetInt($"Area {i}");
             if (chosenNumber >= 0 && areaIDs.Remove(chosenNumber))
                 areaIDs.Insert(i, chosenNumber);
         }
 
-        int[] chosenAreas = new int[forcedTwists];
-        for (int i = 0; i<forcedTwists; i++)
+        int[] chosenAreas = new int[5];
+        for (int i = 1; i<=4; i++)
         {
             chosenAreas[i] = areaIDs[i];
             //Debug.Log(TwistIDs[i]);
@@ -220,9 +288,12 @@ public class CreateGame : PhotonCompatible
     {
         for (int i = 0; i<cardIDs.Length; i++)
         {
-            listOfAreas[i].gameObject.SetActive(true);
-            CardData data = GameFiles.inst.areaFiles[cardIDs[i]];
-            listOfAreas[i].AssignCard(data, 1, false, Vector3.one);
+            if (listOfAreas[i] != null)
+            {
+                listOfAreas[i].gameObject.SetActive(true);
+                CardData data = GameFiles.inst.areaFiles[cardIDs[i]];
+                listOfAreas[i].AssignCard(data, 1, false, Vector3.one);
+            }
         }
         for (int i = cardIDs.Length; i<listOfAreas.Count; i++)
         {
@@ -236,6 +307,8 @@ public class CreateGame : PhotonCompatible
             VisualCards((int[])propertiesThatChanged[ConstantStrings.AreaList]);
         }
     }
+    public Card GetArea(int num) => areaDict[num];
 
     #endregion
+
 }

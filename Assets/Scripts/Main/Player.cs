@@ -22,13 +22,15 @@ public class Player : PhotonCompatible
     List<Card> myHand;
     int myCoins;
     int myActions;
+    int[] myTroops;
+    int[] myScouts;
 
     protected override void Awake()
     {
         base.Awake();
         this.bottomType = this.GetType();
 
-        List<string> toAdd = new() { ConstantStrings.MyHand, ConstantStrings.MyDeck, ConstantStrings.MyDiscard, ConstantStrings.MyCoins, ConstantStrings.MyActions };
+        List<string> toAdd = new() { ConstantStrings.MyHand, ConstantStrings.MyDeck, ConstantStrings.MyDiscard, ConstantStrings.MyCoins, ConstantStrings.MyActions, ConstantStrings.MyScouts, ConstantStrings.MyTroops };
         foreach (string next in toAdd)
             uiDictionary.Add(next, true);
 
@@ -61,6 +63,8 @@ public class Player : PhotonCompatible
         myDeck = TurnManager.inst.GetCardList(ConstantStrings.MyDeck, this);
         myDiscard = TurnManager.inst.GetCardList(ConstantStrings.MyDiscard, this);
         myHand = TurnManager.inst.GetCardList(ConstantStrings.MyHand, this);
+        myScouts = TurnManager.inst.GetIntArray(ConstantStrings.MyScouts);
+        myTroops = TurnManager.inst.GetIntArray(ConstantStrings.MyTroops);
     }
 
     #endregion
@@ -195,7 +199,51 @@ public class Player : PhotonCompatible
         myActions += (!Log.inst.forward) ? -num : num;
         TurnManager.inst.WillChangePlayerProperty(this, ConstantStrings.MyActions, myActions); uiDictionary[ConstantStrings.MyActions] = true;
     }
+
     #endregion
+
+#region Troops/Scouts
+    public int[] GetScouts() => myScouts;
+    public void ScoutRPC(int num, int area, int logged = 0, bool important = false)
+    {
+        if (num == 0)
+            return;
+
+        int actualAmount = (myScouts[area] + num < 0) ? -1*myScouts[area] : num;
+
+        if (actualAmount > 0)
+            Log.inst.AddMyText(important, OnlineTranslate.Online_Add_Scout(this.name, actualAmount.ToString(), area.ToString()), logged);
+        else
+            Log.inst.AddMyText(important, OnlineTranslate.Online_Remove_Scout(this.name, Mathf.Abs(actualAmount).ToString(), area.ToString()), logged);
+        Log.inst.NewRollback(() => ChangeScout(area, actualAmount));
+    }
+    void ChangeScout(int area, int num)
+    {
+        myScouts[area] += (!Log.inst.forward) ? -num : num;
+        TurnManager.inst.WillChangePlayerProperty(this, ConstantStrings.MyScouts, myScouts); uiDictionary[ConstantStrings.MyScouts] = true;        
+    }
+    public int[] GetTroops() => myTroops;
+    public void TroopRPC(int num, int oldArea, int newArea, int logged = 0, bool important = false)
+    {
+        if (num == 0 || oldArea == newArea)
+            return;
+
+        int actualAmount = (myTroops[oldArea] + num < 0) ? -1*myScouts[oldArea] : num;
+        if (actualAmount > 0)
+            Log.inst.AddMyText(important, OnlineTranslate.Online_Advance_Troop(this.name, actualAmount.ToString(), oldArea.ToString(), newArea.ToString()), logged);
+        else
+            Log.inst.AddMyText(important, OnlineTranslate.Online_Retreat_Troop(this.name, Mathf.Abs(actualAmount).ToString(), oldArea.ToString(), newArea.ToString()), logged);
+        
+        Log.inst.NewRollback(() => ChangeTroop(oldArea, -actualAmount));
+        Log.inst.NewRollback(() => ChangeTroop(newArea, actualAmount));
+    }
+    void ChangeTroop(int area, int num)
+    {
+        myTroops[area] += (!Log.inst.forward) ? -num : num;
+        TurnManager.inst.WillChangePlayerProperty(this, ConstantStrings.MyTroops, myTroops); uiDictionary[ConstantStrings.MyTroops] = true;        
+    }
+
+#endregion
 
 #region Turns
 
@@ -220,7 +268,7 @@ public class Player : PhotonCompatible
         myDeck.AddRange(drewThisTurn);
 
         (string phase, Action action) = TurnManager.inst.GetTurnAction(this);
-        if (phase != nameof(WaitForJoiners) && phase != nameof(DisplayTwists))
+        if (phase != nameof(WaitForJoiners) && phase != nameof(DisplayStart))
             Log.inst.AddMyText(true, AutoTranslate.Blank());
 
         Log.inst.NewDecisionContainer(() => action(), 0);
@@ -322,10 +370,8 @@ public class Player : PhotonCompatible
                 card.transform.SetParent(null);
         }
 
-        if (uiDictionary[ConstantStrings.MyCoins])
-        {
-            //coinText.text = KeywordTooltip.instance.EditText(AutoTranslate.Coin_Amount(GetCoins().ToString()));
-        }
+        if (uiDictionary[ConstantStrings.MyHand] || uiDictionary[ConstantStrings.MyActions] || uiDictionary[ConstantStrings.MyCoins] || uiDictionary[ConstantStrings.MyScouts] || uiDictionary[ConstantStrings.MyTroops])
+            CreateGame.inst.UpdatePlayerUI(this, $"{this.name}: {myHand.Count} {AutoTranslate.CardIcon()}, {myActions} {AutoTranslate.ActionIcon()}, {myCoins} {AutoTranslate.CoinIcon()}");
 
         foreach (var key in uiKeys)
             uiDictionary[key] = false;
