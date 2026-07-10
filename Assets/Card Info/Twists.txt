@@ -1,0 +1,21 @@
+cardName	textBox	artCredit	notes
+Abundance	Once per 3 CoinIcon you have (round down): Create 1 of any TokenIcon at 1 LevelIcon.	Marcel-Andre Casasola Merkle \nDominion: Plunder \n(Abundance)	CareCoin, CreateAny, Create1
+Duplicate	Create 1 of a TokenIcon you already have (at the same LevelIcon).	Ryan Laukat \nDominion: Adventures \n(Duplicate)	CreateAny
+Expertise	Upgrade 1 TokenIcon 4 times.	Stanton Feng \nMTG: Throne of Eldraine \n(Fires of Invention)	UpgradeAny
+Library	Create 1 HouseIcon at 1 LevelIcon. Then upgrade it once for each LevelIcon you have at least 1 BookIcon at.	Harald Lieske \nDominion \n(Library)	CreateHouse, UpgradeHouse, CareBook, CareLevel
+Magnum_Opus	Create 1 BookIcon at 6 LevelIcon. Then downgrade it once per 3 TokenIcon you have (round down).	Randy Gallegos \nMTG: Ravnica Allegiance \n(Tome of the Guildpact)	CreateBook, Create6, Downgrade
+Maps	Create 1 BookIcon at 1 LevelIcon. Then upgrade it to the same LevelIcon as your highest HouseIcon (if any).	Julien Delval \nDominion: Allies \n(Old Map)	CreateBook, UpgradeBook, CareHouse, CareLevel
+Mass_Market	Gain 1 CoinIcon per 2 CardIcon you sold this turn (round down).	Marcel-Andre Casasola Merkle \nDominion: Prosperity \n(Grand Market)	GainCoin
+Merge	Create 1 HouseIcon at 6 LevelIcon. Then lose 2 HouseIcon.	Harald Lieske \nDominion: Empires \n(Villa)	CreateHouse, LoseHouse, Create6
+Monument	Create 1 ArtIcon at 1 LevelIcon. Then upgrade it once per ToolIcon you have at either 3 or 4 LevelIcon.	Jason Rainville \nMTG: Signature Spellbook: Gideon \n(Rest in Peace)	CreateArt, UpgradeArt, CareTool, Care3, Care4
+Polish	Upgrade 1 ArtIcon, 1 HouseIcon, 1 ToolIcon, and 1 BookIcon.	Ryan Laukat \nDominion: Prosperity \n(Platinum)	UpgradeArt, UpgradeHouse, UpgradeTool, UpgradeBook
+Prioritize	Create 1 ToolIcon at 6 LevelIcon. Then downgrade 2 TokenIcon that are at 2 LevelIcon or higher.	Claus Stephan \nDominion: Plunder \n(Taskmaster)	CreateTool, Create6, Downgrade, CareLevel
+Produce	If you have at least 1 TokenIcon at 6 LevelIcon, create 4 ToolIcon at 1 LevelIcon.	Martin Hoffmann \nDominion: Intrigue \n(Ironworks)	TokenOrMore, Care6, CreateTool, Create1
+Prototype	Create 1 ToolIcon at 1 LevelIcon. Then upgrade it once per ArtIcon you have at 1 LevelIcon.	Ryan Laukat \nDominion: Renaissance \n(Innovation)	CreateTool, CareArt, UpgradeTool, Care1
+Quality	Create 1 of any TokenIcon, at 4 LevelIcon.	Harald Lieske \nDominion: Plunder \n(Insignia)	CreateAny, Create4
+Quantity	Create 1 ArtIcon, 1 HouseIcon, 1 ToolIcon, and 1 BookIcon, all at 1 LevelIcon.	Garret DeChellis \nDominion: Plunder \n(Jewels)	CreateArt, CreateHouse, CreateTool, CreateBook, Create1
+Save_Up	If you have at least 5 CoinIcon, create 4 ArtIcon at 1 LevelIcon.	Marco Promo \nDominion: Empires \n(Capital)	CareCoin, CreateArt, Create1
+Shipment	If you have no BookIcon, create 4 BookIcon at 1 LevelIcon.	Marcel-Andre Casasola Merkle \nDominion: Menagerie \n(Sleigh)	TokenOrLess, CareBook, CreateBook, Create1
+Smelting	Create 1 ArtIcon at 6 LevelIcon. Then lose 1 HouseIcon, 1 ToolIcon, and 1 BookIcon.	Elia Cella \nDominion: Menagerie \n(Kiln)	CreateArt, Create6, LoseHouse, LoseTool, LoseBook
+Tourists	If you have at least 3 TokenIcon at exactly 2 LevelIcon, create 4 HouseIcon at 1 LevelIcon.	Marcel-Andre Casasola Merkle \nPacific \n(Tourist Season)	TokenOrMore, Care2, CreateHouse, Create1
+University	Upgrade each of your TokenIcon at 3 LevelIcon.	Marcel-Andre Casasola Merkle \nDominion: Alchemy \n(University)	Care3, UpgradeAny

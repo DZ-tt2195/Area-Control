@@ -1,0 +1,41 @@
+cardName	textBox	coinAmount	artCredit	notes
+Apprentice	You chose to remove a counter from ToolIcon this turn.	1	Anthony Palumbo \nMTG: Ixalan \n(Seekers' Apprentice)	CareTool
+Crowds	You have exactly 0 TokenIcon left after selling.	1	Lorraine Fajardo \nDominion: Cornucopia \n(Followers)	
+Farmer	You have at least 5 TokenIcon left after selling.	1	Sai Beppu \nDominion: Rising Sun \n(Good Harvest)	
+Lender	You chose to remove a counter from HouseIcon this turn.	1	Matthias Catrein \nDominion \n(Moneylender)	CareHouse
+Patron	You chose to remove a counter from ArtIcon this turn.	1	Claus Stephan \nDominion: Renaissance \n(Patron)	CareArt
+Reader	You chose to remove a counter from BookIcon this turn.	1	Elisa Cella \nDominion: Renaissance \n(Scholar)	CareBook
+Twins	Sell at least 2 identical TokenIcon (same type and LevelIcon).	1	Marie Magny \nMTG: Innistrad: Crimson Vow \n(Creepy Puppeteer)	
+Archivist	Sell at least 2 HouseIcon and 2 BookIcon, and no ArtIcon or ToolIcon.	2	Cristi Balanescu \nMTG: Innistrad: Midnight Hunt \n(Overwhelmed Archivist)	CareHouse, CareBook
+Carpenter	Sell at least 2 HouseIcon and 2 ToolIcon, and no ArtIcon or BookIcon.	2	Claus Stephan \nDominion: Allies \n(Carpenter)	CareHouse, CareTool
+Collector	Sell at least 1 ArtIcon, 1 HouseIcon, 1 ToolIcon, and 1 BookIcon.	2	Hans Krill \nDominion: Allies \n(Herb Gatherer)	CareArt, CareHouse, CareTool, CareBook
+Curator	Sell at least 2 ArtIcon and 2 HouseIcon, and no ToolIcon or BookIcon.	2	Scott M. Fischer \nMTG: Betrayers of Kamigawa \n(Mirror Gallery)	CareArt, CareHouse
+Poet	Sell at least 2 ArtIcon and 2 BookIcon, and no HouseIcon or ToolIcon.	2	Yusuke Mamada \nDominion: Rising Sun \n(Poet)	CareArt, CareBook
+Scribe	Sell at least 2 ToolIcon and 2 BookIcon, and no ArtIcon or HouseIcon.	2	Matt Stewart \nMTG: Shadows Over Innistrad \n(Manic Scribe)	CareTool, CareBook
+Sculptor	Sell at least 2 ArtIcon and 2 ToolIcon, and no HouseIcon or BookIcon.	2	Jessi J \nDominion: Renaissance \n(Sculptor)	CareArt, CareTool
+Villager	Sell at least 4 TokenIcon at 1 LevelIcon.	2	Julien Delval \nDominion: Allies \n(Miller)	Care1
+Author	Sell 1 ToolIcon, 1 ArtIcon with a higher LevelIcon, and 1 BookIcon with an even higher LevelIcon.	3	Harald Lieske \nDominion: Prosperity \n(Clerk)	CareTool, CareArt, CareBook, CareLevel
+Bishop	Sell 1 ArtIcon, 1 BookIcon with a higher LevelIcon, and 1 HouseIcon with an even higher LevelIcon.	3	Tommy Arnold \nMTG: Ixalan \n(Bishop of Rebirth)	CareArt, CareBook, CareHouse, CareLevel
+Craftsman	Sell at least 1 ToolIcon at 6 LevelIcon.	3	Hasegawa \nDominion: Rising Sun \n(Craftsman)	Care6, CareTool
+Mayor	Sell at least 1 HouseIcon at 6 LevelIcon.	3	Svetlin Velinov \nMTG: Innistrad \n(Mayor of Avabruck)	Care6, CareHouse
+Musician	Sell at least 1 ArtIcon at 6 LevelIcon.	3	Anna Steinbauer \nMTG: Kamigawa: Neon Dynasty \n(Jukai Naturalist)	Care6, CareArt
+Scientist	Sell 1 BookIcon, 1 HouseIcon with a higher LevelIcon, and 1 ToolIcon with an even higher LevelIcon.	3	Lie Setiawan \nMTG: Strixhaven: School of Mages \n(Solve the Equation)	CareBook, CareHouse, CareTool, CareLevel
+Storyteller	Sell at least 1 BookIcon at 6 LevelIcon.	3	Claus Stephan \nDominion: Adventures \n(Storyteller)	Care6, CareBook
+Weaver	Sell 1 HouseIcon, 1 ToolIcon with a higher LevelIcon, and 1 ArtIcon with an even higher LevelIcon.	3	Harald Lieske \nDominion: Renaissance \n(Silk Merchant)	CareHouse, CareTool, CareArt, CareLevel
+Aristocrat	Sell at least 2 TokenIcon at 4 LevelIcon.	4	Yusuke Mamada \nDominion: Rising Sun \n(Aristocrat)	Care4
+Bulk_Buyer	Sell at least 8 TokenIcon.	4	Eric J. Carter \nDominion: Cornucopia and Guilds \n(Shop)	
+Coven	Sell at least 4 TokenIcon at 2 LevelIcon.	4	Claus Stephan \nDominion: Menagerie \n(Coven)	Care2
+Driver	Sell exactly 3 TokenIcon, and the total LevelIcon of those 3 TokenIcon is exactly 8.	4	Dennis Lohausen \nDominion: Dark Ages \n(Ironmonger)	CareLevel
+Piper	Sell at least 4 TokenIcon, where exactly one is ToolIcon and it has a higher LevelIcon than all other TokenIcon combined.	4	Irina Nordsol \nMTG: Throne of Eldraine \n(Piper of the Swarm)	CareTool, CareLevel
+Ringmaster	Sell at least 4 TokenIcon, where exactly one is ArtIcon and it has a higher LevelIcon than all other TokenIcon combined.	4	Eric Wilkerson \nMTG: Unfinity \n(Myra the Magnificent)	CareArt, CareLevel
+Shepherd	Sell at least 4 TokenIcon, where exactly one is HouseIcon and it has a higher LevelIcon than all other TokenIcon combined.	4	Matthias Catrein \nDominion: Nocturne \n(Shepherd)	CareHouse, CareLevel
+Teacher	Sell at least 4 TokenIcon, where exactly one is BookIcon and it has a higher LevelIcon than all other TokenIcon combined.	4	Kieran Yanner \nMTG: Strixhaven: School of Mages \n(Professor Onyx)	CareBook, CareLevel
+Engineer	Sell at least 4 HouseIcon with consecutively ordered LevelIcon.	5	Elisa Cella \nDominion: Empires \n(Engineer)	CareHouse
+Historian	Sell at least 4 BookIcon with consecutively ordered LevelIcon.	5	Joshua Stewart \nDominion: Renaissance \n(Seer)	CareBook
+Hunter	Sell exactly 3 TokenIcon, and the total LevelIcon of those 3 TokenIcon is exactly 10.	5	Claus Stephan \nDominion: Allies \n(Hunter)	CareLevel
+Inventor	Sell at least 4 ToolIcon with consecutively ordered LevelIcon.	5	Julien Delval \nDominion: Renaissance \n(Inventor)	CareTool
+Overlord	Sell at least 2 TokenIcon at 5 LevelIcon.	5	Eric J. Carter \nDominion: Rising Sun \n(Daimyo)	Care5
+Painter	Sell at least 4 ArtIcon with consecutively ordered LevelIcon.	5	Osamu Inoue \nDominion: Rising Sun \n(Artist)	CareArt
+Family	Sell at least 4 TokenIcon at 3 LevelIcon.	6	Mizutametori \nMTG: Wizards Play Network 2025\n(Gran-Gran)	Care3
+Magnate	Sell exactly 3 TokenIcon, and the total LevelIcon of those 3 TokenIcon is exactly 12.	6	Harald Lieske \nDominion: Prosperity \n(Magnate)	CareLevel
+Royalty	Sell at least 2 TokenIcon at 6 LevelIcon.	6	Kieran Yanner \nMTG: Throne of Eldraine \n(Kenrith, the Returned King)	Care6
