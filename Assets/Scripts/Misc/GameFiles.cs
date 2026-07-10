@@ -1,17 +1,14 @@
 using System.Collections.Generic;
-using System.Text.RegularExpressions;
 using UnityEngine;
-using UnityEngine.SceneManagement;
-using MyBox;
 using System;
 using System.Reflection;
-using Photon.Pun;
 public enum TypesOfCards {Customer, Twist}
 [Serializable]
 public class CardData
 {
     public string cardName;
-    public int coinAmount = 0;
+    public int coinCost = 0;
+    public int troopAmount = 0;
     public string artCredit;
     public Sprite sprite;
 }
@@ -19,12 +16,12 @@ public class CardData
 public class GameFiles : MonoBehaviour
 {
     public static GameFiles inst;
-    [SerializeField] TextAsset customers;
-    [SerializeField] TextAsset twists;
+    [SerializeField] TextAsset cards;
+    [SerializeField] TextAsset areas;
     [SerializeField] List<Sprite> cardArt;
     Dictionary<string, Sprite> cardArtDictionary = new();
-    public List<CardData> customerFiles { get; private set; }
-    public List<CardData> twistFiles { get; private set; }
+    public List<CardData> cardFiles { get; private set; }
+    public List<CardData> areaFiles { get; private set; }
 
     void Awake()
     {
@@ -32,8 +29,8 @@ public class GameFiles : MonoBehaviour
         foreach (Sprite sprite in cardArt)
             cardArtDictionary.Add(sprite.name, sprite);
 
-        customerFiles = ReadTSVFile<CardData>(customers.text);
-        twistFiles = ReadTSVFile<CardData>(twists.text);
+        cardFiles = ReadTSVFile<CardData>(cards.text);
+        areaFiles = ReadTSVFile<CardData>(areas.text);
     }
     List<T> ReadTSVFile<T>(string textToConvert) where T : new()
     {

@@ -9,13 +9,6 @@ using MyBox;
 using UnityEngine.UI;
 using TMPro;
 using System.Linq;
-[Serializable]
-public class TwistVisual
-{
-    public Card card;
-    public TMP_Text countText;
-    public TokenType token;
-}
 public class CreateGame : PhotonCompatible
 {
 
@@ -34,7 +27,7 @@ public class CreateGame : PhotonCompatible
     public float opacity { get; private set; }
     bool decrease = true;
     public Canvas canvas { get; private set; }
-    [SerializeField] List<TwistVisual> twistInfo = new();
+    [SerializeField] List<Card> listOfAreas = new(); public List<Card> GetAreas() => listOfAreas;
     [Foldout("Texts", true)]
     [SerializeField] TMP_Text switchPlayer;
     [SerializeField] TMP_Text rules;
@@ -110,7 +103,7 @@ public class CreateGame : PhotonCompatible
             }
             MakeObject(playerPrefab.gameObject);
         }
-        VisualCards((int[])GetRoomProperty(ConstantStrings.TwistList));
+        VisualCards((int[])GetRoomProperty(ConstantStrings.AreaList));
         playerDropdown.onValueChanged.AddListener(SwitchToPlayer);        
     }
     #endregion
@@ -200,77 +193,47 @@ public class CreateGame : PhotonCompatible
 #endregion 
 
 #region  Twists
-    public void CreateTwists()
+    public void CreateAreas()
     {
-        List<int> TwistIDs = new();
-        for (int i = 0; i<GameFiles.inst.twistFiles.Count; i++)
-            TwistIDs.Add(i);
-        TwistIDs = TwistIDs.Shuffle();
+        List<int> areaIDs = new();
+        for (int i = 0; i<GameFiles.inst.areaFiles.Count; i++)
+            areaIDs.Add(i);
+        areaIDs = areaIDs.Shuffle();
 
         int forcedTwists = 4;
         for (int i = 0; i<forcedTwists; i++)
         {
-            int chosenNumber = PlayerPrefs.GetInt($"Twist {i}");
-            if (chosenNumber >= 0 && TwistIDs.Remove(chosenNumber))
-                TwistIDs.Insert(i, chosenNumber);
+            int chosenNumber = PlayerPrefs.GetInt($"Area {i}");
+            if (chosenNumber >= 0 && areaIDs.Remove(chosenNumber))
+                areaIDs.Insert(i, chosenNumber);
         }
 
-        int[] chosenTwists = new int[forcedTwists];
+        int[] chosenAreas = new int[forcedTwists];
         for (int i = 0; i<forcedTwists; i++)
         {
-            chosenTwists[i] = TwistIDs[i];
+            chosenAreas[i] = areaIDs[i];
             //Debug.Log(TwistIDs[i]);
         }
-        InstantChangeRoomProp(ConstantStrings.TwistList, chosenTwists.ToArray());
+        InstantChangeRoomProp(ConstantStrings.AreaList, chosenAreas.ToArray());
     }
     void VisualCards(int[] cardIDs)
     {
         for (int i = 0; i<cardIDs.Length; i++)
         {
-            twistInfo[i].card.gameObject.SetActive(true);
-            CardData data = GameFiles.inst.twistFiles[cardIDs[i]];
-            twistInfo[i].card.AssignCard(data, 1, false, new(0.5f, 0.5f, 0.5f));
+            listOfAreas[i].gameObject.SetActive(true);
+            CardData data = GameFiles.inst.areaFiles[cardIDs[i]];
+            listOfAreas[i].AssignCard(data, 1, false, Vector3.one);
         }
-        for (int i = cardIDs.Length; i<twistInfo.Count; i++)
+        for (int i = cardIDs.Length; i<listOfAreas.Count; i++)
         {
-            twistInfo[i].card.gameObject.SetActive(false);
-        }
-        UpdateTexts();
-    }
-    public TwistVisual GetTwist(TokenType type)
-    {
-        foreach (TwistVisual tv in twistInfo)
-        {
-            if (tv.token == type)
-                return tv;
-        }
-        return null;
-    }
-    void UpdateTexts()
-    {
-        foreach (TwistVisual visual in twistInfo)
-        {
-            string tokenText = ConstantStrings.TokenCounter(visual.token);
-            visual.countText.text = KeywordTooltip.instance.EditText($"{TurnManager.inst.GetInt(tokenText)}{Translator.inst.Translate(visual.token.ToString())}");
+            listOfAreas[i].gameObject.SetActive(false);
         }
     }
     public override void OnRoomPropertiesUpdate(ExitGames.Client.Photon.Hashtable propertiesThatChanged)
     {
-        if (propertiesThatChanged.ContainsKey(ConstantStrings.TwistList))
+        if (propertiesThatChanged.ContainsKey(ConstantStrings.AreaList))
         {
-            VisualCards((int[])propertiesThatChanged[ConstantStrings.TwistList]);
-        }
-        else
-        {
-            foreach (TokenType token in Enum.GetValues(typeof(TokenType)))
-            {
-                string changedTokenText = ConstantStrings.TokenCounter(token);
-                if (propertiesThatChanged.ContainsKey(changedTokenText))
-                {
-                    UpdateTexts();
-                    return;
-                }
-            }   
+            VisualCards((int[])propertiesThatChanged[ConstantStrings.AreaList]);
         }
     }
 

@@ -1,5 +1,5 @@
 Game_Designer	by Thomas Tang (DZ)
-Last_Update	Last Updated: July 04, 2026
+Last_Update	Last Updated: July 09, 2026
 Blank	
 Translator_Credit	Original Language
 Language	Language
@@ -18,6 +18,12 @@ Enter_username	Enter username
 Disconnect	Disconnect
 Disconnected_from_server	Disconnected from the server.
 Failed_to_connect_to_server	Failed to connect to the server.
+Resign	Resign
+Volume	Volume
+Pause_Setting	Enable pauses for reading
+Undo_Setting	Ask at end of turn if you want to undo anything
+Click_Setting	Ask when there's only one option to choose
+Sound_Credits	Sound Credits
 Reconnect	Reconnect
 Tutorial_1	To play multiplayer: Have 1 person create a room, then their room should be displayed below. Everyone also must have joined the same server region.
 Tutorial_2	Click a button below to join a room, or manually type in the host's username (yellow rooms are spectator only)
@@ -28,11 +34,11 @@ Player_Count	$Current$ / $Max$ Players
 Type_in_username	You have to type in a username.
 Attempt_to_reconnect	Attempting to reconnect to $Room$'s room...
 Failed_to_reconnect	Failed to reconnect to $Room$'s room.
-Choose_Twists	Choose Twists for this game
-Custom_Art_Twist	Twist ArtIcon
-Custom_House_Twist	Twist HouseIcon
-Custom_Tool_Twist	Twist ToolIcon
-Custom_Book_Twist	Twist BookIcon
+Choose_Cards	Choose Areas for this game
+Custom_Area_1	Area 1
+Custom_Area_2	Area 2
+Custom_Area_3	Area 3
+Custom_Area_4	Area 4
 Choose	Choose
 Random	Random
 Message_All	Type into chat (message all)
@@ -47,40 +53,32 @@ Undo	Undo
 Short	Short
 Long	Long
 CardIcon	CardIcon
-ArtIcon	ArtIcon
-HouseIcon	HouseIcon
-ToolIcon	ToolIcon
-BookIcon	BookIcon
 CoinIcon	CoinIcon
-CoinIcon_Text	CoinIcon: get 20 CoinIcon or more to win
-Coin_Amount	$Num$ CoinIcon
-TokenIcon	TokenIcon
-TokenIcon_Text	TokenIcon: any type of token (ArtIcon, HouseIcon, ToolIcon, BookIcon)
-LevelIcon	LevelIcon
-LevelIcon_Text	LevelIcon: the level of a token, from 1 to 6
+ActionIcon	ActionIcon
+ActionIcon_Text	ActionIcon: Used to play CardIcon.
+TroopIcon	TroopIcon
+TroopIcon_Text	Troopicon: Move all your TroopIcon to Area 4 to win.
+ScoutIcon	ScoutIcon
+ScoutIcon_Text	ScouIcon: Counts towards controlling an Area
+Control	Control
+Control_Text	Most TroopIcon + ScoutIcon in an Area.
 Online_Next_Turn	Turn $Number$
 Online_Add_Coin	$Player$ gains $Num$ CoinIcon.
 Online_Lose_Coin	$Player$ loses $Num$ CoinIcon.
-Online_Draw_Customer	$Player$ draws $Card$.
-Online_Draw_Customer_Others	$Player$ draws 1 CardIcon.
-Ask_Create	Create $Token$ ($Num1$ / $Num2$).
-Online_Chose_Token	$Player$ chooses $Token$.
-Online_Create_Token	$Player$ creates $Amount$ $Token$ at $Level$ LevelIcon.
-Ask_Upgrade	Upgrade 1 $Token$ ($Num1$ / $Num2$).
-Online_Upgrade_Token	$Player$ upgrades $Amount$ $Token$ from $Level1$ LevelIcon to $Level2$ LevelIcon.
-Ask_Downgrade	Downgrade $Token$ ($Num1$ / $Num2$).
-Online_Downgrade_Token	$Player$ downgrades $Amount$ $Token$ from $Level1$ LevelIcon down to $Level2$ LevelIcon.
-Ask_Lose	Lose $Token$ ($Num1$ / $Num2$).
-Online_Lose_Token	$Player$ loses $Amount$ $Token$ at $Level$ LevelIcon.
+Online_Add_Action	$Player$ gains $Num$ ActionIcon.
+Online_Lose_Action	$Player$ loses $Num$ ActionIcon.
+Online_Advance_Troop	$Player$ advances $Num$ TroopIcon from Area $Num1$ to $Num2$.
+Online_Retreat_Troop	$Player$ retreats $Num$ TroopIcon from Area $Num1$ to $Num2$.
+Online_Add_Scout	$Player$ adds $Num$ ScoutIcon to Area $Num$.
+Online_Remove_Scout	$Player$ removes $Num$ ScoutIcon from Area $Num$.
+Online_Draw_Card	$Player$ draws $Card$.
+Online_Draw_Card_Others	$Player$ draws 1 CardIcon.
 Ask_Discard	Discard CardIcon ($Num1$ / $Num2$).
-Online_Discard_Customer	$Player$ discards $Card$.
-Ask_Sell	You may sell 2+ TokenIcon, while meeting requirements for 2+ CardIcon.
-Online_Make_Sell	$Player$ sells $TokenNum$ TokenIcon and $CardNum$ CardIcon.
-Online_No_Sell	$Player$ doesn't sell anything.
+Online_Discard_Card	$Player$ discards $Card$.
+Online_Discard_Card_Others	$Player$ discards 1 CardIcon.
+Ask_Play	Play CardIcon?
+Online_Play_Card	$Player$ plays $Card$.
 Undo_All	Undo All
-Online_Twists_To_Resolve	Twists to resolve: $Num$
-Ask_Resolve	Choose Twist to resolve.
-Online_Resolve_Card	$Player$ resolves $Card$.
 Confirm	Confirm
 Decline	Decline
 Done	Done
@@ -91,142 +89,12 @@ Leave	Leave
 Online_Tie_Game	The game is a tie.
 Online_Player_Resigned	$Player$ has resigned.
 Online_Player_Won	$Player$ has won.
-Resigned	(Resigned)
+Player_Resigned	(Resigned)
 Switch_Player	Switch Player
 Rules	Rules
-Rules_Summary	Each Round: \n1. Choose any TokenIcon (token); create 1 of that token at 1 LevelIcon, then upgrade 1 token of that type to the next LevelIcon. \n2. You may sell 2+ TokenIcon and 2+ CardIcon, all at once, to score CoinIcon. \n\nBetween Rounds:\n3. Remove 1 counter from each token's Twist, if a player chose it. \n4. For each Twist with 0 counters, each player draws 2 CardIcon and follows its instructions. \n5. Add 2 counters back onto those Twists. \n6. First player to reach 20+ CoinIcon wins.
+Rules_Summary	Each Round: \n1. Visit the next Area and do its instructions. \n2. Choose one: +1 CardIcon; +1 ActionIcon; +3 CoinIcon. \n3. You may spend ActionIcon to play CardIcon from your hand (paying its CoinIcon cost). Between Rounds \n4. Recalculate who controls each Area (highest total of TroopIcon + ScoutIcon). \n5. If a player has all their TroopIcon in Area 4, they win.
 Encyclopedia	Encyclopedia
 Close	Close
 Any	Any
-Customer	Customer
-Twist	Twist
-Crowds	Crowds
-Crowds_Text	You have exactly 0 TokenIcon left after selling.
-Farmer	Farmer
-Farmer_Text	You have at least 5 TokenIcon left after selling.
-Twins	Twins
-Twins_Text	Sell at least 2 identical TokenIcon (same type and LevelIcon).
-Bulk_Buyer	Bulk Buyer
-Bulk_Buyer_Text	Sell at least 8 TokenIcon.
-Aristocrat	Aristocrat
-Aristocrat_Text	Sell at least 2 TokenIcon at 4 LevelIcon.
-Overlord	Overlord
-Overlord_Text	Sell at least 2 TokenIcon at 5 LevelIcon.
-Royalty	Royalty
-Royalty_Text	Sell at least 2 TokenIcon at 6 LevelIcon.
-University	University
-University_Text	Upgrade each of your TokenIcon at 3 LevelIcon.
-Mass_Market	Mass Market
-Mass_Market_Text	Gain 1 CoinIcon per 2 CardIcon you sold this turn (round down).
-Quantity	Quantity
-Quantity_Text	Create 1 ArtIcon, 1 HouseIcon, 1 ToolIcon, and 1 BookIcon, all at 1 LevelIcon.
-Driver	Driver
-Driver_Text	Sell exactly 3 TokenIcon, and the total LevelIcon of those 3 TokenIcon is exactly 8.
-Hunter	Hunter
-Hunter_Text	Sell exactly 3 TokenIcon, and the total LevelIcon of those 3 TokenIcon is exactly 10.
-Magnate	Magnate
-Magnate_Text	Sell exactly 3 TokenIcon, and the total LevelIcon of those 3 TokenIcon is exactly 12.
-Painter	Painter
-Painter_Text	Sell at least 4 ArtIcon with consecutively ordered LevelIcon.
-Engineer	Engineer
-Engineer_Text	Sell at least 4 HouseIcon with consecutively ordered LevelIcon.
-Inventor	Inventor
-Inventor_Text	Sell at least 4 ToolIcon with consecutively ordered LevelIcon.
-Historian	Historian
-Historian_Text	Sell at least 4 BookIcon with consecutively ordered LevelIcon.
-Collector	Collector
-Collector_Text	Sell at least 1 ArtIcon, 1 HouseIcon, 1 ToolIcon, and 1 BookIcon.
-Patron	Patron
-Patron_Text	You chose to remove a counter from ArtIcon this turn.
-Lender	Lender
-Lender_Text	You chose to remove a counter from HouseIcon this turn.
-Apprentice	Apprentice
-Apprentice_Text	You chose to remove a counter from ToolIcon this turn.
-Reader	Reader
-Reader_Text	You chose to remove a counter from BookIcon this turn.
-Save_Up	Save Up
-Save_Up_Text	If you have at least 5 CoinIcon, create 4 ArtIcon at 1 LevelIcon.
-Tourists	Tourists
-Tourists_Text	If you have at least 3 TokenIcon at exactly 2 LevelIcon, create 4 HouseIcon at 1 LevelIcon.
-Produce	Produce
-Produce_Text	If you have at least 1 TokenIcon at 6 LevelIcon, create 4 ToolIcon at 1 LevelIcon.
-Shipment	Shipment
-Shipment_Text	If you have no BookIcon, create 4 BookIcon at 1 LevelIcon.
-Polish	Polish
-Polish_Text	Upgrade 1 ArtIcon, 1 HouseIcon, 1 ToolIcon, and 1 BookIcon.
-Merge	Merge
-Merge_Text	Create 1 HouseIcon at 6 LevelIcon. Then lose 2 HouseIcon.
-Prototype	Prototype
-Prototype_Text	Create 1 ToolIcon at 1 LevelIcon. Then upgrade it once per ArtIcon you have at 1 LevelIcon.
-Villager	Villager
-Villager_Text	Sell at least 4 TokenIcon at 1 LevelIcon.
-Coven	Coven
-Coven_Text	Sell at least 4 TokenIcon at 2 LevelIcon.
-Family	Family
-Family_Text	Sell at least 4 TokenIcon at 3 LevelIcon.
-Quality	Quality
-Quality_Text	Create 1 of any TokenIcon, at 4 LevelIcon.
-Musician	Musician
-Musician_Text	Sell at least 1 ArtIcon at 6 LevelIcon.
-Mayor	Mayor
-Mayor_Text	Sell at least 1 HouseIcon at 6 LevelIcon.
-Craftsman	Craftsman
-Craftsman_Text	Sell at least 1 ToolIcon at 6 LevelIcon.
-Storyteller	Storyteller
-Storyteller_Text	Sell at least 1 BookIcon at 6 LevelIcon.
-Weaver	Weaver
-Weaver_Text	Sell 1 HouseIcon, 1 ToolIcon with a higher LevelIcon, and 1 ArtIcon with an even higher LevelIcon.
-Bishop	Bishop
-Bishop_Text	Sell 1 ArtIcon, 1 BookIcon with a higher LevelIcon, and 1 HouseIcon with an even higher LevelIcon.
-Author	Author
-Author_Text	Sell 1 ToolIcon, 1 ArtIcon with a higher LevelIcon, and 1 BookIcon with an even higher LevelIcon.
-Scientist	Scientist
-Scientist_Text	Sell 1 BookIcon, 1 HouseIcon with a higher LevelIcon, and 1 ToolIcon with an even higher LevelIcon.
-Duplicate	Duplicate
-Duplicate_Text	Create 1 of a TokenIcon you already have (at the same LevelIcon).
-Monument	Monument
-Monument_Text	Create 1 ArtIcon at 1 LevelIcon. Then upgrade it once per ToolIcon you have at either 3 or 4 LevelIcon.
-Library	Library
-Library_Text	Create 1 HouseIcon at 1 LevelIcon. Then upgrade it once for each LevelIcon you have at least 1 BookIcon at.
-Magnum_Opus	Magnum Opus
-Magnum_Opus_Text	Create 1 BookIcon at 6 LevelIcon. Then downgrade it once per 3 TokenIcon you have (round down).
-Smelting	Smelting
-Smelting_Text	Create 1 ArtIcon at 6 LevelIcon. Then lose 1 HouseIcon, 1 ToolIcon, and 1 BookIcon.
-Abundance	Abundance
-Abundance_Text	Once per 3 CoinIcon you have (round down): Create 1 of any TokenIcon at 1 LevelIcon.
-Prioritize	Prioritize
-Prioritize_Text	Create 1 ToolIcon at 6 LevelIcon. Then downgrade 2 TokenIcon that are at 2 LevelIcon or higher.
-Maps	Maps
-Maps_Text	Create 1 BookIcon at 1 LevelIcon. Then upgrade it to the same LevelIcon as your highest HouseIcon (if any).
-Curator	Curator
-Curator_Text	Sell at least 2 ArtIcon and 2 HouseIcon, and no ToolIcon or BookIcon.
-Sculptor	Sculptor
-Sculptor_Text	Sell at least 2 ArtIcon and 2 ToolIcon, and no HouseIcon or BookIcon.
-Poet	Poet
-Poet_Text	Sell at least 2 ArtIcon and 2 BookIcon, and no HouseIcon or ToolIcon.
-Carpenter	Carpenter
-Carpenter_Text	Sell at least 2 HouseIcon and 2 ToolIcon, and no ArtIcon or BookIcon.
-Archivist	Archivist
-Archivist_Text	Sell at least 2 HouseIcon and 2 BookIcon, and no ArtIcon or ToolIcon.
-Scribe	Scribe
-Scribe_Text	Sell at least 2 ToolIcon and 2 BookIcon, and no ArtIcon or HouseIcon.
-Ringmaster	Ringmaster
-Ringmaster_Text	Sell at least 4 TokenIcon, where exactly one is ArtIcon and it has a higher LevelIcon than all other TokenIcon combined.
-Shepherd	Shepherd
-Shepherd_Text	Sell at least 4 TokenIcon, where exactly one is HouseIcon and it has a higher LevelIcon than all other TokenIcon combined.
-Piper	Piper
-Piper_Text	Sell at least 4 TokenIcon, where exactly one is ToolIcon and it has a higher LevelIcon than all other TokenIcon combined.
-Teacher	Teacher
-Teacher_Text	Sell at least 4 TokenIcon, where exactly one is BookIcon and it has a higher LevelIcon than all other TokenIcon combined.
-Expertise	Expertise
-Expertise_Text	Upgrade 1 TokenIcon 4 times.
-Resign	Resign
-Volume	Volume
-Pause_Setting	Enable pauses for reading
-Undo_Setting	Ask at end of turn if you want to undo anything
-Click_Setting	Ask when there's only one option to choose
-Sound_Credits	Sound Credits
-Update_0	June 4, 2026
-Update_0_Text	Added sound effects and settings, and bug fixes for online \nSmall simplification to the rules for removing counters from twists
-Update_1	July 04, 2026
-Update_1_Text	Fixed bugs with UI, gameplay, and reconnecting \nAll players draw CardIcon from the same deck, with 2 copies each
+Card	Card
+Area	Area

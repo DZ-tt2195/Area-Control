@@ -18,7 +18,7 @@ public class MainDeck : PhotonCompatible
     {
         List<int> startingcustomerDeck = new();
         List<int> customerIDs = new();
-        for (int i = 0; i<GameFiles.inst.customerFiles.Count; i++)
+        for (int i = 0; i<GameFiles.inst.cardFiles.Count; i++)
         {
             for (int j = 0; j<2; j++)
             {
@@ -39,12 +39,12 @@ public class MainDeck : PhotonCompatible
         bool vertical = false;
         if (typeToFind.Equals("Twist"))
         {
-            toFind = GameFiles.inst.twistFiles;
+            toFind = GameFiles.inst.areaFiles;
             vertical = false;
         }
         else if (typeToFind.Equals("Customer"))
         {
-            toFind = GameFiles.inst.customerFiles;
+            toFind = GameFiles.inst.cardFiles;
             vertical = true;
         }
 

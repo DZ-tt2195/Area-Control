@@ -13,9 +13,9 @@ public static class FileManager
     public static void DownloadTSV()
     {
         Debug.Log($"starting downloads");
-        EditorCoroutineUtility.StartCoroutineOwnerless(Download("Languages/0. English", "1fzuOlF37uhcKH6x8UyMrTlfEjcDYe_ODp-tJr8uXSq0", "32263315"));
-        EditorCoroutineUtility.StartCoroutineOwnerless(Download("Card Info/Customers", "1fzuOlF37uhcKH6x8UyMrTlfEjcDYe_ODp-tJr8uXSq0", "0"));
-        EditorCoroutineUtility.StartCoroutineOwnerless(Download("Card Info/Twists", "1fzuOlF37uhcKH6x8UyMrTlfEjcDYe_ODp-tJr8uXSq0", "402684328"));
+        EditorCoroutineUtility.StartCoroutineOwnerless(Download("Languages/0. English", "1qCJGsLn_RaOhbTvzgZyE5UmG7auvgIuN3KuPbpnNYHo", "32263315"));
+        EditorCoroutineUtility.StartCoroutineOwnerless(Download("Card Info/Cards", "1qCJGsLn_RaOhbTvzgZyE5UmG7auvgIuN3KuPbpnNYHo", "0"));
+        EditorCoroutineUtility.StartCoroutineOwnerless(Download("Card Info/Areas", "1qCJGsLn_RaOhbTvzgZyE5UmG7auvgIuN3KuPbpnNYHo", "402684328"));
     }
     static IEnumerator Download(string fileName, string spreadsheetID, string sheetGID)
     {

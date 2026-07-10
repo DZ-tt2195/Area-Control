@@ -20,11 +20,11 @@ public class CardSelect : MonoBehaviour
         switch (myType)
         {
             case TypesOfCards.Twist:
-                allData = GameFiles.inst.twistFiles;
+                allData = GameFiles.inst.areaFiles;
                 vertical = false;
                 break;
             case TypesOfCards.Customer:
-                allData = GameFiles.inst.customerFiles;
+                allData = GameFiles.inst.cardFiles;
                 vertical = true;
                 break;
         }

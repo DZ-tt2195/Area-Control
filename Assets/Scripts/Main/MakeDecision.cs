@@ -171,7 +171,7 @@ public class MakeDecision : PhotonCompatible
             }
         }
     }
-    public void ChooseDisplayOnScreen(List<TokenDisplay> listOfDisplays, string instructions, Action<(int level, TokenType type)> action = null, bool autoResolve = true)
+    public void ChooseDisplayOnScreen(List<TroopScoutDisplay> listOfDisplays, string instructions, Action<(int troops, int scouts)> action = null, bool autoResolve = true)
     {
         if (listOfDisplays.Count == 1 && autoResolve && !PermaUI.inst.NeedClick())
         {
@@ -184,7 +184,7 @@ public class MakeDecision : PhotonCompatible
 
             for (int j = 0; j < listOfDisplays.Count; j++)
             {
-                TokenDisplay nextCard = listOfDisplays[j];
+                TroopScoutDisplay nextCard = listOfDisplays[j];
                 availableUI.Add(nextCard.selectMe);
                 Button cardButton = nextCard.selectMe.button;
 

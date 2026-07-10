@@ -472,25 +472,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4b49805f8d0bf47db8cba016e7572ea2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  linkedKeywords: []
+  linkedKeywords:
+  - original: Control
+    translated: 
+    description: 
+    color: {r: 1, g: 0.374343, b: 0, a: 0}
   spriteKeywords:
   - original: CardIcon
-    translated: 
-    description: 
-    color: {r: 0, g: 0, b: 0, a: 0}
-  - original: ArtIcon
-    translated: 
-    description: 
-    color: {r: 0, g: 0, b: 0, a: 0}
-  - original: HouseIcon
-    translated: 
-    description: 
-    color: {r: 0, g: 0, b: 0, a: 0}
-  - original: ToolIcon
-    translated: 
-    description: 
-    color: {r: 0, g: 0, b: 0, a: 0}
-  - original: BookIcon
     translated: 
     description: 
     color: {r: 0, g: 0, b: 0, a: 0}
@@ -498,11 +486,15 @@ MonoBehaviour:
     translated: 
     description: 
     color: {r: 0, g: 0, b: 0, a: 0}
-  - original: TokenIcon
+  - original: ActionIcon
     translated: 
     description: 
     color: {r: 0, g: 0, b: 0, a: 0}
-  - original: LevelIcon
+  - original: ScoutIcon
+    translated: 
+    description: 
+    color: {r: 0, g: 0, b: 0, a: 0}
+  - original: TroopIcon
     translated: 
     description: 
     color: {r: 0, g: 0, b: 0, a: 0}
@@ -903,6 +895,10 @@ PrefabInstance:
       propertyPath: m_sharedMaterial
       value: 
       objectReference: {fileID: -3852492252101762229, guid: 31e79ddad7b2d41c395ada76a18cbcdd, type: 2}
+    - target: {fileID: 629614651198809819, guid: d50eb448d0731474ebebdd3627d1ec5a, type: 3}
+      propertyPath: m_fontSize
+      value: 21.2
+      objectReference: {fileID: 0}
     - target: {fileID: 629614651198809819, guid: d50eb448d0731474ebebdd3627d1ec5a, type: 3}
       propertyPath: m_fontAsset
       value: 
@@ -2457,6 +2453,10 @@ PrefabInstance:
       propertyPath: m_fontSize
       value: 62.7
       objectReference: {fileID: 0}
+    - target: {fileID: 629614651198809819, guid: 4d0686b994da1445589ed656148a7cae, type: 3}
+      propertyPath: m_fontSize
+      value: 24.45
+      objectReference: {fileID: 0}
     - target: {fileID: 943634960830580813, guid: 4d0686b994da1445589ed656148a7cae, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -3083,10 +3083,8 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_text: Hello <link="CardIcon"><sprite="CardIcon" name="CardIcon"><link="CoinIcon"><sprite="CoinIcon"
-    name="CoinIcon"><link="TokenIcon"><sprite="TokenIcon" name="TokenIcon"><link="ArtIcon"><sprite="ArtIcon"
-    name="ArtIcon"><link="HouseIcon"><sprite="HouseIcon" name="HouseIcon"><link="ToolIcon"><sprite="ToolIcon"
-    name="ToolIcon"><link="BookIcon"><sprite="BookIcon" name="BookIcon"><link="LevelIcon"><sprite="LevelIcon"
-    name="LevelIcon">
+    name="CoinIcon"><link="ActionIcon"><sprite="ActionIcon" name="ActionIcon"><link="ScoutIcon"><sprite="ScoutIcon"
+    name="ScoutIcon"><link="TroopIcon"><sprite="Troopicon" name="Troopicon">
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 31e79ddad7b2d41c395ada76a18cbcdd, type: 2}
   m_sharedMaterial: {fileID: -3852492252101762229, guid: 31e79ddad7b2d41c395ada76a18cbcdd, type: 2}
@@ -3113,7 +3111,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 78.75
+  m_fontSize: 100
   m_fontSizeBase: 36
   m_fontWeight: 400
   m_enableAutoSizing: 1

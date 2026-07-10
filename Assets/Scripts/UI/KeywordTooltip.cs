@@ -53,9 +53,9 @@ public class KeywordTooltip : MonoBehaviour
             hover.description = EditText(hover.description);
 
         listOfCardRC.Clear();
-        foreach (CardData data in GameFiles.inst.customerFiles)
+        foreach (CardData data in GameFiles.inst.cardFiles)
             listOfCardRC[Translator.inst.Translate(data.cardName)] = (data, true);
-        foreach (CardData data in GameFiles.inst.twistFiles)
+        foreach (CardData data in GameFiles.inst.areaFiles)
             listOfCardRC[Translator.inst.Translate(data.cardName)] = (data, false);
     }
     public string EditText(string text)

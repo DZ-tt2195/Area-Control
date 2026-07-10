@@ -10,11 +10,12 @@ public static class ConstantStrings
     public const string Playing = nameof(Playing);
     public const string Waiting = nameof(Waiting);
     public const string MyCoins = nameof(MyCoins);
+    public const string MyActions = nameof(MyActions);
+    public const string MyTroops = nameof(MyTroops);
+    public const string MyScouts = nameof(MyScouts);
     public const string MyHand = nameof(MyHand);
     public const string MyDeck = nameof(MyDeck);
     public const string MyDiscard = nameof(MyDiscard);
-    public const string ChosenToken = nameof(ChosenToken);
-    public const string CustomersSold = nameof(CustomersSold);
     public const string NeedDraw = nameof(NeedDraw);
     public const string DrewThisTurn = nameof(DrewThisTurn);
 
@@ -25,11 +26,8 @@ public static class ConstantStrings
     public const string JoinAsSpec = nameof(JoinAsSpec);
     public const string CurrentPhase = nameof(CurrentPhase);
     public const string NextPhase = nameof(NextPhase);
-    public const string TwistList = nameof(TwistList);
+    public const string AreaList = nameof(AreaList);
     public const string TurnNumber = nameof(TurnNumber);
-    public static string TokenCounter(TokenType type) => TokenCounter(type.ToString());
-    public static string TokenCounter(string type) => $"TokenCounter{type}";
-    public const string MaxLevel = nameof(MaxLevel);
     public const string MasterDeck = nameof(MasterDeck);
     public const string MasterDiscard = nameof(MasterDiscard);
 }

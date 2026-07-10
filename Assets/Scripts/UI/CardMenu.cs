@@ -18,10 +18,10 @@ public class CardMenu : PhotonCompatible
     [SerializeField] List<CardSelect> cardSelectors = new();
     [Foldout("Text", true)]
     [SerializeField] TMP_Text chooseCards;
-    [SerializeField] TMP_Text twistArt;
-    [SerializeField] TMP_Text twistHouse;
-    [SerializeField] TMP_Text twistTool;
-    [SerializeField] TMP_Text twistBook;
+    [SerializeField] TMP_Text area1;
+    [SerializeField] TMP_Text area2;
+    [SerializeField] TMP_Text area3;
+    [SerializeField] TMP_Text area4;
     [SerializeField] TMP_Text confirm;
 
     protected override void Awake()
@@ -127,11 +127,11 @@ public class CardMenu : PhotonCompatible
     }
     void Translations()
     {
-        chooseCards.text = AutoTranslate.Choose_Twists();
-        twistArt.text = KeywordTooltip.instance.EditText(AutoTranslate.Custom_Art_Twist());
-        twistHouse.text = KeywordTooltip.instance.EditText(AutoTranslate.Custom_House_Twist());
-        twistTool.text = KeywordTooltip.instance.EditText(AutoTranslate.Custom_Tool_Twist());
-        twistBook.text = KeywordTooltip.instance.EditText(AutoTranslate.Custom_Book_Twist());
+        chooseCards.text = AutoTranslate.Choose_Cards();
+        area1.text = KeywordTooltip.instance.EditText(AutoTranslate.Custom_Area_1());
+        area2.text = KeywordTooltip.instance.EditText(AutoTranslate.Custom_Area_2());
+        area3.text = KeywordTooltip.instance.EditText(AutoTranslate.Custom_Area_3());
+        area4.text = KeywordTooltip.instance.EditText(AutoTranslate.Custom_Area_4());
         confirm.text = AutoTranslate.Confirm();
     }
 }

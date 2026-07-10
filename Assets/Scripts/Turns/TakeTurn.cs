@@ -5,6 +5,7 @@ using Photon.Pun;
 using System;
 public class TakeTurn : Turn
 {
+    /*
     public override void MasterStart()
     {
         int currentTurn = TurnManager.inst.GetInt(ConstantStrings.TurnNumber);
@@ -160,4 +161,5 @@ public class TakeTurn : Turn
         if (triggeredTwist)
             PhotonCompatible.InstantChangeRoomProp(ConstantStrings.NextPhase, nameof(ResolveTwists));
     }
+    */
 }

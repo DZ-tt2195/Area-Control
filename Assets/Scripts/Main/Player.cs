@@ -16,24 +16,19 @@ public class Player : PhotonCompatible
     bool initialized = false;
     [ReadOnly] public bool endPause = true;
     [SerializeField] Transform keepHand;
-    [SerializeField] TMP_Text coinText;
     public Dictionary<string, bool> uiDictionary = new();
-    [SerializeField] List<TokenDisplay> allArtDisplays = new();
-    [SerializeField] List<TokenDisplay> allHouseDisplays = new();
-    [SerializeField] List<TokenDisplay> allSwordDisplays = new();
-    [SerializeField] List<TokenDisplay> allTechDisplays = new();
     List<Card> myDeck;
     List<Card> myDiscard;
     List<Card> myHand;
     int myCoins;
-    Dictionary<TokenType, int[]> myTokens;
+    int myActions;
 
     protected override void Awake()
     {
         base.Awake();
         this.bottomType = this.GetType();
 
-        List<string> toAdd = new() { ConstantStrings.MyHand, ConstantStrings.MyDeck, ConstantStrings.MyDiscard, ConstantStrings.MyCoins, TokenType.ArtIcon.ToString(), TokenType.HouseIcon.ToString(), TokenType.ToolIcon.ToString(), TokenType.BookIcon.ToString() };
+        List<string> toAdd = new() { ConstantStrings.MyHand, ConstantStrings.MyDeck, ConstantStrings.MyDiscard, ConstantStrings.MyCoins, ConstantStrings.MyActions };
         foreach (string next in toAdd)
             uiDictionary.Add(next, true);
 
@@ -66,12 +61,6 @@ public class Player : PhotonCompatible
         myDeck = TurnManager.inst.GetCardList(ConstantStrings.MyDeck, this);
         myDiscard = TurnManager.inst.GetCardList(ConstantStrings.MyDiscard, this);
         myHand = TurnManager.inst.GetCardList(ConstantStrings.MyHand, this);
-        myTokens = new Dictionary<TokenType, int[]>();
-        foreach (TokenType token in Enum.GetValues(typeof(TokenType)))
-        {
-            int[] array = TurnManager.inst.GetIntArray(token.ToString(), this);
-            myTokens.Add(token, array);
-        }        
     }
 
     #endregion
@@ -95,7 +84,7 @@ public class Player : PhotonCompatible
             for (int i = 0; i < amount; i++)
             {
                 Card card = myDeck[i];
-                Log.inst.AddMyText(false, OnlineTranslate.Online_Draw_Customer(this.name, card.name), logged);
+                Log.inst.AddMyText(false, OnlineTranslate.Online_Draw_Card(this.name, card.name), logged);
                 toDraw.Add(card);
             }
             Log.inst.NewRollback(() => DrawCustomer(toDraw));            
@@ -122,14 +111,14 @@ public class Player : PhotonCompatible
                 myDeck.Remove(card);
             }
         }
-        myHand = myHand.OrderBy(card => card.dataFile.coinAmount).ThenBy(card => card.dataFile.cardName).ToList();
-        TurnManager.inst.WillChangePlayerProperty(this, ConstantStrings.MyHand, TurnManager.ConvertCardList(myHand)); uiDictionary[ConstantStrings.MyHand] = true;
-        TurnManager.inst.WillChangePlayerProperty(this, ConstantStrings.MyDeck, TurnManager.ConvertCardList(myDeck)); uiDictionary[ConstantStrings.MyDeck] = true;
+        myHand = myHand.OrderBy(card => card.dataFile.coinCost).ThenBy(card => card.dataFile.cardName).ToList();
+        TurnManager.inst.WillChangePlayerProperty(this, ConstantStrings.MyHand, ConvertCardList(myHand)); uiDictionary[ConstantStrings.MyHand] = true;
+        TurnManager.inst.WillChangePlayerProperty(this, ConstantStrings.MyDeck, ConvertCardList(myDeck)); uiDictionary[ConstantStrings.MyDeck] = true;
     }
     public void DiscardCustomerRPC(Card card, int logged = 0)
     {
         Log.inst.NewRollback(() => DiscardCustomer(card));
-        Log.inst.AddMyText(false, OnlineTranslate.Online_Discard_Customer(this.name, card.name), logged);
+        Log.inst.AddMyText(false, OnlineTranslate.Online_Discard_Card(this.name, card.name), logged);
     }
     void DiscardCustomer(Card card)
     {
@@ -144,13 +133,13 @@ public class Player : PhotonCompatible
             myDiscard.Add(card);
             card.transform.SetParent(null);
         }
-        myHand = myHand.OrderBy(card => card.dataFile.coinAmount).ThenBy(card => card.dataFile.cardName).ToList();
-        TurnManager.inst.WillChangePlayerProperty(this, ConstantStrings.MyHand, TurnManager.ConvertCardList(myHand)); uiDictionary[ConstantStrings.MyHand] = true;
-        TurnManager.inst.WillChangePlayerProperty(this, ConstantStrings.MyDiscard, TurnManager.ConvertCardList(myDiscard)); uiDictionary[ConstantStrings.MyDiscard] = true;
+        myHand = myHand.OrderBy(card => card.dataFile.coinCost).ThenBy(card => card.dataFile.cardName).ToList();
+        TurnManager.inst.WillChangePlayerProperty(this, ConstantStrings.MyHand, ConvertCardList(myHand)); uiDictionary[ConstantStrings.MyHand] = true;
+        TurnManager.inst.WillChangePlayerProperty(this, ConstantStrings.MyDiscard, ConvertCardList(myDiscard)); uiDictionary[ConstantStrings.MyDiscard] = true;
     }
     public void ReceiveCardsRPC(List<Card> newCards)
     {
-        DoFunction(() => ReceiveCards(TurnManager.ConvertCardList(newCards)), this.photonView.Owner);
+        DoFunction(() => ReceiveCards(ConvertCardList(newCards)), this.photonView.Owner);
     }
     [PunRPC]
     void ReceiveCards(int[] newCards)
@@ -187,56 +176,25 @@ public class Player : PhotonCompatible
         myCoins += (!Log.inst.forward) ? -num : num;
         TurnManager.inst.WillChangePlayerProperty(this, ConstantStrings.MyCoins, myCoins); uiDictionary[ConstantStrings.MyCoins] = true;
     }
-    public Dictionary<TokenType, int[]> GetTokenDict() => myTokens;
-    public void UpDowngradeToken(int num, (int level, TokenType token) first, int levelChange, int logged = 0, bool important = false)
+    public int GetActions() => myActions;
+    public void ActionRPC(int num, int logged = 0, bool important = false)
     {
-        if (num == 0 || levelChange == 0)
+        if (num == 0)
             return;
 
-        int newLevel = ActualLevel(first.level + levelChange);
-        int currentTokens = myTokens[first.token][first.level];
-        int actualAmount = (currentTokens + num < 0) ? -1*currentTokens : num;
-
-        if (first.level < newLevel)
-            Log.inst.AddMyText(important, OnlineTranslate.Online_Upgrade_Token(this.name, actualAmount.ToString(), first.token.ToString(), first.level.ToString(), newLevel.ToString()), logged);
-        else
-            Log.inst.AddMyText(important, OnlineTranslate.Online_Downgrade_Token(this.name, actualAmount.ToString(), first.token.ToString(), first.level.ToString(), newLevel.ToString()), logged);
-        
-        Log.inst.NewRollback(() => ChangeToken(-actualAmount, first));
-        (int, TokenType) newTuple = (newLevel, first.token);
-        Log.inst.NewRollback(() => ChangeToken(actualAmount, newTuple));
-    }    
-    public void CreateLoseToken(int num, (int level, TokenType token) info, int logged = 0, bool important = false)
-    {
-        if (num == 0 || info.level <= 0)
-            return;
-
-        int actualLevel = ActualLevel(info.level);
-        int currentTokens = myTokens[info.token][actualLevel];
-        int actualAmount = (currentTokens + num < 0) ? -1*currentTokens : num;
+        int actualAmount = (myActions + num < 0) ? -1*myActions : num;
 
         if (actualAmount > 0)
-            Log.inst.AddMyText(important, OnlineTranslate.Online_Create_Token(this.name, actualAmount.ToString(), info.token.ToString(), actualLevel.ToString()), logged);
+            Log.inst.AddMyText(important, OnlineTranslate.Online_Add_Action(this.name, actualAmount.ToString()), logged);
         else
-            Log.inst.AddMyText(important, OnlineTranslate.Online_Lose_Token(this.name, Mathf.Abs(actualAmount).ToString(), info.token.ToString(), actualLevel.ToString()), logged);
-        Log.inst.NewRollback(() => ChangeToken(actualAmount, info));
+            Log.inst.AddMyText(important, OnlineTranslate.Online_Lose_Action(this.name, Mathf.Abs(actualAmount).ToString()), logged);
+        Log.inst.NewRollback(() => ChangeAction(actualAmount));
     }
-    void ChangeToken(int num, (int level, TokenType token) info)
+    void ChangeAction(int num)
     {
-        int[] tokenArray = myTokens[info.token];
-        tokenArray[ActualLevel(info.level)] += Log.inst.forward ? num : -num;
-        TurnManager.inst.WillChangePlayerProperty(this, info.token.ToString(), tokenArray); uiDictionary[info.token.ToString()] = true;
+        myActions += (!Log.inst.forward) ? -num : num;
+        TurnManager.inst.WillChangePlayerProperty(this, ConstantStrings.MyActions, myActions); uiDictionary[ConstantStrings.MyActions] = true;
     }
-    int ActualLevel(int level)
-    {
-        int lowestLevel = 1;
-        int maxLevel = TurnManager.inst.GetInt(ConstantStrings.MaxLevel);
-        if (level <= lowestLevel)
-            return lowestLevel;
-        else if (level >= maxLevel)
-            return maxLevel;
-        return level;
-    }   
     #endregion
 
 #region Turns
@@ -364,26 +322,9 @@ public class Player : PhotonCompatible
                 card.transform.SetParent(null);
         }
 
-        if (uiDictionary[TokenType.ArtIcon.ToString()])
-            ApplyToken(TokenType.ArtIcon, allArtDisplays);
-        if (uiDictionary[TokenType.HouseIcon.ToString()])
-            ApplyToken(TokenType.HouseIcon, allHouseDisplays);
-        if (uiDictionary[TokenType.ToolIcon.ToString()])
-            ApplyToken(TokenType.ToolIcon, allSwordDisplays);
-        if (uiDictionary[TokenType.BookIcon.ToString()])
-            ApplyToken(TokenType.BookIcon, allTechDisplays);
-
-        void ApplyToken(TokenType type, List<TokenDisplay> list)
-        {
-            if (this.transform.parent != null) AudioManager.instance.Token();
-            int[] array = myTokens[type];
-            for (int i = 1; i<array.Length; i++)
-                list[i].ChangeInfo(i, type, array[i].ToString());
-        }
-
         if (uiDictionary[ConstantStrings.MyCoins])
         {
-            coinText.text = KeywordTooltip.instance.EditText(AutoTranslate.Coin_Amount(GetCoins().ToString()));
+            //coinText.text = KeywordTooltip.instance.EditText(AutoTranslate.Coin_Amount(GetCoins().ToString()));
         }
 
         foreach (var key in uiKeys)
@@ -408,66 +349,6 @@ public class Player : PhotonCompatible
         }
         return toReturn;
     } 
-
-#endregion
-
-#region Helpers
-    public List<TokenDisplay> OfNumber(FindNumber toFind, List<TokenType> tokensToFind, List<int> levelsToFind, int number)
-    {
-        List<TokenDisplay> toReturn = new();
-        if (tokensToFind.Contains(TokenType.ArtIcon))
-            ApplyToken(myTokens[TokenType.ArtIcon], allArtDisplays);
-        if (tokensToFind.Contains(TokenType.HouseIcon))
-            ApplyToken(myTokens[TokenType.HouseIcon], allHouseDisplays);
-        if (tokensToFind.Contains(TokenType.ToolIcon))
-            ApplyToken(myTokens[TokenType.ToolIcon], allSwordDisplays);
-        if (tokensToFind.Contains(TokenType.BookIcon))
-            ApplyToken(myTokens[TokenType.BookIcon], allTechDisplays);
-
-        void ApplyToken(int[] array, List<TokenDisplay> list)
-        {
-            for (int i = 1; i<array.Length; i++)
-            {
-                if (MyExtensions.Comparison(toFind, array[i], number) && levelsToFind.Contains(i))
-                    toReturn.Add(list[i]);
-            }
-        }
-        return toReturn;
-    }
-    public int AllTotalTokens()
-    {
-        int answer = 0;
-        foreach (TokenType token in Enum.GetValues(typeof(TokenType)))
-            answer += MyExtensions.SumOfArray(myTokens[token]);
-        return answer;
-    }
-    public static List<int> AllLevels()
-    {
-        int max = TurnManager.inst.GetInt(ConstantStrings.MaxLevel);
-        List<int> toReturn = new();
-        for (int i = 1; i <= max; i++)
-            toReturn.Add(i);
-        return toReturn;
-    }
-    public static List<int> AllLevelsBut(int blank)
-    {
-        List<int> toReturn = AllLevels();
-        toReturn.Remove(blank);
-        return toReturn;
-    }
-    public static List<TokenType> AllTokens()
-    {
-        List<TokenType> toReturn = new();
-        foreach (TokenType token in Enum.GetValues(typeof(TokenType)))
-            toReturn.Add(token);
-        return toReturn;
-    }
-    public static List<TokenType> AllTokensBut(TokenType blank)
-    {
-        List<TokenType> toReturn = AllTokens();
-        toReturn.Remove(blank);
-        return toReturn;
-    }
 
 #endregion
 

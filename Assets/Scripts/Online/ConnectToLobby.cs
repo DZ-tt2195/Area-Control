@@ -266,13 +266,8 @@ public class ConnectToLobby : MonoBehaviourPunCallbacks
             { ConstantStrings.CanPlay, numPlayers },
             { ConstantStrings.JoinAsSpec, false },
             { ConstantStrings.GameOver, false },
-            { ConstantStrings.TwistList, new int[0]},
-            { ConstantStrings.TokenCounter(TokenType.ArtIcon), 2},
-            { ConstantStrings.TokenCounter(TokenType.HouseIcon), 2},
-            { ConstantStrings.TokenCounter(TokenType.ToolIcon), 2},
-            { ConstantStrings.TokenCounter(TokenType.BookIcon), 2},
+            { ConstantStrings.AreaList, new int[0]},
             { ConstantStrings.TurnNumber, 1 },
-            { ConstantStrings.MaxLevel, 6},
             { ConstantStrings.MasterDeck, new int[0]},
             { ConstantStrings.MasterDiscard, new int[0]}
         };
@@ -281,7 +276,7 @@ public class ConnectToLobby : MonoBehaviourPunCallbacks
     ExitGames.Client.Photon.Hashtable InitialPlayerProps()
     {
         Debug.Log("assigned player props");
-        int numRanks = 6+1; //index 0 is ignored in the code
+        int numRanks = 4+1; //index 0 is ignored in the code
 
         ExitGames.Client.Photon.Hashtable playerProps = new()
         {
@@ -289,19 +284,15 @@ public class ConnectToLobby : MonoBehaviourPunCallbacks
             [ConstantStrings.Waiting] = false,
 
             [ConstantStrings.MyCoins] = 0,
-            [TokenType.ArtIcon.ToString()] = new int[numRanks],
-            [TokenType.HouseIcon.ToString()] = new int[numRanks],
-            [TokenType.ToolIcon.ToString()] = new int[numRanks],
-            [TokenType.BookIcon.ToString()] = new int[numRanks],
+            [ConstantStrings.MyActions] = 0,
+            [ConstantStrings.MyScouts] = new int[numRanks],
+            [ConstantStrings.MyTroops] = new int[numRanks],
 
             [ConstantStrings.MyHand] = new int[0],
             [ConstantStrings.MyDeck] = new int[0],
             [ConstantStrings.MyDiscard] = new int[0],
             [ConstantStrings.NeedDraw] = 0,
             [ConstantStrings.DrewThisTurn] = new int[0],
-     
-            [ConstantStrings.ChosenToken] = "",
-            [ConstantStrings.CustomersSold] = 0,
         };
         return playerProps;
     }

@@ -242,10 +242,10 @@ public class TurnManager : PhotonCompatible
             if (GetThisPlayerPosition(player.photonView.Owner) == resignPosition)
                 resigned = player;
             else
-                text += $"{player.name} - {AutoTranslate.Coin_Amount(player.GetCoins().ToString())}\n";   
+                text += $"{player.name}\n";   
         }
         if (resigned != null)
-            text += $"{resigned.name} - {AutoTranslate.Coin_Amount(resigned.GetCoins().ToString())} {AutoTranslate.Resigned()}";
+            text += $"{resigned.name} {AutoTranslate.Player_Resigned()}";
         summaryText.text = KeywordTooltip.instance.EditText(text);
     }
 
