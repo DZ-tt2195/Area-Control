@@ -277,7 +277,7 @@ public class ConnectToLobby : MonoBehaviourPunCallbacks
     {
         Debug.Log("assigned player props");
         int numRanks = 4+1; //index 0 is ignored in the code
-        int[] startingTroops = new int[5] {0, 8, 0, 0, 0};
+        int[] startingTroops = new int[5] {0, 9, 0, 0, 0};
 
         ExitGames.Client.Photon.Hashtable playerProps = new()
         {

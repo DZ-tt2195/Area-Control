@@ -8,7 +8,7 @@ public class CardData
 {
     public string cardName;
     public int coinCost = 0;
-    public int troopAmount = 0;
+    public int troopAdvance = 0;
     public string artCredit;
     public Sprite sprite;
 }

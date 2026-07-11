@@ -71,7 +71,7 @@ public class Player : PhotonCompatible
 
 #region Cards
     public List<Card> GetHand() => myHand;
-    public void DrawCustomerRPC(int amount, int logged = 0)
+    public void DrawCardRPC(int amount, int logged = 0)
     {
         if (amount <= 0) return;
         Log.inst.groupToWait.StartCoroutine(WaitForCards());
@@ -119,7 +119,7 @@ public class Player : PhotonCompatible
         TurnManager.inst.WillChangePlayerProperty(this, ConstantStrings.MyHand, ConvertCardList(myHand)); uiDictionary[ConstantStrings.MyHand] = true;
         TurnManager.inst.WillChangePlayerProperty(this, ConstantStrings.MyDeck, ConvertCardList(myDeck)); uiDictionary[ConstantStrings.MyDeck] = true;
     }
-    public void DiscardCustomerRPC(Card card, int logged = 0)
+    public void DiscardCardRPC(Card card, int logged = 0)
     {
         Log.inst.NewRollback(() => DiscardCustomer(card));
         Log.inst.AddMyText(false, OnlineTranslate.Online_Discard_Card(this.name, card.name), logged);
@@ -269,7 +269,7 @@ public class Player : PhotonCompatible
 
         (string phase, Action action) = TurnManager.inst.GetTurnAction(this);
         if (phase != nameof(WaitForJoiners) && phase != nameof(DisplayStart))
-            Log.inst.AddMyText(true, AutoTranslate.Blank());
+            Log.inst.AddMyText(false, AutoTranslate.Blank());
 
         Log.inst.NewDecisionContainer(() => action(), 0);
         Log.inst.NewDecisionContainer(() => EndTurn(), -1);

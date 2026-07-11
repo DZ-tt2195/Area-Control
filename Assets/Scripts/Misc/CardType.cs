@@ -11,5 +11,7 @@ public class CardType
     {
         this.dataFile = dataFile;
     }
-
+    public virtual void DoInstructions(Player player, int thisArea, int logged)
+    {
+    }
 }

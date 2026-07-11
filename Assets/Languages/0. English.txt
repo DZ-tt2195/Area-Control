@@ -1,5 +1,5 @@
 Game_Designer	by Thomas Tang (DZ)
-Last_Update	Last Updated: July 10, 2026
+Last_Update	Last Updated: July 11, 2026
 Blank	
 Translator_Credit	Original Language
 Language	Language
@@ -62,12 +62,14 @@ ScoutIcon	ScoutIcon
 ScoutIcon_Text	ScouIcon: Counts towards controlling an Area
 Control	Control
 Control_Text	Most TroopIcon + ScoutIcon in an Area.
-Online_Next_Turn	Turn $Number$
+Online_Next_Turn	Visiting $Area$
 Online_Add_Coin	$Player$ gains $Num$ CoinIcon.
 Online_Lose_Coin	$Player$ loses $Num$ CoinIcon.
 Online_Add_Action	$Player$ gains $Num$ ActionIcon.
 Online_Lose_Action	$Player$ loses $Num$ ActionIcon.
+Ask_Advance	Advance TroopIcon ($Num1$ / $Num2$).
 Online_Advance_Troop	$Player$ advances $Num$ TroopIcon from Area $Num1$ to $Num2$.
+Ask_Retreat	Retreat TroopIcon ($Num1$ / $Num2$).
 Online_Retreat_Troop	$Player$ retreats $Num$ TroopIcon from Area $Num1$ to $Num2$.
 Online_Add_Scout	$Player$ adds $Num$ ScoutIcon to Area $AreaNum$.
 Online_Remove_Scout	$Player$ removes $Num$ ScoutIcon from Area $AreaNum$.
@@ -78,7 +80,10 @@ Online_Discard_Card	$Player$ discards $Card$.
 Online_Discard_Card_Others	$Player$ discards 1 CardIcon.
 Ask_Play	Play CardIcon?
 Online_Play_Card	$Player$ plays $Card$.
-Undo_All	Undo All
+Choose_Area	Choose an Area.
+Choose_One	$Card$: Choose an option.
+Online_Decline_Ability	$Player$ doesn't use $Card$'s ability.
+Online_End_Turn	$Player$ ends their turn.
 Confirm	Confirm
 Decline	Decline
 Done	Done
@@ -92,7 +97,7 @@ Online_Player_Won	$Player$ has won.
 Player_Resigned	(Resigned)
 Switch_Player	Switch Player
 Rules	Rules
-Rules_Summary	Each Round: \n1. Redetermine who Controls each Area (highest total of TroopIcon + ScoutIcon).\n 2. Visit the next Area and do its instructions. \n3. Choose one: +1 CardIcon; +1 ActionIcon; +3 CoinIcon. \n4. You may spend ActionIcon to play CardIcon from your hand (paying its CoinIcon cost). \n5. If a player has all their TroopIcon in Area 4, they win.
+Rules_Summary	Each Round: \n1. Redetermine who Controls each Area (highest total of TroopIcon + ScoutIcon). \n2. Visit the next Area and get the bonus. \n3. Follow the Area's instructions. \n4. You may spend ActionIcon to play CardIcon from your hand (paying its CoinIcon cost). \n5. If a player has all their TroopIcon in Area 4, they win.
 Encyclopedia	Encyclopedia
 Close	Close
 Any	Any

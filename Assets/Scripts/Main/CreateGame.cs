@@ -213,7 +213,7 @@ public class CreateGame : PhotonCompatible
 #endregion
 
 #region Player UI
-    public List<TroopScoutDisplay> GetDisplays(Player player)
+    public List<TroopScoutDisplay> GetAllDisplays(Player player)
     {
         int num = listOfPlayers.IndexOf(player);
         return listOfPlayerUI[num].listOfDisplays;

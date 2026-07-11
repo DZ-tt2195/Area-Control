@@ -8,10 +8,9 @@ public class DisplayStart : Turn
     {
         CreateGame.inst.CreateAreas();
     }
-
     public override void ForPlayer(Player player)
     {
         CreateGame.inst.AddPlayerRPC(player);
-        player.DrawCustomerRPC(2);
+        player.DrawCardRPC(2);
     }
 }
