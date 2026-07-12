@@ -277,7 +277,7 @@ public class ConnectToLobby : MonoBehaviourPunCallbacks
     {
         Debug.Log("assigned player props");
         int numRanks = 4+1; //index 0 is ignored in the code
-        int[] startingTroops = new int[5] {0, 9, 0, 0, 0};
+        int[] startingTroops = new int[5] {0, 10, 0, 0, 0};
 
         ExitGames.Client.Photon.Hashtable playerProps = new()
         {
@@ -297,27 +297,22 @@ public class ConnectToLobby : MonoBehaviourPunCallbacks
         };
         return playerProps;
     }
-
     public void JoinRoom(string roomName)
     {
         PhotonNetwork.LocalPlayer.SetCustomProperties(InitialPlayerProps());
         PhotonNetwork.JoinRoom(roomName);
     }
-
     public override void OnCreateRoomFailed(short returnCode, string message)
     {
     }
-
     public override void OnJoinRoomFailed(short returnCode, string message)
     {
         PlayerPrefs.DeleteKey(ConstantStrings.LastRoom);
     }
-
     public override void OnJoinedRoom()
     {
         PhotonNetwork.LoadLevel("2. Game");
     }
-
     public override void OnDisconnected(DisconnectCause cause)
     {
         if (part1.gameObject.activeSelf)

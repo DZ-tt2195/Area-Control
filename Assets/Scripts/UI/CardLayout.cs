@@ -10,6 +10,7 @@ public class CardLayout : MonoBehaviour, IPointerClickHandler
     [SerializeField] Image cardBackground;
     [SerializeField] TMP_Text cardName;
     [SerializeField] TMP_Text textBox;
+    [SerializeField] TMP_Text troopText;
     CardData storedData;
     bool vertical;
     
@@ -35,6 +36,8 @@ public class CardLayout : MonoBehaviour, IPointerClickHandler
             
             cardArt.sprite = dataFile.sprite;
             textBox.text = KeywordTooltip.instance.EditText(Translator.inst.Translate($"{dataFile.cardName}_Text"));
+            if (troopText != null)
+                troopText.text = KeywordTooltip.instance.EditText($"{dataFile.troopAdvance} {AutoTranslate.TroopIcon()}");
         }
     }
 }

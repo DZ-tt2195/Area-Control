@@ -57,6 +57,7 @@ public class TakeTurn : Turn
         {
             Log.inst.AddMyText(true, OnlineTranslate.Online_Play_Card(player.name, card.name));
             player.ActionRPC(-1, 1);
+            player.CoinRPC(-card.dataFile.coinCost, 1);
             player.DiscardCardRPC(card, -1);
 
             for (int i = 0; i<card.dataFile.troopAdvance; i++)

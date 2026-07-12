@@ -12,5 +12,6 @@ public class DisplayStart : Turn
     {
         CreateGame.inst.AddPlayerRPC(player);
         player.DrawCardRPC(2);
+        player.CoinRPC(3);
     }
 }

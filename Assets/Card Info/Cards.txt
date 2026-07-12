@@ -1,16 +1,27 @@
 cardName	textBox	coinCost	troopAdvance	artCredit	notes
-	#N/A				
-	#N/A				
-	#N/A				
-	#N/A				
-	#N/A				
-	#N/A				
-	#N/A				
-	#N/A				
-	#N/A				
-	#N/A				
-	#N/A				
-	#N/A				
-	#N/A				
-	#N/A				
-	#N/A				
+Market	You have lose 4 CoinIcon for +2 ActionIcon.	0	1		LoseCoin, AddAction
+Paddock	If you have more ActionIcon than CardIcon in your hand, +1 TroopIcon from this Area (if possible)	0	1		AdvanceTroop
+Transport	If you have 10 CoinIcon or more, +1 TroopIcon from this Area (if possible)	0	1		AdvanceTroop
+Stash	 +1 CoinIcon per CardIcon in your hand.	1	1		AddCoin
+Secure	If you Control this Area while having 0 TroopIcon and/or 0 ScoutIcon in it, +2 ScoutIcon in it.	2	1		AddScout
+Upland	 +2 ScoutIcon, both in one Area that you don't Control.	2	1		AddScout
+University	If you have 0 or 1 CardIcon in hand, +2 CardIcon.	4	1		DrawCard
+Reposition	 +1 TroopIcon, -1 TroopIcon.	2	2		AdvanceTroop, RetreatTroop
+Tunnel	You may lose 1 ActionIcon for +1 TroopIcon from this Area (if possible)	3	2		LoseAction, AdvanceTroop
+Levy	 +2 CoinIcon per Area you Control.	4	2		AddCoin
+Recon	You may remove 1 ScoutIcon for +2 TroopIcon.	4	2		LoseScout, AdvanceTroop
+Plan	 +1 CardIcon per Area you Control.	5	2		DrawCard
+Support	 +1 ActionIcon per Area you Control.	5	2		AddAction
+Ports	If you Control Area 1, +1 CardIcon. If you Control Area 4, +1 ActionIcon.	6	2		DrawCard, AddAction
+Castle	 +1 CardIcon per Area you have 3 TroopIcon or more in.	7	2		DrawCard
+Scramble	You may discard 1 CardIcon for +1 ActionIcon.	6	3		DiscardCard, AddAction
+Travel	 +1 ScoutIcon, -1 ScoutIcon.	6	3		AddScout, LoseScout
+Barracks	 +1 ScoutIcon per Area you Control.	8	3		AddScout
+Report	You may remove 2 ScoutIcon for +2 CardIcon.	8	3		LoseScout, DrawCard
+Laboratory	If you have 2 ActionIcon or more, +1 CardIcon.	9	3		DrawCard
+Launch	If you have 5 CardIcon or more in hand, +1 ActionIcon.	9	3		AddAction
+Bank	 +1 CoinIcon per 4 CoinIcon you have (round down).	10	3		AddCoin
+Invade	 +1 TroopIcon per Area you Control.	10	3		AddTroop
+Improvise	Discard all your CardIcon, then +3 CardIcon.	12	3		DiscardCard, DrawCard
+Recall	You may retreat 1 TroopIcon from this Area for +2 ActionIcon.	12	4		RetreatTroop, AddAction
+Crossroads	 +1 CoinIcon per Troop you have in Area 2 or 3, whichever has less.	13	4		AddCoin

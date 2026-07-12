@@ -613,69 +613,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 99c623fb6b6e74e26bbe122ffce4485b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::GameFiles
-  customers: {fileID: 4900000, guid: 33f7d1c3ff82344148dbab0bc1a83429, type: 3}
-  twists: {fileID: 4900000, guid: b9d65eb359bdd46c99b5c7cb8f273114, type: 3}
+  cards: {fileID: 4900000, guid: c3b0cc840c4ee4b8a819bc8c3de51b11, type: 3}
+  areas: {fileID: 4900000, guid: 24c75fd8973a748beb5506b36e90a128, type: 3}
   cardArt:
-  - {fileID: 21300000, guid: 2b02a56b27cde4f6c92e7ff636a825cf, type: 3}
-  - {fileID: 21300000, guid: d50de82cf3c094c7aa21fd91e5a1a45b, type: 3}
-  - {fileID: 21300000, guid: b557106b6c27c4a4598f33068b19ecb6, type: 3}
-  - {fileID: 21300000, guid: 0fa0b97ac5b1249869bc6defbaaf8592, type: 3}
-  - {fileID: 21300000, guid: 7ff6134aef1d24db5b3dc55507a46532, type: 3}
-  - {fileID: 21300000, guid: 1d2d5c5933de44997b8a379f44e5f9b3, type: 3}
-  - {fileID: 21300000, guid: a08618ed14a5c4518ab295b9e674e1d0, type: 3}
-  - {fileID: 21300000, guid: 1bdd75a85d6d944caa33a1dc13a79b76, type: 3}
-  - {fileID: 21300000, guid: 5792074fcf1f14a45b5f918b3201f73c, type: 3}
-  - {fileID: 21300000, guid: 13a50cc155cde44fa8a559fa3e1580f4, type: 3}
-  - {fileID: 21300000, guid: b6d5162045a304418b40b0c2c922bdff, type: 3}
-  - {fileID: 21300000, guid: 5aa3ff07616dd4a00be09ffb8827814c, type: 3}
-  - {fileID: 21300000, guid: 7e2f19d0f1ec641ff8ef9e716dc1b40b, type: 3}
-  - {fileID: 21300000, guid: 846dce1385b8b40dd856b9e9d4793373, type: 3}
-  - {fileID: 21300000, guid: a19e6e75ea27846489937d3216f65b0f, type: 3}
-  - {fileID: 21300000, guid: 326c8e234aec740148d22ba2c54e4054, type: 3}
-  - {fileID: 21300000, guid: 5efde4e97f12e484c8a809aa5659a62e, type: 3}
-  - {fileID: 21300000, guid: 59f578e0d73f24420888be4fb7561577, type: 3}
-  - {fileID: 21300000, guid: 57d0a72e93c5d491aa054ab106cafd1d, type: 3}
-  - {fileID: 21300000, guid: fcc6051197cea4860abae05ab7193539, type: 3}
-  - {fileID: 21300000, guid: 1a2474354e9c54d799084a4d0ffdb549, type: 3}
-  - {fileID: 21300000, guid: cd411bc56b0aa40e8b09bc357a9788ee, type: 3}
-  - {fileID: 21300000, guid: b565150229ab94a15a06f5cbb23d7b63, type: 3}
-  - {fileID: 21300000, guid: c192a337e463840ae8a6b795ddcf0f87, type: 3}
-  - {fileID: 21300000, guid: 9aabbf291bf8e47c480ae448b5266105, type: 3}
-  - {fileID: 21300000, guid: 85f788c4961564bf6bd850000a2cd5b4, type: 3}
-  - {fileID: 21300000, guid: e38825da7e37748728125e1853b006db, type: 3}
-  - {fileID: 21300000, guid: 1cd97641583d44b6f9b91c5dd716015c, type: 3}
-  - {fileID: 21300000, guid: 12b506d8b90614ec88cdfdf1d2de0886, type: 3}
-  - {fileID: 21300000, guid: 73a9cd0d0d50a4fdea7d31a478182d7b, type: 3}
-  - {fileID: 21300000, guid: ec30b3adebebb455589893a4c76670f7, type: 3}
-  - {fileID: 21300000, guid: e40adc94ca2c94e56ad6b88b8a8f12ef, type: 3}
-  - {fileID: 21300000, guid: 3205842ea31a444ceb5c2cbc9cbd57b0, type: 3}
-  - {fileID: 21300000, guid: 59e2a3b067ac047fda07e31a057f7519, type: 3}
-  - {fileID: 21300000, guid: d604e45a2166f4dcea0bbd9cb1acb532, type: 3}
-  - {fileID: 21300000, guid: 93cd163a60929443d873985f1e064b51, type: 3}
-  - {fileID: 21300000, guid: 9026f3b16bf5a49aca4e2ba8caefbede, type: 3}
-  - {fileID: 21300000, guid: 0147eed32f27b4e0498165a694b881bc, type: 3}
-  - {fileID: 21300000, guid: fb3f2adb0e0ce41f7bca57d1d6fcb2bd, type: 3}
-  - {fileID: 21300000, guid: fccc35c9f89a54ab99e0021f750fb6c5, type: 3}
-  - {fileID: 21300000, guid: 1182dfaaee66c49ddbc266c645128f43, type: 3}
-  - {fileID: 21300000, guid: 6c346299424344cecb517c3a5a5a11e3, type: 3}
-  - {fileID: 21300000, guid: c26317572626d412ea691f1052c86609, type: 3}
-  - {fileID: 21300000, guid: 9628fcb64b1534bbb93ba17471928c5b, type: 3}
-  - {fileID: 21300000, guid: 0b0f730a1e6ee4a959141237d2ecf844, type: 3}
-  - {fileID: 21300000, guid: 3c474f67827384d7a9408f76a5d360a2, type: 3}
-  - {fileID: 21300000, guid: cb274f5038b7749cf9a7240551fd638d, type: 3}
-  - {fileID: 21300000, guid: 4f2b20e6dd111484c816664a97fdface, type: 3}
-  - {fileID: 21300000, guid: 9414394ac623d402ba12843b865d8e9e, type: 3}
-  - {fileID: 21300000, guid: 8e66948fe8cc34e2080bdc3e06bfe08d, type: 3}
-  - {fileID: 21300000, guid: 2f1699bb6ee514ecd8cd39a2bf413a46, type: 3}
-  - {fileID: 21300000, guid: 2cfa57308b3aa477b8762b0349255c3c, type: 3}
-  - {fileID: 21300000, guid: 1eacfa6e2905f4c0999ca48c9ac54344, type: 3}
-  - {fileID: 21300000, guid: be838884bfa094fdb98f91338147b089, type: 3}
-  - {fileID: 21300000, guid: 8f79d37c1f5d148558e326adf9abf45f, type: 3}
-  - {fileID: 21300000, guid: 501a9bf38d7eb4c87a0660e729bb0674, type: 3}
-  - {fileID: 21300000, guid: 79e1747c3c4454c4085286e3cbe6385d, type: 3}
-  - {fileID: 21300000, guid: b673ff77d906243a9b93a2e9dd490238, type: 3}
-  - {fileID: 21300000, guid: c27e372a292b541d18d9819cdd5ad7ab, type: 3}
-  - {fileID: 21300000, guid: 74c9a2caa152e493cae5b9383c100a35, type: 3}
+  - {fileID: 21300000, guid: 774efa1bf10404932938f00cbff1b181, type: 3}
+  - {fileID: 21300000, guid: 4d1f353dc9c654d64b21d4653785e0f2, type: 3}
+  - {fileID: 21300000, guid: a1089cd57555f41c28b748ce6ed02289, type: 3}
+  - {fileID: 21300000, guid: 6f92d2fdda2f9424db4048951f011790, type: 3}
+  - {fileID: 21300000, guid: b4df7655cafd347bfbc266bda54463e3, type: 3}
+  - {fileID: 21300000, guid: db4ce3ddde62c47dab4e3993d2284eab, type: 3}
+  - {fileID: 21300000, guid: f52af25fac3b94a7a998765ed6586347, type: 3}
+  - {fileID: 21300000, guid: c77a53f1cf35344d2a096fbcdd2453e3, type: 3}
+  - {fileID: 21300000, guid: fbb19c1b5102a4cec91f84d2e58b3a68, type: 3}
+  - {fileID: 21300000, guid: 5cd3f9b995a7d49c18a8ee339914c35d, type: 3}
+  - {fileID: 21300000, guid: 436644a8854d444c1810fe0b65cbc15e, type: 3}
 --- !u!114 &300021390
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -897,7 +848,7 @@ PrefabInstance:
       objectReference: {fileID: -3852492252101762229, guid: 31e79ddad7b2d41c395ada76a18cbcdd, type: 2}
     - target: {fileID: 629614651198809819, guid: d50eb448d0731474ebebdd3627d1ec5a, type: 3}
       propertyPath: m_fontSize
-      value: 21.2
+      value: 30
       objectReference: {fileID: 0}
     - target: {fileID: 629614651198809819, guid: d50eb448d0731474ebebdd3627d1ec5a, type: 3}
       propertyPath: m_fontAsset
@@ -2455,7 +2406,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 629614651198809819, guid: 4d0686b994da1445589ed656148a7cae, type: 3}
       propertyPath: m_fontSize
-      value: 24.45
+      value: 25
       objectReference: {fileID: 0}
     - target: {fileID: 943634960830580813, guid: 4d0686b994da1445589ed656148a7cae, type: 3}
       propertyPath: m_Pivot.x

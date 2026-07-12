@@ -69,6 +69,7 @@ Online_Add_Action	$Player$ gains $Num$ ActionIcon.
 Online_Lose_Action	$Player$ loses $Num$ ActionIcon.
 Ask_Advance	Advance TroopIcon ($Num1$ / $Num2$).
 Online_Advance_Troop	$Player$ advances $Num$ TroopIcon from Area $Num1$ to $Num2$.
+Fail_Advance	$Player$ can't advance any TroopIcon.
 Ask_Retreat	Retreat TroopIcon ($Num1$ / $Num2$).
 Online_Retreat_Troop	$Player$ retreats $Num$ TroopIcon from Area $Num1$ to $Num2$.
 Online_Add_Scout	$Player$ adds $Num$ ScoutIcon to Area $AreaNum$.
@@ -82,7 +83,8 @@ Ask_Play	Play CardIcon?
 Online_Play_Card	$Player$ plays $Card$.
 Choose_Area	Choose an Area.
 Choose_One	$Card$: Choose an option.
-Online_Decline_Ability	$Player$ doesn't use $Card$'s ability.
+Card_Use_Ability	$Card$: Use ability?
+Online_Decline_Ability	$Player$ doesn't use $Card$.
 Online_End_Turn	$Player$ ends their turn.
 Confirm	Confirm
 Decline	Decline
@@ -103,3 +105,81 @@ Close	Close
 Any	Any
 Card	Card
 Area	Area
+Recon	Recon
+Recon_Text	You may remove 1 ScoutIcon for +2 TroopIcon.
+Explore	Explore
+Explore_Text	 +1 ScoutIcon in each Area you have 0 TroopIcon in.
+Improvise	Improvise
+Improvise_Text	Discard all your CardIcon, then +3 CardIcon.
+Invade	Invade
+Invade_Text	 +1 TroopIcon per Area you Control.
+Plan	Plan
+Plan_Text	 +1 CardIcon per Area you Control.
+Scramble	Scramble
+Scramble_Text	You may discard 1 CardIcon for +1 ActionIcon.
+Stash	Stash
+Stash_Text	 +1 CoinIcon per CardIcon in your hand.
+Support	Support
+Support_Text	 +1 ActionIcon per Area you Control.
+Transport	Transport
+Transport_Text	If you have 10 CoinIcon or more, +1 TroopIcon from this Area (if possible)
+Launch	Launch
+Launch_Text	If you have 5 CardIcon or more in hand, +1 ActionIcon.
+Levy	Levy
+Levy_Text	 +2 CoinIcon per Area you Control.
+Secure	Secure
+Secure_Text	If you Control this Area while having 0 TroopIcon and/or 0 ScoutIcon in it, +2 ScoutIcon in it.
+Recall	Recall
+Recall_Text	You may retreat 1 TroopIcon from this Area for +2 ActionIcon.
+Report	Report
+Report_Text	You may remove 2 ScoutIcon for +2 CardIcon.
+Reposition	Reposition
+Reposition_Text	 +1 TroopIcon, -1 TroopIcon.
+Travel	Travel
+Travel_Text	 +1 ScoutIcon, -1 ScoutIcon.
+Barracks	Barracks
+Barracks_Text	 +1 ScoutIcon per Area you Control.
+Bank	Bank
+Bank_Text	 +1 CoinIcon per 4 CoinIcon you have (round down).
+Castle	Castle
+Castle_Text	 +1 CardIcon per Area you have 3 TroopIcon or more in.
+Crossroads	Crossroads
+Crossroads_Text	 +1 CoinIcon per Troop you have in Area 2 or 3, whichever has less.
+Laboratory	Laboratory
+Laboratory_Text	If you have 2 ActionIcon or more, +1 CardIcon.
+Market	Market
+Market_Text	You have lose 4 CoinIcon for +2 ActionIcon.
+Paddock	Paddock
+Paddock_Text	If you have more ActionIcon than CardIcon in your hand, +1 TroopIcon from this Area (if possible)
+Ports	Ports
+Ports_Text	If you Control Area 1, +1 CardIcon. If you Control Area 4, +1 ActionIcon.
+Tunnel	Tunnel
+Tunnel_Text	You may lose 1 ActionIcon for +1 TroopIcon from this Area (if possible)
+University	University
+University_Text	If you have 0 or 1 CardIcon in hand, +2 CardIcon.
+Upland	Upland
+Upland_Text	 +2 ScoutIcon, both in one Area that you don't Control.
+Farmland	Farmland
+Farmland_Text	If you Control this, +2 CoinIcon per ActionIcon you have.
+Garrison	Garison
+Garrison_Text	You may remove 1 ScoutIcon from here, for +1 ScoutIcon in each other Area.
+Highway	Highway
+Highway_Text	If you Control this, +2 TroopIcon and then -1 TroopIcon.
+Village	Village
+Village_Text	If you Control this, +1 ActionIcon per 2 CardIcon in your hand (round down).
+Battlefield	Battlefield
+Battlefield_Text	 +1 ActionIcon. If you don't Control this, -1 TroopIcon.
+Hideout	Hideout
+Hideout_Text	If you don't Control this, +1 ScoutIcon and -2 CoinIcon.
+Island 	Island
+Island_Text	If you have 3 TroopIcon or more here, +1 TroopIcon from Area 1.
+Woods	Woods
+Woods_Text	If you have 3 TroopIcon or less here, +1 Card.
+Mine	Mine
+Mine_Text	You may lose 1 ActionIcon, for +1 CoinIcon per 2 TroopIcon you have here (round down).
+Pasture	Pasture
+Pasture_Text	 +1 ScoutIcon here. Then remove any amount of your ScoutIcon here for +2 CoinIcon each.
+Gate	Gate
+Gate_Text	 +1 Card per 2 ScoutIcon you have in this Area (round down).
+Desert	Desert
+Desert_Text	You may remove 1 ScoutIcon from here. If you don't, -1 CardIcon.

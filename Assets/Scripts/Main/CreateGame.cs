@@ -259,6 +259,16 @@ public class CreateGame : PhotonCompatible
         int num = listOfPlayers.IndexOf(player);
         return whoControls[num] == player;        
     }
+    public List<int> AreasControlled(Player player)
+    {
+        List<int> toReturn = new();
+        for (int i = 0; i<whoControls.Count; i++)
+        {
+            if (whoControls[i] == player)
+                toReturn.Add(i);
+        }
+        return toReturn;
+    }
 #endregion 
 
 #region Areas
