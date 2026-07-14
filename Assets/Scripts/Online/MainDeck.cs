@@ -18,7 +18,7 @@ public class MainDeck : PhotonCompatible
     {
         List<int> startingcustomerDeck = new();
         List<int> customerIDs = new();
-        for (int i = 0; i<GameFiles.inst.cardFiles.Count; i++)
+        for (int i = 0; i<GameFiles.inst.tacticFiles.Count; i++)
         {
             for (int j = 0; j<2; j++)
             {
@@ -44,7 +44,7 @@ public class MainDeck : PhotonCompatible
         }
         else if (typeToFind.Equals("Customer"))
         {
-            toFind = GameFiles.inst.cardFiles;
+            toFind = GameFiles.inst.tacticFiles;
             vertical = true;
         }
 

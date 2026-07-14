@@ -2,7 +2,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using System;
 using System.Reflection;
-public enum TypesOfCards {Card, Area}
+public enum TypesOfCards {Tactic, Area}
 [Serializable]
 public class CardData
 {
@@ -16,11 +16,11 @@ public class CardData
 public class GameFiles : MonoBehaviour
 {
     public static GameFiles inst;
-    [SerializeField] TextAsset cards;
+    [SerializeField] TextAsset tactics;
     [SerializeField] TextAsset areas;
     [SerializeField] List<Sprite> cardArt;
     Dictionary<string, Sprite> cardArtDictionary = new();
-    public List<CardData> cardFiles { get; private set; }
+    public List<CardData> tacticFiles { get; private set; }
     public List<CardData> areaFiles { get; private set; }
 
     void Awake()
@@ -29,10 +29,10 @@ public class GameFiles : MonoBehaviour
         foreach (Sprite sprite in cardArt)
             cardArtDictionary.Add(sprite.name, sprite);
 
-        cardFiles = ReadTSVFile<CardData>(cards.text);
-        areaFiles = ReadTSVFile<CardData>(areas.text);
+        tacticFiles = ReadCardFile<CardData>(tactics.text);
+        areaFiles = ReadCardFile<CardData>(areas.text);
     }
-    List<T> ReadTSVFile<T>(string textToConvert) where T : new()
+    List<T> ReadCardFile<T>(string textToConvert) where T : new()
     {
         string[] splitUp = textToConvert.Split('\n');
         Dictionary<string, int> columnIndex = new();
@@ -80,7 +80,16 @@ public class GameFiles : MonoBehaviour
                 else
                 {
                     if (field.FieldType == typeof(Sprite))
-                        field.SetValue(nextData, cardArtDictionary[thisRow[columnIndex["cardName"]]]);
+                    {
+                        try
+                        {
+                            field.SetValue(nextData, cardArtDictionary[thisRow[columnIndex["cardName"]]]);
+                        }
+                        catch
+                        {
+                            Debug.LogError($"no art for {thisRow[columnIndex["cardName"]]}");
+                        }
+                    }
                 }
             }
 

@@ -75,7 +75,7 @@ public class TakeTurn : Turn
         List<TroopScoutDisplay> canAdvance = CreateGame.inst.GetAllDisplays(player).Where(display => display.info.area != 4 && display.info.troops >= 1).ToList();
         if (canAdvance.Count == 0) return;
 
-        MakeDecision.inst.ChooseDisplayOnScreen(canAdvance, AutoTranslate.Ask_Advance(currentNum.ToString(), maxNum.ToString()), AdvanceMe);
+        MakeDecision.inst.ChooseDisplayOnScreen(canAdvance, AutoTranslate.Force_Advance(currentNum.ToString(), maxNum.ToString()), AdvanceMe);
         void AdvanceMe((int area, int troops, int scouts) display)
         {
             player.TroopRPC(1, display.area, display.area+1, logged);

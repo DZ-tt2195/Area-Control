@@ -3,23 +3,22 @@ using UnityEngine.UI;
 using System.Collections.Generic;
 using TMPro;
 using MyBox;
-using Photon.Pun;
 
 public class Encyclopedia : MonoBehaviour
 {
     public static Encyclopedia inst;
     [Foldout("UI", true)]
-    [SerializeField] Card cardPrefab;
+    [SerializeField] Card tacticPrefab;
     [SerializeField] Card areaPrefab;
-    [SerializeField] RectTransform cardView;
-    [SerializeField] GridLayoutGroup cardGrid;
+    [SerializeField] RectTransform tacticView;
+    [SerializeField] GridLayoutGroup tacticGrid;
     [SerializeField] RectTransform areaView;
     [SerializeField] GridLayoutGroup areaGrid;
     [SerializeField] Slider viewSlider;
     List<Card> allCards = new();
     List<Card> allAreas = new();
     [Foldout("Texts", true)]
-    [SerializeField] TMP_Text card;
+    [SerializeField] TMP_Text tactic;
     [SerializeField] TMP_Text area;
     [SerializeField] TMP_Text close;
 
@@ -31,20 +30,20 @@ public class Encyclopedia : MonoBehaviour
 
         void Change(float value)
         {
-            cardView.gameObject.SetActive((int)value == 0);
+            tacticView.gameObject.SetActive((int)value == 0);
             areaView.gameObject.SetActive((int)value == 1);
         }
     }
     private void Start()
     {
         Translations();
-        for (int i = 0; i < GameFiles.inst.cardFiles.Count; i++)
+        for (int i = 0; i < GameFiles.inst.tacticFiles.Count; i++)
         {
-            GameObject nextCard = Instantiate(cardPrefab.gameObject);
+            GameObject nextCard = Instantiate(tacticPrefab.gameObject);
             Card cardPV = nextCard.GetComponent<Card>();
-            cardPV.AssignCard(GameFiles.inst.cardFiles[i], 1f, true, Vector3.one);
+            cardPV.AssignCard(GameFiles.inst.tacticFiles[i], 1f, true, Vector3.one);
             allCards.Add(cardPV);
-            cardPV.transform.SetParent(cardGrid.transform);
+            cardPV.transform.SetParent(tacticGrid.transform);
         }
         for (int i = 0; i < GameFiles.inst.areaFiles.Count; i++)
         {
@@ -58,7 +57,7 @@ public class Encyclopedia : MonoBehaviour
     void Translations()
     {
         area.text = AutoTranslate.Area();
-        card.text = AutoTranslate.Card();
+        tactic.text = AutoTranslate.Tactic();
         close.text = AutoTranslate.Close();
     }
 }

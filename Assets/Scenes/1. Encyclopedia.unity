@@ -553,7 +553,7 @@ GameObject:
   - component: {fileID: 451277966}
   - component: {fileID: 451277967}
   m_Layer: 5
-  m_Name: Card View
+  m_Name: Tactic View
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1479,14 +1479,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7aa289d6908584edf984d9d972f90c6b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Encyclopedia
-  cardPrefab: {fileID: 4752275793854564576, guid: d50eb448d0731474ebebdd3627d1ec5a, type: 3}
+  tacticPrefab: {fileID: 4752275793854564576, guid: d50eb448d0731474ebebdd3627d1ec5a, type: 3}
   areaPrefab: {fileID: 4752275793854564576, guid: 4d0686b994da1445589ed656148a7cae, type: 3}
-  cardView: {fileID: 451277966}
-  cardGrid: {fileID: 1515963459}
+  tacticView: {fileID: 451277966}
+  tacticGrid: {fileID: 1515963459}
   areaView: {fileID: 428183266}
   areaGrid: {fileID: 1734515443}
   viewSlider: {fileID: 347830364}
-  card: {fileID: 1550909540}
+  tactic: {fileID: 1550909540}
   area: {fileID: 224632699}
   close: {fileID: 971116838}
 --- !u!4 &1189922528
@@ -1627,7 +1627,7 @@ GameObject:
   - component: {fileID: 1515963459}
   - component: {fileID: 1515963460}
   m_Layer: 5
-  m_Name: Card Grid
+  m_Name: Tactic Grid
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1703,7 +1703,7 @@ GameObject:
   - component: {fileID: 1550909540}
   - component: {fileID: 1550909539}
   m_Layer: 5
-  m_Name: Card
+  m_Name: Tactic
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1761,7 +1761,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Card
+  m_text: Tactic
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 31e79ddad7b2d41c395ada76a18cbcdd, type: 2}
   m_sharedMaterial: {fileID: -3852492252101762229, guid: 31e79ddad7b2d41c395ada76a18cbcdd, type: 2}
@@ -1788,7 +1788,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 62.7
+  m_fontSize: 53.9
   m_fontSizeBase: 20
   m_fontWeight: 400
   m_enableAutoSizing: 1

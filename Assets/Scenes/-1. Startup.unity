@@ -613,7 +613,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 99c623fb6b6e74e26bbe122ffce4485b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::GameFiles
-  cards: {fileID: 4900000, guid: c3b0cc840c4ee4b8a819bc8c3de51b11, type: 3}
+  tactics: {fileID: 4900000, guid: c3b0cc840c4ee4b8a819bc8c3de51b11, type: 3}
   areas: {fileID: 4900000, guid: 24c75fd8973a748beb5506b36e90a128, type: 3}
   cardArt:
   - {fileID: 21300000, guid: 774efa1bf10404932938f00cbff1b181, type: 3}
@@ -623,10 +623,29 @@ MonoBehaviour:
   - {fileID: 21300000, guid: b4df7655cafd347bfbc266bda54463e3, type: 3}
   - {fileID: 21300000, guid: db4ce3ddde62c47dab4e3993d2284eab, type: 3}
   - {fileID: 21300000, guid: f52af25fac3b94a7a998765ed6586347, type: 3}
-  - {fileID: 21300000, guid: c77a53f1cf35344d2a096fbcdd2453e3, type: 3}
   - {fileID: 21300000, guid: fbb19c1b5102a4cec91f84d2e58b3a68, type: 3}
   - {fileID: 21300000, guid: 5cd3f9b995a7d49c18a8ee339914c35d, type: 3}
   - {fileID: 21300000, guid: 436644a8854d444c1810fe0b65cbc15e, type: 3}
+  - {fileID: 21300000, guid: 35733cc0554d5451da5075b6fee823c0, type: 3}
+  - {fileID: 21300000, guid: 48e150bc0b38b4f5587e1d7e5fea45e7, type: 3}
+  - {fileID: 21300000, guid: 5c21b6e8c769a49c4b9402675605491b, type: 3}
+  - {fileID: 21300000, guid: 2e1983bfde23542ff818d9ab54e3ed92, type: 3}
+  - {fileID: 21300000, guid: b487c0a100f8e4d1b839d5c4b8cb9b1b, type: 3}
+  - {fileID: 21300000, guid: 7f3760c6f82fa4f199b860bf678c88c5, type: 3}
+  - {fileID: 21300000, guid: ccbbfaa30d1d2436994a1498635d1689, type: 3}
+  - {fileID: 21300000, guid: c77a53f1cf35344d2a096fbcdd2453e3, type: 3}
+  - {fileID: 21300000, guid: a81bf3a6ee124430b99215c7db5da566, type: 3}
+  - {fileID: 21300000, guid: 9bd67dcd3bafb412e9bbe7ec4f3fc6cb, type: 3}
+  - {fileID: 21300000, guid: 0d7a45004403747e5b235cf7ceb24402, type: 3}
+  - {fileID: 21300000, guid: e88ee3e40cc8f4ba09a004ac95d86d66, type: 3}
+  - {fileID: 21300000, guid: cb0e286013ec24f159c725fd671bbccb, type: 3}
+  - {fileID: 21300000, guid: feb9f77f7aa034ed4a21336dfdac5ed4, type: 3}
+  - {fileID: 21300000, guid: 1958ff140b8e440d282601e0ca39f20b, type: 3}
+  - {fileID: 21300000, guid: bffb7e7c36f6c4fa38257c1027d8ce85, type: 3}
+  - {fileID: 21300000, guid: 3b762750a5cd445fe98b99d3cf517695, type: 3}
+  - {fileID: 21300000, guid: ddca97535b68f43cbb1446caffc25159, type: 3}
+  - {fileID: 21300000, guid: 0a563fcf58bc04ec38ac3144d3f03ec3, type: 3}
+  - {fileID: 21300000, guid: 76356c41d045e4800b4e0dc96efdf19d, type: 3}
 --- !u!114 &300021390
 MonoBehaviour:
   m_ObjectHideFlags: 0

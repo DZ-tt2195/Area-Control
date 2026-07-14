@@ -23,8 +23,8 @@ public class CardSelect : MonoBehaviour
                 allData = GameFiles.inst.areaFiles;
                 vertical = false;
                 break;
-            case TypesOfCards.Card:
-                allData = GameFiles.inst.cardFiles;
+            case TypesOfCards.Tactic:
+                allData = GameFiles.inst.tacticFiles;
                 vertical = true;
                 break;
         }

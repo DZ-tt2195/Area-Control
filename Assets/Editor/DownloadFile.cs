@@ -14,7 +14,7 @@ public static class FileManager
     {
         Debug.Log($"starting downloads");
         EditorCoroutineUtility.StartCoroutineOwnerless(Download("Languages/0. English", "1qCJGsLn_RaOhbTvzgZyE5UmG7auvgIuN3KuPbpnNYHo", "32263315"));
-        EditorCoroutineUtility.StartCoroutineOwnerless(Download("Card Info/Cards", "1qCJGsLn_RaOhbTvzgZyE5UmG7auvgIuN3KuPbpnNYHo", "0"));
+        EditorCoroutineUtility.StartCoroutineOwnerless(Download("Card Info/Tactics", "1qCJGsLn_RaOhbTvzgZyE5UmG7auvgIuN3KuPbpnNYHo", "0"));
         EditorCoroutineUtility.StartCoroutineOwnerless(Download("Card Info/Areas", "1qCJGsLn_RaOhbTvzgZyE5UmG7auvgIuN3KuPbpnNYHo", "402684328"));
     }
     static IEnumerator Download(string fileName, string spreadsheetID, string sheetGID)
