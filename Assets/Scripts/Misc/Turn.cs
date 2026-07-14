@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class Turn
+public class Turn : GeneralEffects
 {
     public Turn()
     {

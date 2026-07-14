@@ -1,5 +1,5 @@
 Game_Designer	by Thomas Tang (DZ)
-Last_Update	Last Updated: July 13, 2026
+Last_Update	Last Updated: July 14, 2026
 Blank	
 Translator_Credit	Original Language
 Language	Language
@@ -56,7 +56,7 @@ CardIcon	CardIcon
 CoinIcon	CoinIcon
 ActionIcon	ActionIcon
 TroopIcon	TroopIcon
-TroopIcon_Text	Troopicon: Move all your TroopIcon to Area 4 to win.
+TroopIcon_Text	TroopIcon: Move all your TroopIcon to Area 4 to win.
 ScoutIcon	ScoutIcon
 Control	Control
 Control_Text	Most TroopIcon + ScoutIcon in an Area.
@@ -80,7 +80,8 @@ Ask_Remove	Remove ScoutIcon?
 Online_Remove_Scout	$Player$ removes $Num$ ScoutIcon from Area $AreaNum$.
 Online_Draw_Card	$Player$ draws $Card$.
 Online_Draw_Card_Others	$Player$ draws 1 CardIcon.
-Ask_Discard	Discard CardIcon ($Num1$ / $Num2$).
+Force_Discard	Discard CardIcon ($Num1$ / $Num2$).
+Ask_Discard	Discard CardIcon?
 Online_Discard_Card	$Player$ discards $Card$.
 Online_Discard_Card_Others	$Player$ discards 1 CardIcon.
 Ask_Play	Play CardIcon?
@@ -129,7 +130,7 @@ Raid_Text	 +2 CoinIcon per Area you Control.
 Secure	Secure
 Secure_Text	If you Control this Area while having 0 TroopIcon and/or 0 ScoutIcon in it, +2 ScoutIcon in it.
 Report	Report
-Report_Text	You may remove 2 ScoutIcon for +2 CardIcon.
+Report_Text	You may remove 1 ScoutIcon for +1 CardIcon.
 Travel	Travel
 Travel_Text	 +1 ScoutIcon, -1 ScoutIcon.
 Train	Train
@@ -137,13 +138,13 @@ Train_Text	 +1 ScoutIcon per Area you Control.
 Invest	Invest
 Invest_Text	 +1 CoinIcon per CoinIcon you have (after paying to play this).
 Balance	Balance
-Balance_Text	 +1 CoinIcon per Troop you have in Area 2 or 3, whichever has less.
+Balance_Text	 +1 CoinIcon per TroopIcon you have in Area 2 or 3, whichever has less.
 Prepare	Prepare
 Prepare_Text	If you have 2 ActionIcon or more, +1 CardIcon.
 Recruit	Recruit
-Recruit_Text	You have lose 4 CoinIcon for +2 ScoutIcon.
+Recruit_Text	You may spend 1 ActionIcon for +2 ScoutIcon.
 Transport	Transport
-Transport_Text	You may lose 1 ActionIcon for +1 TroopIcon from this Area (if possible)
+Transport_Text	You may spend 1 ActionIcon for +1 TroopIcon from this Area (if possible)
 Sneak	Sneak
 Sneak_Text	 +2 ScoutIcon, both in one Area that you don't Control.
 Farmland	Farmland
@@ -163,8 +164,8 @@ Island_Text	If you have 4 TroopIcon or more here, +1 TroopIcon from Area 1.
 Woods	Woods
 Woods_Text	If you have 3 TroopIcon or less here, +1 Card.
 Mine	Mine
-Mine_Text	You may lose 1 ActionIcon, for +1 CoinIcon per TroopIcon you have here,
+Mine_Text	You may spend 1 ActionIcon, for +1 CoinIcon per TroopIcon you have here.
 Pasture	Pasture
 Pasture_Text	 +1 ScoutIcon here. Then remove any amount of your ScoutIcon here for +2 CoinIcon each.
 Gate	Gate
-Gate_Text	 +1 Card per 2 ScoutIcon you have in this Area (round down).
+Gate_Text	 +1 Card per 2 ScoutIcon you have here (round down).

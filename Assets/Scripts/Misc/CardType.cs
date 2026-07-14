@@ -3,7 +3,7 @@ using UnityEngine;
 using System.Collections.Generic;
 using System;
 
-public class CardType
+public class CardType : GeneralEffects
 {
     public CardData dataFile { get; private set; }
 

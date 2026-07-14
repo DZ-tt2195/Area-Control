@@ -91,10 +91,10 @@ public class Player : PhotonCompatible
                 Log.inst.AddMyText(false, OnlineTranslate.Online_Draw_Card(this.name, card.name), logged);
                 toDraw.Add(card);
             }
-            Log.inst.NewRollback(() => DrawCustomer(toDraw));            
+            Log.inst.NewRollback(() => DrawCard(toDraw));            
         }
     }
-    void DrawCustomer(List<Card> cardsToAdd)
+    void DrawCard(List<Card> cardsToAdd)
     {
         if (!Log.inst.forward)
         {
@@ -121,10 +121,10 @@ public class Player : PhotonCompatible
     }
     public void DiscardCardRPC(Card card, int logged = 0)
     {
-        Log.inst.NewRollback(() => DiscardCustomer(card));
+        Log.inst.NewRollback(() => DiscardCard(card));
         Log.inst.AddMyText(false, OnlineTranslate.Online_Discard_Card(this.name, card.name), logged);
     }
-    void DiscardCustomer(Card card)
+    void DiscardCard(Card card)
     {
         if (!Log.inst.forward)
         {
@@ -206,7 +206,7 @@ public class Player : PhotonCompatible
     public int[] GetScouts() => myScouts;
     public void ScoutRPC(int num, int area, int logged = 0, bool important = false)
     {
-        if (num == 0)
+        if (num == 0 || area <= 0)
             return;
 
         int actualAmount = (myScouts[area] + num < 0) ? -1*myScouts[area] : num;

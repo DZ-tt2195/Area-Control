@@ -1,6 +1,7 @@
 using UnityEngine;
 using System.Collections.Generic;
 using Photon.Pun;
+using System;
 
 public class MainDeck : PhotonCompatible
 {
@@ -30,19 +31,19 @@ public class MainDeck : PhotonCompatible
         }
         customerIDs = customerIDs.Shuffle();
         InstantChangeRoomProp(ConstantStrings.MasterDeck, startingcustomerDeck.ToArray());
-        DoFunction(() => CreateCards("Customer", startingcustomerDeck.ToArray(), customerIDs.ToArray()));
+        DoFunction(() => CreateCards(TypesOfCards.Tactic.ToString(), startingcustomerDeck.ToArray(), customerIDs.ToArray()));
     }
     [PunRPC]
     void CreateCards(string typeToFind, int[] arrayOfPVs, int[] cardNames)
     {
         List<CardData> toFind = new();
         bool vertical = false;
-        if (typeToFind.Equals("Twist"))
+        if (typeToFind.Equals(TypesOfCards.Area.ToString()))
         {
             toFind = GameFiles.inst.areaFiles;
             vertical = false;
         }
-        else if (typeToFind.Equals("Customer"))
+        else if (typeToFind.Equals(TypesOfCards.Tactic.ToString()))
         {
             toFind = GameFiles.inst.tacticFiles;
             vertical = true;

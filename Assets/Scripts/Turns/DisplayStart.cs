@@ -7,6 +7,7 @@ public class DisplayStart : Turn
     public override void MasterStart()
     {
         CreateGame.inst.CreateAreas();
+        PhotonCompatible.InstantChangeRoomProp(ConstantStrings.NextPhase, nameof(TakeTurn));
     }
     public override void ForPlayer(Player player)
     {

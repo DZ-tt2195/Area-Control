@@ -22,7 +22,6 @@ public class CardButtonInfo
         this.clickable = clickable;
     }
 }
-
 public class TextButtonInfo
 {
     public string myText{get; private set;}
@@ -51,7 +50,6 @@ public class MakeDecision : PhotonCompatible
 {
 
 #region Setup
-
     public static MakeDecision inst;
     [SerializeField] TMP_Text instructionsText;
     [SerializeField] Transform findTextButtons;
@@ -98,7 +96,6 @@ public class MakeDecision : PhotonCompatible
     #endregion
 
 #region Decisions
-
     public void ChooseTextButton(List<TextButtonInfo> possibleChoices, string instructions, bool autoResolve = true)
     {
         if (possibleChoices.Count == 1 && autoResolve && !PermaUI.inst.NeedClick())
@@ -184,18 +181,19 @@ public class MakeDecision : PhotonCompatible
 
             for (int j = 0; j < listOfDisplays.Count; j++)
             {
-                TroopScoutDisplay nextCard = listOfDisplays[j];
-                availableUI.Add(nextCard.selectMe);
-                Button cardButton = nextCard.selectMe.button;
+                TroopScoutDisplay nextDisplay = listOfDisplays[j];
+                if (nextDisplay == null) continue;
+                availableUI.Add(nextDisplay.selectMe);
+                Button cardButton = nextDisplay.selectMe.button;
 
                 cardButton.interactable = true;
-                nextCard.selectMe.SetBorder(true);
+                nextDisplay.selectMe.SetBorder(true);
                 cardButton.onClick.AddListener(ClickedThis);
 
                 void ClickedThis()
                 {
                     AudioManager.instance.Menu();
-                    Log.inst.inReaction.Add(() => action?.Invoke(nextCard.info));
+                    Log.inst.inReaction.Add(() => action?.Invoke(nextDisplay.info));
                     Log.inst.PopStack();
                 }
             }
@@ -278,7 +276,6 @@ public class MakeDecision : PhotonCompatible
     #endregion
 
 #region Misc
-
     public void ClearDecisions()
     {
         instructionsText.text = "";

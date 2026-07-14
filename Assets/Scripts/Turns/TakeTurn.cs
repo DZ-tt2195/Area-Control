@@ -59,26 +59,7 @@ public class TakeTurn : Turn
             player.ActionRPC(-1, 1);
             player.CoinRPC(-card.dataFile.coinCost, 1);
             player.DiscardCardRPC(card, -1);
-
-            for (int i = 0; i<card.dataFile.troopAdvance; i++)
-            {
-                int currentNum = i+1;
-                Log.inst.NewDecisionContainer(() => AdvanceTroop(player, 1, currentNum, card.dataFile.troopAdvance));
-            }
-
-            Log.inst.NewDecisionContainer(() => card.thisCard.DoInstructions(player, area, 1));
-            Log.inst.NewDecisionContainer(() => PlayCards(player, area));
-        }
-    }
-    void AdvanceTroop(Player player, int logged, int currentNum, int maxNum)
-    {
-        List<TroopScoutDisplay> canAdvance = CreateGame.inst.GetAllDisplays(player).Where(display => display.info.area != 4 && display.info.troops >= 1).ToList();
-        if (canAdvance.Count == 0) return;
-
-        MakeDecision.inst.ChooseDisplayOnScreen(canAdvance, AutoTranslate.Force_Advance(currentNum.ToString(), maxNum.ToString()), AdvanceMe);
-        void AdvanceMe((int area, int troops, int scouts) display)
-        {
-            player.TroopRPC(1, display.area, display.area+1, logged);
+            ForceAdvance(player, 1, card.dataFile.troopAdvance);
         }
     }
     public override void MasterEnd()

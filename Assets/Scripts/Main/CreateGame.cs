@@ -216,7 +216,9 @@ public class CreateGame : PhotonCompatible
     public List<TroopScoutDisplay> GetAllDisplays(Player player)
     {
         int num = listOfPlayers.IndexOf(player);
-        return listOfPlayerUI[num].listOfDisplays;
+        List<TroopScoutDisplay> allDisplays = listOfPlayerUI[num].listOfDisplays;
+        allDisplays.RemoveAt(0);
+        return allDisplays;
     }
     public void UpdatePlayerUI(Player player, string playerText)
     {
@@ -254,20 +256,13 @@ public class CreateGame : PhotonCompatible
             }
         }
     }
-    public bool IsControlling(Player player)
+    public bool IsControlling(Player player, int area)
     {
-        int num = listOfPlayers.IndexOf(player);
-        return whoControls[num] == player;        
+        return whoControls[area] == player;        
     }
-    public List<int> AreasControlled(Player player)
+    public List<TroopScoutDisplay> AreasControlled(Player player, bool doControl)
     {
-        List<int> toReturn = new();
-        for (int i = 0; i<whoControls.Count; i++)
-        {
-            if (whoControls[i] == player)
-                toReturn.Add(i);
-        }
-        return toReturn;
+        return GetAllDisplays(player).Where(d => IsControlling(player, d.info.area) == doControl).ToList();
     }
 #endregion 
 
