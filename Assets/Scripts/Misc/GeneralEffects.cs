@@ -160,7 +160,7 @@ public class GeneralEffects
         List<Card> canDiscard = player.GetHand();
         if (canDiscard.Count == 0)
         {
-            whenFailed?.Invoke();
+            DidNot();
             return;
         }
 
@@ -187,7 +187,7 @@ public class GeneralEffects
         List<TroopScoutDisplay> canRetreat = CreateGame.inst.GetAllDisplays(player).Where(display => display.info.area != 1 && display.info.troops >= 1).ToList();
         if (canRetreat.Count == 0)
         {
-            whenFailed?.Invoke();
+            DidNot();
             return;
         }
 
@@ -214,7 +214,7 @@ public class GeneralEffects
         List<TroopScoutDisplay> canRemove = CreateGame.inst.GetAllDisplays(player).Where(display => display.info.scouts >= 1).ToList();
         if (canRemove.Count == 0) 
         {
-            whenFailed?.Invoke();
+            DidNot();
             return;
         }
 
@@ -238,9 +238,9 @@ public class GeneralEffects
     }
     void MaySpendAction(Player player, string cardName, int amount, int logged, Action whenDone, Action whenFailed)
     {
-        if (player.GetActions() >= amount)
+        if (player.GetActions() < amount)
         {
-            whenFailed?.Invoke();
+            DidNot();
             return;
         }
         List<TextButtonInfo> textButtonInfos = new() {new(AutoTranslate.Confirm(), DidIt), new(AutoTranslate.Decline(), DidNot)};
@@ -257,7 +257,31 @@ public class GeneralEffects
             whenFailed?.Invoke();
         }
     }
+    public void AskSpendCoin(Player player, string cardName, int amount, int logged, Action whenDone = null, Action whenFailed = null)
+    {
+        Log.inst.NewDecisionContainer(() => MaySpendCoin(player, cardName, amount, logged, whenDone, whenFailed));
+    }
+    void MaySpendCoin(Player player, string cardName, int amount, int logged, Action whenDone, Action whenFailed)
+    {
+        if (player.GetCoins() < amount)
+        {
+            DidNot();
+            return;
+        }
+        List<TextButtonInfo> textButtonInfos = new() {new(AutoTranslate.Confirm(), DidIt), new(AutoTranslate.Decline(), DidNot)};
+        MakeDecision.inst.ChooseTextButton(textButtonInfos, AutoTranslate.Card_Use_Ability(cardName));
 
+        void DidIt()
+        {
+            player.CoinRPC(-amount, logged);
+            whenDone?.Invoke();
+        }
+        void DidNot()
+        {
+            Log.inst.AddMyText(false, OnlineTranslate.Online_Decline_Ability(player.name, cardName), logged);
+            whenFailed?.Invoke();
+        }
+    }
 #endregion
 
 }

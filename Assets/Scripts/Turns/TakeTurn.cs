@@ -60,11 +60,31 @@ public class TakeTurn : Turn
             player.CoinRPC(-card.dataFile.coinCost, 1);
             player.DiscardCardRPC(card, -1);
             ForceAdvance(player, 1, card.dataFile.troopAdvance);
+
+            Log.inst.NewDecisionContainer(() => card.thisCard.DoInstructions(player, area, 1));
+            Log.inst.NewDecisionContainer(() => PlayCards(player, area));
         }
     }
     public override void MasterEnd()
     {
         int newNum = (TurnManager.inst.GetInt(ConstantStrings.TurnNumber)%4) + 1;
         PhotonCompatible.InstantChangeRoomProp(ConstantStrings.TurnNumber, newNum);
+
+        List<Player> playersWon = new();
+        foreach (Player player in CreateGame.inst.GetPlayers())
+        {
+            if (player.GetScore() == 0)
+                playersWon.Add(player);
+        }
+        if (playersWon.Count == 1)
+        {
+            PhotonCompatible.InstantChangeRoomProp(ConstantStrings.NextPhase, "");
+            TurnManager.inst.TextForEnding(OnlineTranslate.Online_Player_Won(playersWon[0].name), -1);
+        }
+        else if (playersWon.Count >= 2)
+        {
+            PhotonCompatible.InstantChangeRoomProp(ConstantStrings.NextPhase, "");
+            TurnManager.inst.TextForEnding(OnlineTranslate.Online_Tie_Game(), -1);            
+        }
     }
 }

@@ -1,12 +1,12 @@
 cardName	textBox	artCredit	notes	done
-Battlefield	 +1 ActionIcon. If you don't Control this, -1 TroopIcon.	Harald Lieske \nDominion: Allies \n(Territory)	AddAction, RetreatTroop	TRUE
-Farmland	If you Control this, +2 CoinIcon per ActionIcon you have.	Eric J. Carter \nDominion: Hinterlands \n(Farmland)	AddCoin	TRUE
+Battlefield	 +1 ActionIcon. If you don't Control this, -1 TroopIcon.	Harald Lieske \nDominion: Allies \n(Territory)	AddAction, RetreatTroop, CareControl	TRUE
+Farmland	If you Control this, +2 CoinIcon per ActionIcon you have.	Eric J. Carter \nDominion: Hinterlands \n(Farmland)	AddCoin, CareControl	TRUE
 Garrison	You may remove 2 ScoutIcon from here, for +1 ScoutIcon in each other Area.	Garret DeChellis \nDominion: Allies \n(Garrison)	LoseScout, AddScout	TRUE
-Gate	 +1 Card per 2 ScoutIcon you have here (round down).	Harald Lieske \nDominion: Renaissance \n(City Gate)	DrawCard	TRUE
-Hideout	If you don't Control this, +1 ScoutIcon.	Julien Delval \nDominion: Renaissance \n(Hideout)	AddScout	TRUE
-Highway	If you Control this, +2 TroopIcon and then -1 TroopIcon.	Eric J. Carter \nDominion: Hinterlands \n(Highway)	AdvanceTroop, RetreatTroop	TRUE
-Island	If you have 4 TroopIcon or more here, +1 TroopIcon from Area 1.	Franz Vohwinkel \nDominion: Seaside \n(Island)	AdvanceTroop	TRUE
-Mine	You may spend 1 ActionIcon, for +1 CoinIcon per TroopIcon you have here.	Claus Stephan \nDominion \n(Mine)	LoseAction, AddCoin	TRUE
+Gate	 +1 Card per 2 ScoutIcon you have here (round down).	Harald Lieske \nDominion: Renaissance \n(City Gate)	DrawCard, CareScout	TRUE
+Hideout	If you don't Control this, +1 ScoutIcon.	Julien Delval \nDominion: Renaissance \n(Hideout)	AddScout, CareControl	TRUE
+Highway	If you Control this, +2 TroopIcon and then -1 TroopIcon.	Eric J. Carter \nDominion: Hinterlands \n(Highway)	AdvanceTroop, RetreatTroop, CareControl	TRUE
+Island	If you have 4 TroopIcon or more here, +1 TroopIcon from Area 1.	Franz Vohwinkel \nDominion: Seaside \n(Island)	AdvanceTroop, CareTroop	TRUE
+Mine	You may spend 1 ActionIcon, for +1 CoinIcon per TroopIcon you have here.	Claus Stephan \nDominion \n(Mine)	LoseAction, AddCoin, CareTroop	TRUE
 Pasture	 +1 ScoutIcon here. Then remove any amount of your ScoutIcon here for +2 CoinIcon each.	Matthias Catrein \nDominion: Nocturne \n(Pasture)	AddScout, LoseScout, AddCoin	TRUE
-Village	If you Control this, +1 ActionIcon per 2 CardIcon in your hand (round down).	Claus Stephan \nDominion \n(Village)	AddAction	TRUE
-Woods	If you have 3 TroopIcon or less here, +1 Card.	Kurt Miller \nDominion: Adventures \n(Haunted Woods)	DrawCard	TRUE
+Village	If you Control this, +1 ActionIcon per 2 CardIcon in your hand (round down).	Claus Stephan \nDominion \n(Village)	AddAction, CareControl	TRUE
+Woods	If you have 3 TroopIcon or less here, +1 Card.	Kurt Miller \nDominion: Adventures \n(Haunted Woods)	DrawCard, CareTroop	TRUE

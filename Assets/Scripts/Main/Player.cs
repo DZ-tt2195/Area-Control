@@ -242,6 +242,13 @@ public class Player : PhotonCompatible
         myTroops[area] += (!Log.inst.forward) ? -num : num;
         TurnManager.inst.WillChangePlayerProperty(this, ConstantStrings.MyTroops, myTroops); uiDictionary[ConstantStrings.MyTroops] = true;        
     }
+    public int GetScore()
+    {
+        int myScore = 0;
+        for (int i = 0; i<myTroops.Length; i++)
+            myScore += myTroops[i]*(myTroops.Length-1-i);
+        return myScore;        
+    }
 
 #endregion
 

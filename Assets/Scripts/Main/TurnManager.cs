@@ -96,28 +96,8 @@ public class TurnManager : PhotonCompatible
     void NextPhase() //switch phases
     {
         string nextPhase = (string)GetRoomProperty(ConstantStrings.NextPhase);
-        //Debug.Log($"move to {nextPhase}");
-
-        (Player, int) highestScore = (null, 0);
-        foreach (Player player in CreateGame.inst.GetPlayers())
-        {
-            int health = player.GetCoins();
-            if (health > highestScore.Item2)
-                highestScore = (player, health);
-            else if (health == highestScore.Item2)
-                highestScore = (null, health);
-        }
-
-        if (nextPhase.Equals(nameof(TakeTurn)) && highestScore.Item2 >= 20 && highestScore.Item1 != null)
-        {
-            TextForEnding(OnlineTranslate.Online_Player_Won(highestScore.Item1.name), -1);
-            InstantChangeRoomProp(ConstantStrings.CurrentPhase, nameof(Ending));
-        }
-        else
-        {
-            InstantChangeRoomProp(ConstantStrings.NextPhase, nameof(TakeTurn));
+        if (nextPhase != "")
             InstantChangeRoomProp(ConstantStrings.CurrentPhase, nextPhase);
-        }
     }
     public override void OnRoomPropertiesUpdate(ExitGames.Client.Photon.Hashtable propertiesThatChanged)
     {
@@ -242,10 +222,10 @@ public class TurnManager : PhotonCompatible
             if (GetThisPlayerPosition(player.photonView.Owner) == resignPosition)
                 resigned = player;
             else
-                text += $"{player.name}\n";   
+                text += $"{AutoTranslate.Player_Score(player.name, player.GetScore().ToString())}\n";   
         }
         if (resigned != null)
-            text += $"{resigned.name} {AutoTranslate.Player_Resigned()}";
+                text += $"{AutoTranslate.Player_Resigned(resigned.name, resigned.GetScore().ToString())}\n";   
         summaryText.text = KeywordTooltip.instance.EditText(text);
     }
 

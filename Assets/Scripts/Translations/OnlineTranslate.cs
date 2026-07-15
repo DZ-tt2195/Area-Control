@@ -22,7 +22,7 @@ public static string Online_Discard_Card_Others (string Player) => $"Online_Disc
 public static string Online_Play_Card (string Player,string Card) => $"Online_Play_Card\tPlayer\t{Player}\tCard\t{Card}";
 public static string Online_Decline_Ability (string Player,string Card) => $"Online_Decline_Ability\tPlayer\t{Player}\tCard\t{Card}";
 public static string Online_End_Turn (string Player) => $"Online_End_Turn\tPlayer\t{Player}";
+public static string Online_Player_Won (string Player) => $"Online_Player_Won\tPlayer\t{Player}";
 public static string Online_Tie_Game () => $"Online_Tie_Game";
 public static string Online_Player_Resigned (string Player) => $"Online_Player_Resigned\tPlayer\t{Player}";
-public static string Online_Player_Won (string Player) => $"Online_Player_Won\tPlayer\t{Player}";
 }

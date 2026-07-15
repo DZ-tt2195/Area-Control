@@ -1,5 +1,5 @@
 Game_Designer	by Thomas Tang (DZ)
-Last_Update	Last Updated: July 14, 2026
+Last_Update	Last Updated: July 15, 2026
 Blank	
 Translator_Credit	Original Language
 Language	Language
@@ -52,6 +52,9 @@ Online_Waiting_on_Players	Waiting on players ($Num$ more)
 Undo	Undo
 Short	Short
 Long	Long
+Switch_Player	Switch Player
+Rules	Rules
+Rules_Summary	Each Round: \n1. Redetermine who Controls each Area (highest total of TroopIcon + ScoutIcon). \n2. Visit the next Area and get the bonus. \n3. Follow the Area's instructions. \n4. You may spend ActionIcon to play CardIcon from your hand (paying its CoinIcon cost). \n5. If a player has all their TroopIcon in Area 4 (ScoutIcon doesn't matter), they win.
 CardIcon	CardIcon
 CoinIcon	CoinIcon
 ActionIcon	ActionIcon
@@ -97,13 +100,11 @@ Pause_to_Read	A pause to let you read things.
 Pause_to_Undo	Last chance to undo anything.
 Game_Over	Game Over
 Leave	Leave
+Online_Player_Won	$Player$ has won.
 Online_Tie_Game	The game is a tie.
 Online_Player_Resigned	$Player$ has resigned.
-Online_Player_Won	$Player$ has won.
-Player_Resigned	(Resigned)
-Switch_Player	Switch Player
-Rules	Rules
-Rules_Summary	Each Round: \n1. Redetermine who Controls each Area (highest total of TroopIcon + ScoutIcon). \n2. Visit the next Area and get the bonus. \n3. Follow the Area's instructions. \n4. You may spend ActionIcon to play CardIcon from your hand (paying its CoinIcon cost). \n5. If a player has all their TroopIcon in Area 4 (ScoutIcon doesn't matter), they win.
+Player_Score	$Player$: $Num$ TroopIcon to advance
+Player_Resigned	$Player$: $Num$ TroopIcon to advance [Resigned]
 Encyclopedia	Encyclopedia
 Close	Close
 Any	Any
