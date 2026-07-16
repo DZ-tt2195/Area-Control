@@ -1,5 +1,5 @@
 cardName	textBox	coinCost	troopAdvance	artCredit	notes	done
-Secure	If you Control this Area while having 0 TroopIcon and/or 0 ScoutIcon in it, +2 ScoutIcon in it.	1	1	Eric J. Carter \nDominion \n(Sentry)	AddScout, CareControl, CareTroop, CareScout	TRUE
+Secure	If you Control this Area while having 0 TroopIcon and/or 0 ScoutIcon in it, +2 ScoutIcon in it.	0	1	Eric J. Carter \nDominion \n(Sentry)	AddScout, CareControl, CareTroop, CareScout	TRUE
 Stockpile	 +1 CoinIcon per CardIcon in your hand.	1	1	Grant Hansen \nDominion: Menagerie \n(Stockpile)	AddCoin	TRUE
 Sneak	 +2 ScoutIcon, both in one Area that you don't Control.	2	1	Martin Hoffmann \nDominion: Intrigue \n(Lurker)	AddScout, CareControl	TRUE
 Travel	 +1 ScoutIcon, -1 ScoutIcon.	2	2	Garret DeChellis \nDominion: Menagerie \n(Wayfarer)	AddScout, LoseScout	TRUE
@@ -15,6 +15,6 @@ Train	 +1 ScoutIcon per Area you Control.	8	3	Zoltan Boros \nMTG: Guilds of Ravn
 Launch	If you have 5 CardIcon or more in hand, +1 ActionIcon.	9	3	Simon Jannerland \nDominion: Seaside \n(Wharf)	AddAction	TRUE
 Prepare	If you have 2 ActionIcon or more, +1 CardIcon.	9	3	Lynell Ingram \nDominion: Prosperity \n(War Chest)	DrawCard	TRUE
 Invest	 +1 CoinIcon per CoinIcon you have (after paying to play this).	10	3	Grant Hansen \nDominion: Plunder \n(Doubloons)	AddCoin	TRUE
-March	 +1 TroopIcon per Area you Control.	10	3	Lorraine Fajardo \nDominion: Cornucopia \n(Followers)	AddTroop, CareControl	TRUE
 Experiment	Discard all your CardIcon, then +3 CardIcon.	12	3	Jason Slavin \nDominion: Renaissance \n(Experiment)	DiscardCard, DrawCard	TRUE
 Balance	 +1 CoinIcon per TroopIcon you have in Area 2 or 3, whichever has less.	13	4	Bastien L. Deharme \nMTG: Ixalan \n(Axis of Mortality)	AddCoin, CareTroop	TRUE
+March	 +1 TroopIcon per Area you Control.	14	4	Lorraine Fajardo \nDominion: Cornucopia \n(Followers)	AdvanceTroop, CareControl	TRUE

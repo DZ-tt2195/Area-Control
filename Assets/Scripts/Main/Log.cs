@@ -169,6 +169,8 @@ public class Log : PhotonCompatible
             int count = currentLogTexts.Count - 1;
             LogText nextText = currentLogTexts[count];
             currentLogTexts.RemoveAt(count);
+            if (nextText.undoToThis != null)
+                undosInLog.RemoveAt(undosInLog.Count-1);
 
             RemoveText(allCurrent);
             if (nextText.important)

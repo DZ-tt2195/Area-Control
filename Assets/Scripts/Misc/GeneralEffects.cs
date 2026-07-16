@@ -284,4 +284,35 @@ public class GeneralEffects
     }
 #endregion
 
+#region Misc
+    public void GetTravelBonus(Player player, int area, int logged)
+    {
+        switch (area)
+        {
+            case 1:
+                player.ActionRPC(1);
+                break;
+            case 2:
+                player.CoinRPC(3);
+                break;
+            case 3:
+                player.DrawCardRPC(1);
+                break;
+            case 4:
+                player.CoinRPC(3);
+                break;
+        }        
+    }
+    public void PlayCard(Player player, Card card, int area, int logged, bool payCoin = true, bool payAction = true)
+    {
+        Log.inst.AddMyText(true, OnlineTranslate.Online_Play_Card(player.name, card.name), logged);
+        if (payAction) player.ActionRPC(-1, logged);
+        if (payCoin) player.CoinRPC(-card.dataFile.coinCost, logged);
+        player.DiscardCardRPC(card, -1);
+        ForceAdvance(player, logged, card.dataFile.troopAdvance);
+        Log.inst.NewDecisionContainer(() => card.thisCard.DoInstructions(player, area, logged));
+    }
+
+#endregion
+
 }

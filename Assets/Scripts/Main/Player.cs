@@ -3,11 +3,11 @@ using UnityEngine;
 using TMPro;
 using MyBox;
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine.UI;
 using System.Linq;
-using System.Collections;
-
+public enum ThisTurn {CardsDrew, CardsDiscarded, CoinsGained, CoinsLost, ActionsGained, ActionsLost, TroopsAdvanced, TroopsRetreated, ScoutsAdded, ScoutsLost}
 public class Player : PhotonCompatible
 {
 
@@ -24,6 +24,7 @@ public class Player : PhotonCompatible
     int myActions;
     int[] myTroops;
     int[] myScouts;
+    Dictionary<ThisTurn, int> didThisTurn = new();
 
     protected override void Awake()
     {
@@ -33,6 +34,8 @@ public class Player : PhotonCompatible
         List<string> toAdd = new() { ConstantStrings.MyHand, ConstantStrings.MyDeck, ConstantStrings.MyDiscard, ConstantStrings.MyCoins, ConstantStrings.MyActions, ConstantStrings.MyScouts, ConstantStrings.MyTroops };
         foreach (string next in toAdd)
             uiDictionary.Add(next, true);
+        foreach (ThisTurn type in Enum.GetValues(typeof(ThisTurn)))
+            didThisTurn.Add(type, 0);
 
         Invoke(nameof(Beginning), 1f);
     }
@@ -104,6 +107,7 @@ public class Player : PhotonCompatible
                 card.transform.SetParent(null);
                 myHand.Remove(card);
                 myDeck.Insert(0, card);
+                didThisTurn[ThisTurn.CardsDrew]--;
             }
         }
         else
@@ -113,6 +117,7 @@ public class Player : PhotonCompatible
                 Card card = cardsToAdd[i];
                 myHand.Add(card);
                 myDeck.Remove(card);
+                didThisTurn[ThisTurn.CardsDrew]++;
             }
         }
         myHand = myHand.OrderBy(card => card.dataFile.coinCost).ThenBy(card => card.dataFile.cardName).ToList();
@@ -130,12 +135,14 @@ public class Player : PhotonCompatible
         {
             myHand.Add(card);
             myDiscard.Remove(card);
+            didThisTurn[ThisTurn.CardsDiscarded]--;
         }
         else
         {
             myHand.Remove(card);
             myDiscard.Add(card);
             card.transform.SetParent(null);
+            didThisTurn[ThisTurn.CardsDiscarded]++;
         }
         myHand = myHand.OrderBy(card => card.dataFile.coinCost).ThenBy(card => card.dataFile.cardName).ToList();
         TurnManager.inst.WillChangePlayerProperty(this, ConstantStrings.MyHand, ConvertCardList(myHand)); uiDictionary[ConstantStrings.MyHand] = true;
@@ -157,7 +164,6 @@ public class Player : PhotonCompatible
         drewThisTurn.AddRange(newCardList);
         InstantChangePlayerProp(this, ConstantStrings.DrewThisTurn, TurnManager.ConvertCardList(drewThisTurn));
     }
-   
     #endregion
 
 #region Resources
@@ -177,7 +183,12 @@ public class Player : PhotonCompatible
     }
     void ChangeCoin(int num)
     {
-        myCoins += (!Log.inst.forward) ? -num : num;
+        int dir = Log.inst.forward ? 1 : -1;
+        myCoins += num * dir;
+        if (num > 0)
+            didThisTurn[ThisTurn.CoinsGained] += num * dir;
+        else
+            didThisTurn[ThisTurn.CoinsLost] += Mathf.Abs(num) * dir;
         TurnManager.inst.WillChangePlayerProperty(this, ConstantStrings.MyCoins, myCoins); uiDictionary[ConstantStrings.MyCoins] = true;
     }
     public int GetActions() => myActions;
@@ -196,7 +207,12 @@ public class Player : PhotonCompatible
     }
     void ChangeAction(int num)
     {
-        myActions += (!Log.inst.forward) ? -num : num;
+        int dir = Log.inst.forward ? 1 : -1;
+        myActions += num * dir;
+        if (num > 0)
+            didThisTurn[ThisTurn.ActionsGained] += num * dir;
+        else
+            didThisTurn[ThisTurn.ActionsLost] += Mathf.Abs(num) * dir;
         TurnManager.inst.WillChangePlayerProperty(this, ConstantStrings.MyActions, myActions); uiDictionary[ConstantStrings.MyActions] = true;
     }
 
@@ -219,7 +235,12 @@ public class Player : PhotonCompatible
     }
     void ChangeScout(int area, int num)
     {
-        myScouts[area] += (!Log.inst.forward) ? -num : num;
+        int dir = Log.inst.forward ? 1 : -1;
+        myScouts[area] += num * dir;
+        if (num > 0)
+            didThisTurn[ThisTurn.ScoutsAdded] += num * dir;
+        else
+            didThisTurn[ThisTurn.ScoutsLost] += Mathf.Abs(num) * dir;
         TurnManager.inst.WillChangePlayerProperty(this, ConstantStrings.MyScouts, myScouts); uiDictionary[ConstantStrings.MyScouts] = true;        
     }
     public int[] GetTroops() => myTroops;
@@ -239,7 +260,12 @@ public class Player : PhotonCompatible
     }
     void ChangeTroop(int area, int num)
     {
-        myTroops[area] += (!Log.inst.forward) ? -num : num;
+        int dir = Log.inst.forward ? 1 : -1;
+        myTroops[area] += num * dir;
+        if (num > 0)
+            didThisTurn[ThisTurn.TroopsAdvanced] += num * dir;
+        else
+            didThisTurn[ThisTurn.TroopsRetreated] += Mathf.Abs(num) * dir;
         TurnManager.inst.WillChangePlayerProperty(this, ConstantStrings.MyTroops, myTroops); uiDictionary[ConstantStrings.MyTroops] = true;        
     }
     public int GetScore()
@@ -254,6 +280,7 @@ public class Player : PhotonCompatible
 
 #region Turns
 
+    public int GetDoneThisTurn(ThisTurn type) => didThisTurn[type]; 
     void Update()
     {
         if (photonView.AmOwner && Application.isEditor)
@@ -271,8 +298,11 @@ public class Player : PhotonCompatible
         endPause = true;
 
         int[] array = (int[])GetPlayerProperty(this, ConstantStrings.DrewThisTurn);
-        List<Card> drewThisTurn = TurnManager.ConvertIntArray(array);
+        List<Card> drewThisTurn = ConvertIntArray(array);
         myDeck.AddRange(drewThisTurn);
+
+        foreach (ThisTurn type in Enum.GetValues(typeof(ThisTurn)))
+            didThisTurn[type] = 0;
 
         (string phase, Action action) = TurnManager.inst.GetTurnAction(this);
         if (phase != nameof(WaitForJoiners) && phase != nameof(DisplayStart))

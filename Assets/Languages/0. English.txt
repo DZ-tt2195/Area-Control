@@ -54,7 +54,9 @@ Short	Short
 Long	Long
 Switch_Player	Switch Player
 Rules	Rules
-Rules_Summary	Each Round: \n1. Redetermine who Controls each Area (highest total of TroopIcon + ScoutIcon). \n2. Visit the next Area and get the bonus. \n3. Follow the Area's instructions. \n4. You may spend ActionIcon to play CardIcon from your hand (paying its CoinIcon cost). \n5. If a player has all their TroopIcon in Area 4 (ScoutIcon doesn't matter), they win.
+Rules_Summary	Each Round: \n1. Redetermine who Controls each Area (highest total of TroopIcon + ScoutIcon). \n2. Visit the next Area and get its Travel Bonus. \n3. Follow the Area's instructions. \n4. You may spend ActionIcon to play CardIcon from your hand (paying its CoinIcon cost). \n5. If a player has all their TroopIcon in Area 4 (ScoutIcon doesn't matter), they win.
+Travel_Bonus	Travel Bonus
+Travel_Bonus_Text	Area 1: +1 ActionIcon; Area 2: +3 CoinIcon; Area 3: +1 CardIcon; Area 4: +3 CoinIcon
 CardIcon	CardIcon
 CoinIcon	CoinIcon
 ActionIcon	ActionIcon

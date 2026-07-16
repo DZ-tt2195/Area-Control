@@ -13,22 +13,7 @@ public class TakeTurn : Turn
     {
         CreateGame.inst.CalculateControllers();
         int currentTurn = TurnManager.inst.GetInt(ConstantStrings.TurnNumber);
-
-        switch (currentTurn)
-        {
-            case 1:
-                player.ActionRPC(1);
-                break;
-            case 2:
-                player.CoinRPC(3);
-                break;
-            case 3:
-                player.DrawCardRPC(1);
-                break;
-            case 4:
-                player.CoinRPC(3);
-                break;
-        }
+        GetTravelBonus(player, currentTurn, 0);
 
         Card card = CreateGame.inst.GetArea(currentTurn);
         Log.inst.NewDecisionContainer(() => card.thisCard.DoInstructions(player, currentTurn, 0));
@@ -55,13 +40,7 @@ public class TakeTurn : Turn
 
         void PlayThis(Card card)
         {
-            Log.inst.AddMyText(true, OnlineTranslate.Online_Play_Card(player.name, card.name));
-            player.ActionRPC(-1, 1);
-            player.CoinRPC(-card.dataFile.coinCost, 1);
-            player.DiscardCardRPC(card, -1);
-            ForceAdvance(player, 1, card.dataFile.troopAdvance);
-
-            Log.inst.NewDecisionContainer(() => card.thisCard.DoInstructions(player, area, 1));
+            PlayCard(player, card, area, 1);
             Log.inst.NewDecisionContainer(() => PlayCards(player, area));
         }
     }

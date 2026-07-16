@@ -23,6 +23,6 @@ public class HoverVisible : MonoBehaviour, IPointerEnterHandler, IPointerExitHan
 
     public void OnPointerExit(PointerEventData eventData)
     {
-        thing.SetActive(false);
+        thing.SetActive(clicked);
     }
 }
