@@ -1,5 +1,5 @@
 Game_Designer	by Thomas Tang (DZ)
-Last_Update	Last Updated: July 15, 2026
+Last_Update	Last Updated: July 16, 2026
 Blank	
 Translator_Credit	Original Language
 Language	Language
@@ -134,8 +134,8 @@ Secure	Secure
 Secure_Text	If you Control this Area while having 0 TroopIcon and/or 0 ScoutIcon in it, +2 ScoutIcon in it.
 Report	Report
 Report_Text	You may remove 1 ScoutIcon for +1 CardIcon.
-Travel	Travel
-Travel_Text	 +1 ScoutIcon, -1 ScoutIcon.
+Traverse	Traverse
+Traverse_Text	 +1 ScoutIcon, -1 ScoutIcon.
 Train	Train
 Train_Text	 +1 ScoutIcon per Area you Control.
 Invest	Invest
@@ -156,19 +156,27 @@ Garrison	Garison
 Garrison_Text	You may remove 2 ScoutIcon from here, for +1 ScoutIcon in each other Area.
 Highway	Highway
 Highway_Text	If you Control this, +2 TroopIcon and then -1 TroopIcon.
-Village	Village
-Village_Text	If you Control this, +1 ActionIcon per 2 CardIcon in your hand (round down).
+City	City
+City_Text	If you Control this, +1 ActionIcon per 2 CardIcon in your hand (round down).
 Battlefield	Battlefield
-Battlefield_Text	 +1 ActionIcon. If you don't Control this, -1 TroopIcon.
+Battlefield_Text	 +1 CardIcon. If you don't Control this, -1 TroopIcon.
 Hideout	Hideout
 Hideout_Text	If you don't Control this, +1 ScoutIcon.
 Island 	Island
 Island_Text	If you have 4 TroopIcon or more here, +1 TroopIcon from Area 1.
 Woods	Woods
-Woods_Text	If you have 3 TroopIcon or less here, +1 Card.
+Woods_Text	If you have 3 TroopIcon or less here, +1 ActionIcon.
 Mine	Mine
 Mine_Text	You may spend 1 ActionIcon, for +1 CoinIcon per TroopIcon you have here.
 Pasture	Pasture
 Pasture_Text	 +1 ScoutIcon here. Then remove any amount of your ScoutIcon here for +2 CoinIcon each.
 Gate	Gate
 Gate_Text	 +1 Card per 2 ScoutIcon you have here (round down).
+Visit	Visit
+Visit_Text	Get this Area's Travel Bonus.
+Demand	Demand
+Demand_Text	For each Area you control, get its Travel Bonus.
+Continue	Continue
+Continue_Text	If you drew 3 CardIcon or more this turn, +1 CardIcon and +1 ActionIcon.
+Trail	Trail
+Trail_Text	You may retreat 1 TroopIcon to get this Area's Travel Bonus 2 more times.

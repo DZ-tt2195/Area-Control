@@ -1,8 +1,8 @@
 using UnityEngine;
 
-public class Travel : CardType
+public class Traverse : CardType
 {
-    public Travel(CardData dataFile) : base(dataFile)
+    public Traverse(CardData dataFile) : base(dataFile)
     {
     }
     public override void DoInstructions(Player player, int thisArea, int logged)

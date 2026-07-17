@@ -188,6 +188,7 @@ MonoBehaviour:
   cardBackground: {fileID: 5955055621534669640}
   cardName: {fileID: 541214238893525850}
   textBox: {fileID: 629614651198809819}
+  troopText: {fileID: 0}
 --- !u!114 &2383158818842941943
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -686,7 +687,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 107, y: 0}
-  m_SizeDelta: {x: 125, y: 215}
+  m_SizeDelta: {x: 130, y: 215}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &4459724443971358192
 CanvasRenderer:
@@ -743,12 +744,12 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 25
+  m_fontSize: 30
   m_fontSizeBase: 36
   m_fontWeight: 400
   m_enableAutoSizing: 1
   m_fontSizeMin: 18
-  m_fontSizeMax: 25
+  m_fontSizeMax: 30
   m_fontStyle: 0
   m_HorizontalAlignment: 2
   m_VerticalAlignment: 512

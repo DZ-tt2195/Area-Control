@@ -212,7 +212,7 @@ public class CreateGame : PhotonCompatible
 
 #endregion
 
-#region Player UI
+#region Displays
     public List<TroopScoutDisplay> GetAllDisplays(Player player)
     {
         int num = listOfPlayers.IndexOf(player);
@@ -260,7 +260,7 @@ public class CreateGame : PhotonCompatible
     {
         return whoControls[area] == player;        
     }
-    public List<TroopScoutDisplay> AreasControlled(Player player, bool doControl)
+    public List<TroopScoutDisplay> AllControl(Player player, bool doControl)
     {
         return GetAllDisplays(player).Where(d => IsControlling(player, d.info.area) == doControl).ToList();
     }

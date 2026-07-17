@@ -7,6 +7,6 @@ public class March : CardType
     }
     public override void DoInstructions(Player player, int thisArea, int logged)
     {
-        ForceAdvance(player, logged, CreateGame.inst.AreasControlled(player, true).Count);
+        ForceAdvance(player, logged, CreateGame.inst.AllControl(player, true).Count);
     }
 }

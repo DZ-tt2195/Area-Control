@@ -7,6 +7,6 @@ public class Raid : CardType
     }
     public override void DoInstructions(Player player, int thisArea, int logged)
     {
-        player.CoinRPC(CreateGame.inst.AreasControlled(player, true).Count, logged);
+        player.CoinRPC(CreateGame.inst.AllControl(player, true).Count, logged);
     }
 }

@@ -1,8 +1,8 @@
 using UnityEngine;
 
-public class Village : CardType
+public class City : CardType
 {
-    public Village(CardData dataFile) : base(dataFile)
+    public City(CardData dataFile) : base(dataFile)
     {
     }
     public override void DoInstructions(Player player, int thisArea, int logged)

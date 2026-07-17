@@ -7,6 +7,6 @@ public class Plan : CardType
     }
     public override void DoInstructions(Player player, int thisArea, int logged)
     {
-        player.DrawCardRPC(CreateGame.inst.AreasControlled(player, true).Count, logged);
+        player.DrawCardRPC(CreateGame.inst.AllControl(player, true).Count, logged);
     }
 }

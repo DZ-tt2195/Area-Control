@@ -7,7 +7,7 @@ public class Battlefield : CardType
     }
     public override void DoInstructions(Player player, int thisArea, int logged)
     {
-        player.ActionRPC(1, logged);
+        player.DrawCardRPC(1, logged);
         if (!CreateGame.inst.IsControlling(player, thisArea))
             ForceRetreat(player, logged, 1);
     }

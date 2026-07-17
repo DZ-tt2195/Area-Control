@@ -9,7 +9,7 @@ public class Sneak : CardType
     }
     public override void DoInstructions(Player player, int thisArea, int logged)
     {
-        List<TroopScoutDisplay> allDisplays = CreateGame.inst.AreasControlled(player, false);
+        List<TroopScoutDisplay> allDisplays = CreateGame.inst.AllControl(player, false);
         MakeDecision.inst.ChooseDisplayOnScreen(allDisplays, AutoTranslate.Force_Add(1.ToString(), 1.ToString()), AddScout);
         void AddScout((int area, int troops, int scouts) info)
         {
