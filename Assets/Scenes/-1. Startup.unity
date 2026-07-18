@@ -480,7 +480,7 @@ MonoBehaviour:
   - original: Travel_Bonus
     translated: 
     description: 
-    color: {r: 0, g: 0.8484955, b: 1, a: 0}
+    color: {r: 0, g: 0.3476925, b: 1, a: 0}
   spriteKeywords:
   - original: CardIcon
     translated: 
@@ -624,7 +624,6 @@ MonoBehaviour:
   - {fileID: 21300000, guid: 4d1f353dc9c654d64b21d4653785e0f2, type: 3}
   - {fileID: 21300000, guid: a1089cd57555f41c28b748ce6ed02289, type: 3}
   - {fileID: 21300000, guid: 6f92d2fdda2f9424db4048951f011790, type: 3}
-  - {fileID: 21300000, guid: b4df7655cafd347bfbc266bda54463e3, type: 3}
   - {fileID: 21300000, guid: db4ce3ddde62c47dab4e3993d2284eab, type: 3}
   - {fileID: 21300000, guid: f52af25fac3b94a7a998765ed6586347, type: 3}
   - {fileID: 21300000, guid: fbb19c1b5102a4cec91f84d2e58b3a68, type: 3}
@@ -2433,7 +2432,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 629614651198809819, guid: 4d0686b994da1445589ed656148a7cae, type: 3}
       propertyPath: m_fontSize
-      value: 25
+      value: 30
       objectReference: {fileID: 0}
     - target: {fileID: 943634960830580813, guid: 4d0686b994da1445589ed656148a7cae, type: 3}
       propertyPath: m_Pivot.x

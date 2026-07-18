@@ -1,6 +1,6 @@
 using System.Collections.Generic;
 using System.Linq;
-public class TakeTurn : Turn
+public class VisitArea : Turn
 {
     public override void MasterStart()
     {
@@ -22,26 +22,20 @@ public class TakeTurn : Turn
     void PlayCards(Player player, int area)
     {
         if (player.GetActions() == 0) return;
-        List<Card> canPlay = new();
-        foreach (Card card in player.GetHand())
-        {
-            if (card.dataFile.coinCost <= player.GetCoins())
-                canPlay.Add(card);
-        }
+        List<Card> canPlay = CanAfford(player);
         if (canPlay.Count == 0) return;
 
         MakeDecision.inst.ChooseCardOnScreen(canPlay, AutoTranslate.Ask_Play(), PlayThis, false);
         MakeDecision.inst.ChooseTextButton(new() {new TextButtonInfo(AutoTranslate.Decline(), EndTurn)}, AutoTranslate.Ask_Play(), false);
 
-        void EndTurn()
-        {
-            Log.inst.AddMyText(true, OnlineTranslate.Online_End_Turn(player.name));            
-        }
-
         void PlayThis(Card card)
         {
             PlayCard(player, card, area, 1);
             Log.inst.NewDecisionContainer(() => PlayCards(player, area));
+        }
+        void EndTurn()
+        {
+            Log.inst.AddMyText(true, OnlineTranslate.Online_End_Turn(player.name));            
         }
     }
     public override void MasterEnd()

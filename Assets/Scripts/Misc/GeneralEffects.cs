@@ -244,7 +244,7 @@ public class GeneralEffects
             return;
         }
         List<TextButtonInfo> textButtonInfos = new() {new(AutoTranslate.Confirm(), DidIt), new(AutoTranslate.Decline(), DidNot)};
-        MakeDecision.inst.ChooseTextButton(textButtonInfos, AutoTranslate.Card_Use_Ability(cardName));
+        MakeDecision.inst.ChooseTextButton(textButtonInfos, AutoTranslate.Ask_Pay(amount.ToString(), AutoTranslate.ActionIcon()));
 
         void DidIt()
         {
@@ -269,7 +269,7 @@ public class GeneralEffects
             return;
         }
         List<TextButtonInfo> textButtonInfos = new() {new(AutoTranslate.Confirm(), DidIt), new(AutoTranslate.Decline(), DidNot)};
-        MakeDecision.inst.ChooseTextButton(textButtonInfos, AutoTranslate.Card_Use_Ability(cardName));
+        MakeDecision.inst.ChooseTextButton(textButtonInfos, AutoTranslate.Ask_Pay(amount.ToString(), AutoTranslate.CoinIcon()));
 
         void DidIt()
         {
@@ -303,14 +303,25 @@ public class GeneralEffects
                 break;
         }        
     }
-    public void PlayCard(Player player, Card card, int area, int logged, bool payCoin = true, bool payAction = true)
+    public void PlayCard(Player player, Card card, int area, int logged, int iterations = 1, bool payAction = true)
     {
         Log.inst.AddMyText(true, OnlineTranslate.Online_Play_Card(player.name, card.name), logged);
         if (payAction) player.ActionRPC(-1, logged);
-        if (payCoin) player.CoinRPC(-card.dataFile.coinCost, logged);
+        player.CoinRPC(-card.dataFile.coinCost, logged);
         player.DiscardCardRPC(card, -1);
         ForceAdvance(player, logged, card.dataFile.troopAdvance);
-        Log.inst.NewDecisionContainer(() => card.thisCard.DoInstructions(player, area, logged));
+        for (int i = 0; i<iterations; i++)
+            Log.inst.NewDecisionContainer(() => card.thisCard.DoInstructions(player, area, logged));
+    }
+    public List<Card> CanAfford(Player player)
+    {
+        List<Card> toReturn = new();
+        foreach (Card card in player.GetHand())
+        {
+            if (card.dataFile.coinCost <= player.GetCoins())
+                toReturn.Add(card);
+        }
+        return toReturn;
     }
 
 #endregion

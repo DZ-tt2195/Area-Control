@@ -12,7 +12,7 @@ public class Garrison : CardType
         if (player.GetScouts()[thisArea] >= 2)
         {
             List<TextButtonInfo> textButtonInfos = new() {new(AutoTranslate.Confirm(), DidIt), new(AutoTranslate.Decline(), DidNot)};
-            MakeDecision.inst.ChooseTextButton(textButtonInfos, AutoTranslate.Card_Use_Ability(nameof(Garrison)));
+            MakeDecision.inst.ChooseTextButton(textButtonInfos, AutoTranslate.Ask_Remove());
 
             void DidIt()
             {

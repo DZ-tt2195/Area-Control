@@ -176,9 +176,9 @@ public class Player : PhotonCompatible
         int actualAmount = (myCoins + num < 0) ? -1*myCoins : num;
 
         if (actualAmount > 0)
-            Log.inst.AddMyText(important, OnlineTranslate.Online_Add_Coin(this.name, actualAmount.ToString()), logged);
+            Log.inst.AddMyText(important, OnlineTranslate.Online_Add_Resource(this.name, actualAmount.ToString(), nameof(AutoTranslate.CoinIcon)), logged);
         else
-            Log.inst.AddMyText(important, OnlineTranslate.Online_Lose_Coin(this.name, Mathf.Abs(actualAmount).ToString()), logged);
+            Log.inst.AddMyText(important, OnlineTranslate.Online_Lose_Resource(this.name, Mathf.Abs(actualAmount).ToString(), nameof(AutoTranslate.CoinIcon)), logged);
         Log.inst.NewRollback(() => ChangeCoin(actualAmount));
     }
     void ChangeCoin(int num)
@@ -200,9 +200,9 @@ public class Player : PhotonCompatible
         int actualAmount = (myActions + num < 0) ? -1*myActions : num;
 
         if (actualAmount > 0)
-            Log.inst.AddMyText(important, OnlineTranslate.Online_Add_Action(this.name, actualAmount.ToString()), logged);
+            Log.inst.AddMyText(important, OnlineTranslate.Online_Add_Resource(this.name, actualAmount.ToString(), nameof(AutoTranslate.ActionIcon)), logged);
         else
-            Log.inst.AddMyText(important, OnlineTranslate.Online_Lose_Action(this.name, Mathf.Abs(actualAmount).ToString()), logged);
+            Log.inst.AddMyText(important, OnlineTranslate.Online_Lose_Resource(this.name, Mathf.Abs(actualAmount).ToString(), nameof(AutoTranslate.ActionIcon)), logged);
         Log.inst.NewRollback(() => ChangeAction(actualAmount));
     }
     void ChangeAction(int num)
@@ -246,7 +246,7 @@ public class Player : PhotonCompatible
     public int[] GetTroops() => myTroops;
     public void TroopRPC(int num, int oldArea, int newArea, int logged = 0, bool important = false)
     {
-        if (num == 0 || oldArea == newArea)
+        if (num <= 0 || oldArea == newArea)
             return;
 
         int actualAmount = (myTroops[oldArea] + num < 0) ? -1*myScouts[oldArea] : num;
@@ -254,15 +254,15 @@ public class Player : PhotonCompatible
             Log.inst.AddMyText(important, OnlineTranslate.Online_Advance_Troop(this.name, actualAmount.ToString(), oldArea.ToString(), newArea.ToString()), logged);
         else
             Log.inst.AddMyText(important, OnlineTranslate.Online_Retreat_Troop(this.name, Mathf.Abs(actualAmount).ToString(), oldArea.ToString(), newArea.ToString()), logged);
-        
-        Log.inst.NewRollback(() => ChangeTroop(oldArea, -actualAmount));
-        Log.inst.NewRollback(() => ChangeTroop(newArea, actualAmount));
+        Log.inst.NewRollback(() => ChangeTroop(oldArea, newArea, actualAmount));
     }
-    void ChangeTroop(int area, int num)
+    void ChangeTroop(int oldArea, int newArea, int num)
     {
         int dir = Log.inst.forward ? 1 : -1;
-        myTroops[area] += num * dir;
-        if (num > 0)
+        myTroops[oldArea] -= num * dir;
+        myTroops[newArea] += num * dir;
+
+        if (oldArea < newArea)
             didThisTurn[ThisTurn.TroopsAdvanced] += num * dir;
         else
             didThisTurn[ThisTurn.TroopsRetreated] += Mathf.Abs(num) * dir;

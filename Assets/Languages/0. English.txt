@@ -66,10 +66,8 @@ ScoutIcon	ScoutIcon
 Control	Control
 Control_Text	Most TroopIcon + ScoutIcon in an Area.
 Online_Next_Turn	Visiting $Area$
-Online_Add_Coin	$Player$ gains $Num$ CoinIcon.
-Online_Lose_Coin	$Player$ loses $Num$ CoinIcon.
-Online_Add_Action	$Player$ gains $Num$ ActionIcon.
-Online_Lose_Action	$Player$ loses $Num$ ActionIcon.
+Online_Add_Resource	$Player$ gains $Num$ $Resource$.
+Online_Lose_Resource	$Player$ loses $Num$ $Resource$.
 Force_Advance	Advance TroopIcon ($Num1$ / $Num2$).
 Ask_Advance	Advance TroopIcon?
 Online_Advance_Troop	$Player$ advances $Num$ TroopIcon from Area $Num1$ to $Num2$.
@@ -77,6 +75,7 @@ Fail_Advance	$Player$ can't advance any TroopIcon.
 Force_Retreat	Retreat TroopIcon ($Num1$ / $Num2$).
 Ask_Retreat	Retreat TroopIcon?
 Online_Retreat_Troop	$Player$ retreats $Num$ TroopIcon from Area $Num1$ to $Num2$.
+Ask_Pay	Pay $Num$ $Resource$?
 Force_Add	Add ScoutIcon ($Num1$ / $Num2$).
 Ask_Add	Add ScoutIcon?
 Online_Add_Scout	$Player$ adds $Num$ ScoutIcon to Area $AreaNum$.
@@ -160,8 +159,6 @@ City	City
 City_Text	If you Control this, +1 ActionIcon per 2 CardIcon in your hand (round down).
 Battlefield	Battlefield
 Battlefield_Text	 +1 CardIcon. If you don't Control this, -1 TroopIcon.
-Hideout	Hideout
-Hideout_Text	If you don't Control this, +1 ScoutIcon.
 Island 	Island
 Island_Text	If you have 4 TroopIcon or more here, +1 TroopIcon from Area 1.
 Woods	Woods
@@ -179,4 +176,4 @@ Demand_Text	For each Area you control, get its Travel Bonus.
 Continue	Continue
 Continue_Text	If you drew 3 CardIcon or more this turn, +1 CardIcon and +1 ActionIcon.
 Trail	Trail
-Trail_Text	You may retreat 1 TroopIcon to get this Area's Travel Bonus 2 more times.
+Trail_Text	You may retreat 1 TroopIcon to get this Area's Travel Bonus twice.
