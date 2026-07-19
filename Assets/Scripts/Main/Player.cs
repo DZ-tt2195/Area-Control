@@ -94,59 +94,61 @@ public class Player : PhotonCompatible
                 Log.inst.AddMyText(false, OnlineTranslate.Online_Draw_Card(this.name, card.name), logged);
                 toDraw.Add(card);
             }
-            Log.inst.NewRollback(() => DrawCard(toDraw));            
-        }
-    }
-    void DrawCard(List<Card> cardsToAdd)
-    {
-        if (!Log.inst.forward)
-        {
-            for (int i = cardsToAdd.Count-1; i>= 0; i--)
+            Log.inst.NewRollback(() => DrawCard());  
+
+            void DrawCard()
             {
-                Card card = cardsToAdd[i];
-                card.transform.SetParent(null);
-                myHand.Remove(card);
-                myDeck.Insert(0, card);
-                didThisTurn[ThisTurn.CardsDrew]--;
-            }
+                if (!Log.inst.forward)
+                {
+                    for (int i = toDraw.Count-1; i>= 0; i--)
+                    {
+                        Card card = toDraw[i];
+                        card.transform.SetParent(null);
+                        myHand.Remove(card);
+                        myDeck.Insert(0, card);
+                        didThisTurn[ThisTurn.CardsDrew]--;
+                    }
+                }
+                else
+                {
+                    for (int i = 0; i < toDraw.Count; i++)
+                    {
+                        Card card = toDraw[i];
+                        myHand.Add(card);
+                        myDeck.Remove(card);
+                        didThisTurn[ThisTurn.CardsDrew]++;
+                    }
+                }
+                myHand = myHand.OrderBy(card => card.dataFile.coinCost).ThenBy(card => card.dataFile.cardName).ToList();
+                TurnManager.inst.WillChangePlayerProperty(this, ConstantStrings.MyHand, ConvertCardList(myHand)); uiDictionary[ConstantStrings.MyHand] = true;
+                TurnManager.inst.WillChangePlayerProperty(this, ConstantStrings.MyDeck, ConvertCardList(myDeck)); uiDictionary[ConstantStrings.MyDeck] = true;
+            }          
         }
-        else
-        {
-            for (int i = 0; i < cardsToAdd.Count; i++)
-            {
-                Card card = cardsToAdd[i];
-                myHand.Add(card);
-                myDeck.Remove(card);
-                didThisTurn[ThisTurn.CardsDrew]++;
-            }
-        }
-        myHand = myHand.OrderBy(card => card.dataFile.coinCost).ThenBy(card => card.dataFile.cardName).ToList();
-        TurnManager.inst.WillChangePlayerProperty(this, ConstantStrings.MyHand, ConvertCardList(myHand)); uiDictionary[ConstantStrings.MyHand] = true;
-        TurnManager.inst.WillChangePlayerProperty(this, ConstantStrings.MyDeck, ConvertCardList(myDeck)); uiDictionary[ConstantStrings.MyDeck] = true;
     }
     public void DiscardCardRPC(Card card, int logged = 0)
     {
-        Log.inst.NewRollback(() => DiscardCard(card));
+        Log.inst.NewRollback(() => DiscardCard());
         Log.inst.AddMyText(false, OnlineTranslate.Online_Discard_Card(this.name, card.name), logged);
-    }
-    void DiscardCard(Card card)
-    {
-        if (!Log.inst.forward)
+
+        void DiscardCard()
         {
-            myHand.Add(card);
-            myDiscard.Remove(card);
-            didThisTurn[ThisTurn.CardsDiscarded]--;
+            if (!Log.inst.forward)
+            {
+                myHand.Add(card);
+                myDiscard.Remove(card);
+                didThisTurn[ThisTurn.CardsDiscarded]--;
+            }
+            else
+            {
+                myHand.Remove(card);
+                myDiscard.Add(card);
+                card.transform.SetParent(null);
+                didThisTurn[ThisTurn.CardsDiscarded]++;
+            }
+            myHand = myHand.OrderBy(card => card.dataFile.coinCost).ThenBy(card => card.dataFile.cardName).ToList();
+            TurnManager.inst.WillChangePlayerProperty(this, ConstantStrings.MyHand, ConvertCardList(myHand)); uiDictionary[ConstantStrings.MyHand] = true;
+            TurnManager.inst.WillChangePlayerProperty(this, ConstantStrings.MyDiscard, ConvertCardList(myDiscard)); uiDictionary[ConstantStrings.MyDiscard] = true;
         }
-        else
-        {
-            myHand.Remove(card);
-            myDiscard.Add(card);
-            card.transform.SetParent(null);
-            didThisTurn[ThisTurn.CardsDiscarded]++;
-        }
-        myHand = myHand.OrderBy(card => card.dataFile.coinCost).ThenBy(card => card.dataFile.cardName).ToList();
-        TurnManager.inst.WillChangePlayerProperty(this, ConstantStrings.MyHand, ConvertCardList(myHand)); uiDictionary[ConstantStrings.MyHand] = true;
-        TurnManager.inst.WillChangePlayerProperty(this, ConstantStrings.MyDiscard, ConvertCardList(myDiscard)); uiDictionary[ConstantStrings.MyDiscard] = true;
     }
     public void ReceiveCardsRPC(List<Card> newCards)
     {
@@ -164,7 +166,8 @@ public class Player : PhotonCompatible
         drewThisTurn.AddRange(newCardList);
         InstantChangePlayerProp(this, ConstantStrings.DrewThisTurn, TurnManager.ConvertCardList(drewThisTurn));
     }
-    #endregion
+
+#endregion
 
 #region Resources
     public int GetCoins() => myCoins;
@@ -179,17 +182,18 @@ public class Player : PhotonCompatible
             Log.inst.AddMyText(important, OnlineTranslate.Online_Add_Resource(this.name, actualAmount.ToString(), nameof(AutoTranslate.CoinIcon)), logged);
         else
             Log.inst.AddMyText(important, OnlineTranslate.Online_Lose_Resource(this.name, Mathf.Abs(actualAmount).ToString(), nameof(AutoTranslate.CoinIcon)), logged);
-        Log.inst.NewRollback(() => ChangeCoin(actualAmount));
-    }
-    void ChangeCoin(int num)
-    {
-        int dir = Log.inst.forward ? 1 : -1;
-        myCoins += num * dir;
-        if (num > 0)
-            didThisTurn[ThisTurn.CoinsGained] += num * dir;
-        else
-            didThisTurn[ThisTurn.CoinsLost] += Mathf.Abs(num) * dir;
-        TurnManager.inst.WillChangePlayerProperty(this, ConstantStrings.MyCoins, myCoins); uiDictionary[ConstantStrings.MyCoins] = true;
+        Log.inst.NewRollback(() => ChangeCoin());
+
+        void ChangeCoin()
+        {
+            int dir = Log.inst.forward ? 1 : -1;
+            myCoins += actualAmount * dir;
+            if (actualAmount > 0)
+                didThisTurn[ThisTurn.CoinsGained] += actualAmount * dir;
+            else
+                didThisTurn[ThisTurn.CoinsLost] += Mathf.Abs(actualAmount) * dir;
+            TurnManager.inst.WillChangePlayerProperty(this, ConstantStrings.MyCoins, myCoins); uiDictionary[ConstantStrings.MyCoins] = true;
+        }
     }
     public int GetActions() => myActions;
     public void ActionRPC(int num, int logged = 0, bool important = false)
@@ -203,20 +207,21 @@ public class Player : PhotonCompatible
             Log.inst.AddMyText(important, OnlineTranslate.Online_Add_Resource(this.name, actualAmount.ToString(), nameof(AutoTranslate.ActionIcon)), logged);
         else
             Log.inst.AddMyText(important, OnlineTranslate.Online_Lose_Resource(this.name, Mathf.Abs(actualAmount).ToString(), nameof(AutoTranslate.ActionIcon)), logged);
-        Log.inst.NewRollback(() => ChangeAction(actualAmount));
-    }
-    void ChangeAction(int num)
-    {
-        int dir = Log.inst.forward ? 1 : -1;
-        myActions += num * dir;
-        if (num > 0)
-            didThisTurn[ThisTurn.ActionsGained] += num * dir;
-        else
-            didThisTurn[ThisTurn.ActionsLost] += Mathf.Abs(num) * dir;
-        TurnManager.inst.WillChangePlayerProperty(this, ConstantStrings.MyActions, myActions); uiDictionary[ConstantStrings.MyActions] = true;
+        Log.inst.NewRollback(() => ChangeAction());
+        
+        void ChangeAction()
+        {
+            int dir = Log.inst.forward ? 1 : -1;
+            myActions += actualAmount * dir;
+            if (actualAmount > 0)
+                didThisTurn[ThisTurn.ActionsGained] += actualAmount * dir;
+            else
+                didThisTurn[ThisTurn.ActionsLost] += Mathf.Abs(actualAmount) * dir;
+            TurnManager.inst.WillChangePlayerProperty(this, ConstantStrings.MyActions, myActions); uiDictionary[ConstantStrings.MyActions] = true;
+        }
     }
 
-    #endregion
+#endregion
 
 #region Troops/Scouts
     public int[] GetScouts() => myScouts;
@@ -231,17 +236,18 @@ public class Player : PhotonCompatible
             Log.inst.AddMyText(important, OnlineTranslate.Online_Add_Scout(this.name, actualAmount.ToString(), area.ToString()), logged);
         else
             Log.inst.AddMyText(important, OnlineTranslate.Online_Remove_Scout(this.name, Mathf.Abs(actualAmount).ToString(), area.ToString()), logged);
-        Log.inst.NewRollback(() => ChangeScout(area, actualAmount));
-    }
-    void ChangeScout(int area, int num)
-    {
-        int dir = Log.inst.forward ? 1 : -1;
-        myScouts[area] += num * dir;
-        if (num > 0)
-            didThisTurn[ThisTurn.ScoutsAdded] += num * dir;
-        else
-            didThisTurn[ThisTurn.ScoutsLost] += Mathf.Abs(num) * dir;
-        TurnManager.inst.WillChangePlayerProperty(this, ConstantStrings.MyScouts, myScouts); uiDictionary[ConstantStrings.MyScouts] = true;        
+        Log.inst.NewRollback(() => ChangeScout());
+    
+        void ChangeScout()
+        {
+            int dir = Log.inst.forward ? 1 : -1;
+            myScouts[area] += actualAmount * dir;
+            if (actualAmount > 0)
+                didThisTurn[ThisTurn.ScoutsAdded] += actualAmount * dir;
+            else
+                didThisTurn[ThisTurn.ScoutsLost] += Mathf.Abs(actualAmount) * dir;
+            TurnManager.inst.WillChangePlayerProperty(this, ConstantStrings.MyScouts, myScouts); uiDictionary[ConstantStrings.MyScouts] = true;        
+        }
     }
     public int[] GetTroops() => myTroops;
     public void TroopRPC(int num, int oldArea, int newArea, int logged = 0, bool important = false)
@@ -254,19 +260,20 @@ public class Player : PhotonCompatible
             Log.inst.AddMyText(important, OnlineTranslate.Online_Advance_Troop(this.name, actualAmount.ToString(), oldArea.ToString(), newArea.ToString()), logged);
         else
             Log.inst.AddMyText(important, OnlineTranslate.Online_Retreat_Troop(this.name, Mathf.Abs(actualAmount).ToString(), oldArea.ToString(), newArea.ToString()), logged);
-        Log.inst.NewRollback(() => ChangeTroop(oldArea, newArea, actualAmount));
-    }
-    void ChangeTroop(int oldArea, int newArea, int num)
-    {
-        int dir = Log.inst.forward ? 1 : -1;
-        myTroops[oldArea] -= num * dir;
-        myTroops[newArea] += num * dir;
+        Log.inst.NewRollback(() => ChangeTroop());
+    
+        void ChangeTroop()
+        {
+            int dir = Log.inst.forward ? 1 : -1;
+            myTroops[oldArea] -= actualAmount * dir;
+            myTroops[newArea] += actualAmount * dir;
 
-        if (oldArea < newArea)
-            didThisTurn[ThisTurn.TroopsAdvanced] += num * dir;
-        else
-            didThisTurn[ThisTurn.TroopsRetreated] += Mathf.Abs(num) * dir;
-        TurnManager.inst.WillChangePlayerProperty(this, ConstantStrings.MyTroops, myTroops); uiDictionary[ConstantStrings.MyTroops] = true;        
+            if (oldArea < newArea)
+                didThisTurn[ThisTurn.TroopsAdvanced] += actualAmount * dir;
+            else
+                didThisTurn[ThisTurn.TroopsRetreated] += Mathf.Abs(actualAmount) * dir;
+            TurnManager.inst.WillChangePlayerProperty(this, ConstantStrings.MyTroops, myTroops); uiDictionary[ConstantStrings.MyTroops] = true;        
+        }
     }
     public int GetScore()
     {

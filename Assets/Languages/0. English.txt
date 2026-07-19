@@ -1,5 +1,5 @@
 Game_Designer	by Thomas Tang (DZ)
-Last_Update	Last Updated: July 16, 2026
+Last_Update	Last Updated: July 18, 2026
 Blank	
 Translator_Credit	Original Language
 Language	Language
@@ -130,7 +130,7 @@ Launch_Text	If you have 5 CardIcon or more in hand, +1 ActionIcon.
 Raid	Raid
 Raid_Text	 +2 CoinIcon per Area you Control.
 Secure	Secure
-Secure_Text	If you Control this Area while having 0 TroopIcon and/or 0 ScoutIcon in it, +2 ScoutIcon in it.
+Secure_Text	If you Control this Area while having 0 TroopIcon and/or 0 ScoutIcon in it, +4 CoinIcon.
 Report	Report
 Report_Text	You may remove 1 ScoutIcon for +1 CardIcon.
 Traverse	Traverse
@@ -158,17 +158,17 @@ Highway_Text	If you Control this, +2 TroopIcon and then -1 TroopIcon.
 City	City
 City_Text	If you Control this, +1 ActionIcon per 2 CardIcon in your hand (round down).
 Battlefield	Battlefield
-Battlefield_Text	 +1 CardIcon. If you don't Control this, -1 TroopIcon.
+Battlefield_Text	If you don't Control this, +1 CardIcon and -1 TroopIcon.
 Island 	Island
 Island_Text	If you have 4 TroopIcon or more here, +1 TroopIcon from Area 1.
 Woods	Woods
-Woods_Text	If you have 3 TroopIcon or less here, +1 ActionIcon.
+Woods_Text	If you have 2 TroopIcon or less here, +1 ActionIcon.
 Mine	Mine
 Mine_Text	You may spend 1 ActionIcon, for +1 CoinIcon per TroopIcon you have here.
 Pasture	Pasture
 Pasture_Text	 +1 ScoutIcon here. Then remove any amount of your ScoutIcon here for +2 CoinIcon each.
 Gate	Gate
-Gate_Text	 +1 Card per 2 ScoutIcon you have here (round down).
+Gate_Text	 +1 TroopIcon per 2 ScoutIcon you have here (round down).
 Visit	Visit
 Visit_Text	Get this Area's Travel Bonus.
 Demand	Demand
@@ -177,3 +177,11 @@ Continue	Continue
 Continue_Text	If you drew 3 CardIcon or more this turn, +1 CardIcon and +1 ActionIcon.
 Trail	Trail
 Trail_Text	You may retreat 1 TroopIcon to get this Area's Travel Bonus twice.
+Specialize	Specialize
+Specialize_Text	You may play 1 CardIcon, repeating its instructions (not the TroopIcon).
+Assemble	Assemble
+Assemble_Text	 +1 CoinIcon per TroopIcon you advanced this turn (including the TroopIcon from this).
+Camp	Camp
+Camp_Text	If this is the Area you have the most ScoutIcon in, +1 ActionIcon.
+Barracks	Barracks
+Barracks_Text	If you have the same number of TroopIcon and ScoutIcon here, +1 CardIcon.

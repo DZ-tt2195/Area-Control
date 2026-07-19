@@ -7,7 +7,7 @@ public class Woods : CardType
     }
     public override void DoInstructions(Player player, int thisArea, int logged)
     {
-        if (player.GetTroops()[thisArea] <= 3)
+        if (player.GetTroops()[thisArea] <= 2)
             player.ActionRPC(1, logged);
     }
 }

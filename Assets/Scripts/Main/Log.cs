@@ -33,11 +33,11 @@ public class DecisionContainer
         }
     }
 
-    public Expression<Action> action { get; private set; }
+    public Action action { get; private set; }
     public int logged { get; private set; }
     public DecisionContainer parent;
 
-    public DecisionContainer(DecisionContainer parentContainer, int logged, Expression<Action> action)
+    public DecisionContainer(DecisionContainer parentContainer, int logged, Action action)
     {
         this.complete = false;
         listOfDCs = new();
@@ -50,10 +50,10 @@ public class DecisionContainer
 }
 public class RollBack
 {
-    public Expression<Action> action { get; private set; }
+    public Action action { get; private set; }
     public DecisionContainer parent { get; private set; }
 
-    public RollBack(DecisionContainer parentContainer, Expression<Action> action)
+    public RollBack(DecisionContainer parentContainer, Action action)
     {
         this.action = action;
         parent = parentContainer;
@@ -328,7 +328,7 @@ public class Log : PhotonCompatible
             for (int j = container.listOfRBs.Count - 1; j >= 0; j--)
             {
                 RollBack next = container.listOfRBs[j];
-                next.action.Compile().Invoke();
+                next.action?.Invoke();
                 container.listOfRBs.RemoveAt(j);
             }
 
@@ -361,14 +361,14 @@ public class Log : PhotonCompatible
 
 #region New Steps
 
-    public RollBack NewRollback(Expression<Action> action)
+    public RollBack NewRollback(Action action)
     {
         RollBack next = new(currentContainer, action);
-        action.Compile().Invoke();
+        action.Invoke();
         return next;
     }
 
-    public DecisionContainer NewDecisionContainer(Expression<Action> action, int logged = 0)
+    public DecisionContainer NewDecisionContainer(Action action, int logged = 0)
     {
         DecisionContainer next = new(currentContainer, logged, action);
         if (currentContainer == null) initialContainers.Add(next);
@@ -472,7 +472,7 @@ public class Log : PhotonCompatible
             }
             else
             {
-                currentContainer.action.Compile().Invoke();
+                currentContainer.action.Invoke();
                 //Debug.Log($"forward: {currentContainer.action}, {storeUndoPoint}");
                 if (storeUndoPoint == false)
                 {

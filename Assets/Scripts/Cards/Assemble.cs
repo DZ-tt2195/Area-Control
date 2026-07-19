@@ -1,0 +1,12 @@
+using UnityEngine;
+
+public class Assemble : CardType
+{
+    public Assemble(CardData dataFile) : base(dataFile)
+    {
+    }
+    public override void DoInstructions(Player player, int thisArea, int logged)
+    {
+        player.CoinRPC(player.GetDoneThisTurn(ThisTurn.TroopsAdvanced), logged);
+    }
+}

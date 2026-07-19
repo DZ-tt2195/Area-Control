@@ -156,4 +156,12 @@ public static string Continue () => Translator.inst.Translate("Continue", new() 
 public static string Continue_Text () => Translator.inst.Translate("Continue_Text", new() {});
 public static string Trail () => Translator.inst.Translate("Trail", new() {});
 public static string Trail_Text () => Translator.inst.Translate("Trail_Text", new() {});
+public static string Specialize () => Translator.inst.Translate("Specialize", new() {});
+public static string Specialize_Text () => Translator.inst.Translate("Specialize_Text", new() {});
+public static string Assemble () => Translator.inst.Translate("Assemble", new() {});
+public static string Assemble_Text () => Translator.inst.Translate("Assemble_Text", new() {});
+public static string Camp () => Translator.inst.Translate("Camp", new() {});
+public static string Camp_Text () => Translator.inst.Translate("Camp_Text", new() {});
+public static string Barracks () => Translator.inst.Translate("Barracks", new() {});
+public static string Barracks_Text () => Translator.inst.Translate("Barracks_Text", new() {});
 }
