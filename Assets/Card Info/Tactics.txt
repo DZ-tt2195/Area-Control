@@ -1,17 +1,17 @@
 cardName	textBox	coinCost	troopAdvance	artCredit	notes	coded
-Secure	If you Control this Area while having 0 TroopIcon and/or 0 ScoutIcon in it, +4 CoinIcon.	0	1	Eric J. Carter \nDominion \n(Sentry)	AddCoin, CareControl, CareTroop, CareScout	FALSE
+Secure	If you Control this Area while having 0 TroopIcon and/or 0 ScoutIcon in it, +4 CoinIcon.	0	1	Eric J. Carter \nDominion \n(Sentry)	AddCoin, CareControl, CareTroop, CareScout	TRUE
 Stockpile	 +1 CoinIcon per CardIcon in your hand.	1	1	Grant Hansen \nDominion: Menagerie \n(Stockpile)	AddCoin	TRUE
 Visit	Get this Area's Travel Bonus.	1	1	Claus Stephan \nDominion \n(Village)	TravelBonus	TRUE
 Continue	If you drew 3 CardIcon or more this turn, +1 CardIcon and +1 ActionIcon.	2	1	Marcel-Andre Casasola Merkle \nDominion: Seaside \n(Caravan)	DrawCard, AddAction, CareTurn	TRUE
 Sneak	 +2 ScoutIcon, both in one Area that you don't Control.	2	1	Martin Hoffmann \nDominion: Intrigue \n(Lurker)	AddScout, CareControl	TRUE
-Specialize	You may play 1 CardIcon, repeating its instructions (not the TroopIcon).	4	1	Claus Stephan \nDominion: Allies \n(Specialist)	AddAction	FALSE
+Specialize	You may play 1 CardIcon, repeating its instructions (not the TroopIcon).	4	1	Claus Stephan \nDominion: Allies \n(Specialist)	AddAction	TRUE
 Traverse	 +1 ScoutIcon, -1 ScoutIcon.	2	2	Garret DeChellis \nDominion: Menagerie \n(Wayfarer)	AddScout, LoseScout	TRUE
 Transport	You may spend 1 ActionIcon for +1 TroopIcon from this Area (if possible)	3	2	Elisa Cella \nDominion: Rising Sun \n(Riverboat)	LoseAction, AdvanceTroop	TRUE
 Recruit	You may spend 1 ActionIcon for +2 ScoutIcon.	3	2	Julien Delval \nDominion: Renaissance \n(Recruiter)	LoseAction, AddScout	TRUE
 Raid	 +2 CoinIcon per Area you Control.	4	2	Jesse Mead \nDominion: Adventures \n(Raid)	AddCoin, CareControl	TRUE
 Direct	 +1 ActionIcon per Area you Control.	5	2	Julien Delval \nDominion: Plunder \n(First Mate)	AddAction, CareControl	TRUE
 Plan	 +1 CardIcon per Area you Control.	5	2	Harald Lieske \nDominion: Allies \n(Battle Plan)	DrawCard, CareControl	TRUE
-Assemble	 +1 CoinIcon per TroopIcon you advanced this turn (including the TroopIcon from this).	7	2	Matt Stewart \nMTG: Ravnica Allegiance \n(Unbreakable Formation)	AddCoin, CareTurn	FALSE
+Assemble	 +1 CoinIcon per TroopIcon you advanced this turn (including the TroopIcon from this).	7	2	Matt Stewart \nMTG: Ravnica Allegiance \n(Unbreakable Formation)	AddCoin, CareTurn	TRUE
 Rush	You may discard 1 CardIcon for +1 ActionIcon.	6	3	Julien Delval \nDominion: Allies \n(Courier)	DiscardCard, AddAction	TRUE
 Report	You may remove 1 ScoutIcon for +1 CardIcon.	7	3	Julien Delval \nDominion: Hinterlands \n(Scheme)	LoseScout, DrawCard	TRUE
 Train	 +1 ScoutIcon per Area you Control.	8	3	Zoltan Boros \nMTG: Guilds of Ravnica \n(Blade Instructor)	AddScout, CareControl	TRUE

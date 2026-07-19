@@ -7769,7 +7769,6 @@ GameObject:
   - component: {fileID: 683102626}
   - component: {fileID: 683102625}
   - component: {fileID: 683102624}
-  - component: {fileID: 683102623}
   m_Layer: 5
   m_Name: Player Text
   m_TagString: Untagged
@@ -7797,19 +7796,6 @@ RectTransform:
   m_AnchoredPosition: {x: -900, y: 0}
   m_SizeDelta: {x: 300, y: 115}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &683102623
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 683102621}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 244bac755f5f6407892a4502bca1fc0c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::HoverVisible
-  thing: {fileID: 0}
 --- !u!114 &683102624
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8770,7 +8756,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 629614651198809819, guid: 4d0686b994da1445589ed656148a7cae, type: 3}
       propertyPath: m_fontSize
-      value: 25
+      value: 30
       objectReference: {fileID: 0}
     - target: {fileID: 943634960830580813, guid: 4d0686b994da1445589ed656148a7cae, type: 3}
       propertyPath: m_Pivot.x
@@ -8882,7 +8868,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5379692478639223908, guid: 4d0686b994da1445589ed656148a7cae, type: 3}
       propertyPath: m_Alpha
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -9239,7 +9225,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 629614651198809819, guid: 4d0686b994da1445589ed656148a7cae, type: 3}
       propertyPath: m_fontSize
-      value: 25
+      value: 30
       objectReference: {fileID: 0}
     - target: {fileID: 943634960830580813, guid: 4d0686b994da1445589ed656148a7cae, type: 3}
       propertyPath: m_Pivot.x
@@ -9348,6 +9334,10 @@ PrefabInstance:
     - target: {fileID: 2383158818842941943, guid: 4d0686b994da1445589ed656148a7cae, type: 3}
       propertyPath: sceneViewId
       value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 5379692478639223908, guid: 4d0686b994da1445589ed656148a7cae, type: 3}
+      propertyPath: m_Alpha
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8277740059764732275, guid: 4d0686b994da1445589ed656148a7cae, type: 3}
       propertyPath: m_IsActive
@@ -9692,7 +9682,7 @@ Camera:
   m_Enabled: 1
   serializedVersion: 2
   m_ClearFlags: 2
-  m_BackGroundColor: {r: 0.3584906, g: 0.3584906, b: 0.3584906, a: 0}
+  m_BackGroundColor: {r: 0.2, g: 0.2, b: 0.2, a: 0}
   m_projectionMatrixMode: 1
   m_GateFitMode: 2
   m_FOVAxisMode: 0
@@ -9760,7 +9750,6 @@ GameObject:
   - component: {fileID: 875066454}
   - component: {fileID: 875066453}
   - component: {fileID: 875066452}
-  - component: {fileID: 875066451}
   m_Layer: 5
   m_Name: Player Text
   m_TagString: Untagged
@@ -9788,19 +9777,6 @@ RectTransform:
   m_AnchoredPosition: {x: -900, y: 0}
   m_SizeDelta: {x: 300, y: 115}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &875066451
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 875066449}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 244bac755f5f6407892a4502bca1fc0c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::HoverVisible
-  thing: {fileID: 0}
 --- !u!114 &875066452
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -14978,7 +14954,6 @@ GameObject:
   - component: {fileID: 1350181639}
   - component: {fileID: 1350181638}
   - component: {fileID: 1350181637}
-  - component: {fileID: 1350181636}
   m_Layer: 5
   m_Name: Player Text (1)
   m_TagString: Untagged
@@ -15006,19 +14981,6 @@ RectTransform:
   m_AnchoredPosition: {x: -900, y: 0}
   m_SizeDelta: {x: 300, y: 115}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &1350181636
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1350181634}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 244bac755f5f6407892a4502bca1fc0c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::HoverVisible
-  thing: {fileID: 0}
 --- !u!114 &1350181637
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -16154,7 +16116,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 629614651198809819, guid: 4d0686b994da1445589ed656148a7cae, type: 3}
       propertyPath: m_fontSize
-      value: 25
+      value: 30
       objectReference: {fileID: 0}
     - target: {fileID: 943634960830580813, guid: 4d0686b994da1445589ed656148a7cae, type: 3}
       propertyPath: m_Pivot.x
@@ -16263,6 +16225,10 @@ PrefabInstance:
     - target: {fileID: 2383158818842941943, guid: 4d0686b994da1445589ed656148a7cae, type: 3}
       propertyPath: sceneViewId
       value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 5379692478639223908, guid: 4d0686b994da1445589ed656148a7cae, type: 3}
+      propertyPath: m_Alpha
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -20407,7 +20373,6 @@ GameObject:
   - component: {fileID: 1914405244}
   - component: {fileID: 1914405243}
   - component: {fileID: 1914405242}
-  - component: {fileID: 1914405241}
   m_Layer: 5
   m_Name: Player Text
   m_TagString: Untagged
@@ -20435,19 +20400,6 @@ RectTransform:
   m_AnchoredPosition: {x: -900, y: 0}
   m_SizeDelta: {x: 300, y: 115}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &1914405241
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1914405239}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 244bac755f5f6407892a4502bca1fc0c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::HoverVisible
-  thing: {fileID: 0}
 --- !u!114 &1914405242
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -20980,7 +20932,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 629614651198809819, guid: 4d0686b994da1445589ed656148a7cae, type: 3}
       propertyPath: m_fontSize
-      value: 25
+      value: 30
       objectReference: {fileID: 0}
     - target: {fileID: 943634960830580813, guid: 4d0686b994da1445589ed656148a7cae, type: 3}
       propertyPath: m_Pivot.x
@@ -21089,6 +21041,10 @@ PrefabInstance:
     - target: {fileID: 2383158818842941943, guid: 4d0686b994da1445589ed656148a7cae, type: 3}
       propertyPath: sceneViewId
       value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 5379692478639223908, guid: 4d0686b994da1445589ed656148a7cae, type: 3}
+      propertyPath: m_Alpha
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

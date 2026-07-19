@@ -11,8 +11,8 @@ public class DisplayStart : Turn
     }
     public override void ForPlayer(Player player)
     {
-        CreateGame.inst.AddPlayerRPC(player);
         player.DrawCardRPC(2);
         player.CoinRPC(3);
+        CreateGame.inst.AddPlayerRPC(player);
     }
 }

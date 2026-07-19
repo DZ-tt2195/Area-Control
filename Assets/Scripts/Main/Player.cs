@@ -63,11 +63,12 @@ public class Player : PhotonCompatible
     void SetToPlayerProps()
     {
         myCoins = TurnManager.inst.GetInt(ConstantStrings.MyCoins, this);
+        myActions = TurnManager.inst.GetInt(ConstantStrings.MyActions, this);
         myDeck = TurnManager.inst.GetCardList(ConstantStrings.MyDeck, this);
         myDiscard = TurnManager.inst.GetCardList(ConstantStrings.MyDiscard, this);
         myHand = TurnManager.inst.GetCardList(ConstantStrings.MyHand, this);
-        myScouts = TurnManager.inst.GetIntArray(ConstantStrings.MyScouts);
-        myTroops = TurnManager.inst.GetIntArray(ConstantStrings.MyTroops);
+        myScouts = TurnManager.inst.GetIntArray(ConstantStrings.MyScouts, this);
+        myTroops = TurnManager.inst.GetIntArray(ConstantStrings.MyTroops, this);
     }
 
     #endregion

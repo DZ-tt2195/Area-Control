@@ -195,6 +195,7 @@ public class CreateGame : PhotonCompatible
         Player player = PhotonView.Find(playerID).GetComponent<Player>();
         if (listOfPlayers.Contains(player)) return;
         listOfPlayers.Add(player);
+        UpdatePlayerUI(player, player.name);
 
         playerDropdown.AddOptions(new List<TMP_Dropdown.OptionData>() { new(player.name) });
         if (listOfPlayers.Count == (int)GetRoomProperty(ConstantStrings.CanPlay))
@@ -223,6 +224,8 @@ public class CreateGame : PhotonCompatible
     public void UpdatePlayerUI(Player player, string playerText)
     {
         int num = listOfPlayers.IndexOf(player);
+        if (num == -1) return;
+
         PlayerUI ui = listOfPlayerUI[num];
         ui.parentObject.SetActive(true);
         ui.playerText.text = KeywordTooltip.instance.EditText(playerText);
@@ -291,6 +294,7 @@ public class CreateGame : PhotonCompatible
     }
     void VisualCards(int[] cardIDs)
     {
+        if (cardIDs.Length == 0) return;
         for (int i = 0; i<cardIDs.Length; i++)
         {
             if (listOfAreas[i] != null)
