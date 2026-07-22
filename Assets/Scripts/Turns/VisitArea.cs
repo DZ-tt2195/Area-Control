@@ -6,6 +6,18 @@ public class VisitArea : Turn
     {
         int currentTurn = TurnManager.inst.GetInt(ConstantStrings.TurnNumber);
         Card card = CreateGame.inst.GetArea(currentTurn);
+        List<Player> whoControls = CreateGame.inst.CalculateControllers();
+
+        Log.inst.MasterText(true, AutoTranslate.Blank());
+
+        for (int i = 1; i<whoControls.Count; i++)
+        {
+            if (whoControls[i] != null)
+                Log.inst.MasterText(true, OnlineTranslate.Online_Who_Controls(whoControls[i].name, i.ToString()));
+            else
+                Log.inst.MasterText(true, OnlineTranslate.Online_Who_Controls(nameof(AutoTranslate.No_One), i.ToString()));
+        }
+
         Log.inst.MasterText(true, AutoTranslate.Blank());
         Log.inst.MasterText(true, OnlineTranslate.Online_Next_Turn(card.name));
     }

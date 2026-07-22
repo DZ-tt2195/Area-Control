@@ -7,6 +7,6 @@ public class Visit : CardType
     }
     public override void DoInstructions(Player player, int thisArea, int logged)
     {
-        GetTravelBonus(player, thisArea, logged);
+        AskRemoveScout(player, this.dataFile.cardName, logged, area => GetTravelBonus(player, thisArea, logged));
     }
 }

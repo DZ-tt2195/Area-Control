@@ -7,6 +7,6 @@ public class Report : CardType
     }
     public override void DoInstructions(Player player, int thisArea, int logged)
     {
-        AskRemoveScout(player, this.dataFile.cardName, logged, () => player.DrawCardRPC(1, logged));
+        AskRemoveScout(player, this.dataFile.cardName, logged, num => player.ActionRPC(2, logged));
     }
 }

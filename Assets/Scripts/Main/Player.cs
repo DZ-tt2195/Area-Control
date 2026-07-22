@@ -384,7 +384,7 @@ public class Player : PhotonCompatible
 
         if (uiDictionary[ConstantStrings.MyHand])
         {
-            if (this.transform.parent != null) AudioManager.instance.Card();
+            if (this.transform.parent != null && !forcedUpdate) AudioManager.instance.Card();
             List<Vector2> handPositions = ObjectPositions(myHand.Count, -1125, 475, 225, -550, true);
             for (int i = 0; i < myHand.Count; i++)
             {

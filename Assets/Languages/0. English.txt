@@ -1,5 +1,5 @@
 Game_Designer	by Thomas Tang (DZ)
-Last_Update	Last Updated: July 18, 2026
+Last_Update	Last Updated: July 21, 2026
 Blank	
 Translator_Credit	Original Language
 Language	Language
@@ -54,7 +54,7 @@ Short	Short
 Long	Long
 Switch_Player	Switch Player
 Rules	Rules
-Rules_Summary	Each Round: \n1. Redetermine who Controls each Area (highest total of TroopIcon + ScoutIcon). \n2. Visit the next Area and get its Travel Bonus. \n3. Follow the Area's instructions. \n4. You may spend ActionIcon to play CardIcon from your hand (paying its CoinIcon cost). \n5. If a player has all their TroopIcon in Area 4 (ScoutIcon doesn't matter), they win.
+Rules_Summary	Each Round: \n1. Redetermine who Controls each Area (highest total of TroopIcon + ScoutIcon). \n2. All players move to the next Area and get its Travel Bonus. \n3. Follow the Area's instructions. \n4. You may spend ActionIcon to play CardIcon from your hand (paying its CoinIcon cost). \n5. If a player has all their TroopIcon in Area 4 (ScoutIcon doesn't matter), they win.
 Travel_Bonus	Travel Bonus
 Travel_Bonus_Text	Area 1: +1 ActionIcon; Area 2: +3 CoinIcon; Area 3: +1 CardIcon; Area 4: +3 CoinIcon
 CardIcon	CardIcon
@@ -101,6 +101,8 @@ Pause_to_Read	A pause to let you read things.
 Pause_to_Undo	Last chance to undo anything.
 Game_Over	Game Over
 Leave	Leave
+Online_Who_Controls	$Player$ controls Area $Num$.
+No_One	No one
 Online_Player_Won	$Player$ has won.
 Online_Tie_Game	The game is a tie.
 Online_Player_Resigned	$Player$ has resigned.
@@ -114,13 +116,13 @@ Area	Area
 Explore	Explore
 Explore_Text	 +1 ScoutIcon in each Area you have 0 TroopIcon in.
 Experiment	Experiment
-Experiment_Text	Discard all your CardIcon, then +3 CardIcon.
+Experiment_Text	Draw until you have 3 CardIcon in hand.
 March	March
 March_Text	 +1 TroopIcon per Area you Control.
 Plan	Plan
 Plan_Text	 +1 CardIcon per Area you Control.
-Rush	Rush
-Rush_Text	You may discard 1 CardIcon for +1 ActionIcon.
+Survey	Survey
+Survey_Text	You may spend 1 ActionIcon for +1 CardIcon.
 Stockpile	Stockpile
 Stockpile_Text	 +1 CoinIcon per CardIcon in your hand.
 Direct	Direct
@@ -129,12 +131,8 @@ Launch	Launch
 Launch_Text	If you have 5 CardIcon or more in hand, +1 ActionIcon.
 Raid	Raid
 Raid_Text	 +2 CoinIcon per Area you Control.
-Secure	Secure
-Secure_Text	If you Control this Area while having 0 TroopIcon and/or 0 ScoutIcon in it, +4 CoinIcon.
 Report	Report
-Report_Text	You may remove 1 ScoutIcon for +1 CardIcon.
-Traverse	Traverse
-Traverse_Text	 +1 ScoutIcon, -1 ScoutIcon.
+Report_Text	You may remove 1 ScoutIcon for +2 ActionIcon.
 Train	Train
 Train_Text	 +1 ScoutIcon per Area you Control.
 Invest	Invest
@@ -144,17 +142,15 @@ Balance_Text	 +1 CoinIcon per TroopIcon you have in Area 2 or 3, whichever has l
 Prepare	Prepare
 Prepare_Text	If you have 2 ActionIcon or more, +1 CardIcon.
 Recruit	Recruit
-Recruit_Text	You may spend 1 ActionIcon for +2 ScoutIcon.
+Recruit_Text	You may discard 1 CardIcon for +2 ScoutIcon.
 Transport	Transport
-Transport_Text	You may spend 1 ActionIcon for +1 TroopIcon from this Area (if possible)
-Sneak	Sneak
-Sneak_Text	 +2 ScoutIcon, both in one Area that you don't Control.
+Transport_Text	You may spend 1 ActionIcon for +1 TroopIcon.
+Parry	Parry
+Parry_Text	 +1 ScoutIcon in one Area you Control, and +1 ScoutIcon in one Area you don't Control.
 Farmland	Farmland
 Farmland_Text	If you Control this, +2 CoinIcon per ActionIcon you have.
 Garrison	Garison
 Garrison_Text	You may remove 2 ScoutIcon from here, for +1 ScoutIcon in each other Area.
-Highway	Highway
-Highway_Text	If you Control this, +2 TroopIcon and then -1 TroopIcon.
 City	City
 City_Text	If you Control this, +1 ActionIcon per 2 CardIcon in your hand (round down).
 Battlefield	Battlefield
@@ -168,13 +164,13 @@ Mine_Text	You may spend 1 ActionIcon, for +1 CoinIcon per TroopIcon you have her
 Pasture	Pasture
 Pasture_Text	 +1 ScoutIcon here. Then remove any amount of your ScoutIcon here for +2 CoinIcon each.
 Gate	Gate
-Gate_Text	 +1 TroopIcon per 2 ScoutIcon you have here (round down).
+Gate_Text	 +1 TroopIcon per 3 ScoutIcon you have here (round down).
 Visit	Visit
-Visit_Text	Get this Area's Travel Bonus.
+Visit_Text	You may remove 1 ScoutIcon to get this Area's Travel Bonus.
 Demand	Demand
 Demand_Text	For each Area you control, get its Travel Bonus.
 Continue	Continue
-Continue_Text	If you drew 3 CardIcon or more this turn, +1 CardIcon and +1 ActionIcon.
+Continue_Text	If you drew 3 CardIcon or more this turn, +2 ActionIcon.
 Trail	Trail
 Trail_Text	You may retreat 1 TroopIcon to get this Area's Travel Bonus twice.
 Specialize	Specialize
@@ -184,4 +180,24 @@ Assemble_Text	 +1 CoinIcon per TroopIcon you advanced this turn (including the T
 Camp	Camp
 Camp_Text	If this is the Area you have the most ScoutIcon in, +1 ActionIcon.
 Barracks	Barracks
-Barracks_Text	If you have the same number of TroopIcon and ScoutIcon here, +1 CardIcon.
+Barracks_Text	If you have the same number of TroopIcon and ScoutIcon here (even if it's 0), +1 CardIcon.
+Analyze	Analyze
+Analyze_Text	If you discarded 3 CardIcon or more this turn (including from playing them), +2 CardIcon.
+Infiltrate	Infiltrate
+Infiltrate_Text	 +3 ScoutIcon all in one Area.
+Ponder	Ponder
+Ponder_Text	If you have 0 CoinIcon, +1 CardIcon.
+NewCard5	NewCard5
+NewCard5_Text	You may remove 1 ScoutIcon for +1 TroopIcon.
+Safeguard	Safeguard
+Safeguard_Text	If you have at least 1 ScoutIcon in each Area, +1 TroopIcon.
+Collaborate	Collaborate
+Collaborate_Text	 +1 ScoutIcon per 2 ScoutIcon you have (round down).
+Seek	Seek
+Seek_Text	If you gained 5 CoinIcon or more this turn, +1 TroopIcon.
+Oversee	Oversee
+Oversee_Text	Set your ActionIcon to 2.
+Trade	Trade
+Trade_Text	You may discard 1 CardIcon for +5 CoinIcon.
+Castle	Castle
+Castle_Text	If you Control this Area while having 0 TroopIcon and/or 0 ScoutIcon in it, +4 CoinIcon.

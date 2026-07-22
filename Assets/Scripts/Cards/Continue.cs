@@ -8,9 +8,6 @@ public class Continue : CardType
     public override void DoInstructions(Player player, int thisArea, int logged)
     {
         if (player.GetDoneThisTurn(ThisTurn.CardsDrew) >= 3)
-        {
-            player.DrawCardRPC(1, logged);
-            player.ActionRPC(1, logged);
-        }
+            player.DrawCardRPC(2, logged);
     }
 }

@@ -156,7 +156,7 @@ public class GeneralEffects
 #endregion
 
 #region Optional
-    public void AskDiscard(Player player, string cardName, int logged, Action whenDone = null, Action whenFailed = null)
+    public void AskDiscard(Player player, string cardName, int logged, Action<Card> whenDone = null, Action whenFailed = null)
     {
         Log.inst.NewDecisionContainer(() => MayDiscard());
         void MayDiscard()
@@ -174,7 +174,7 @@ public class GeneralEffects
             void DiscardMe(Card card)
             {
                 player.DiscardCardRPC(card, logged);
-                whenDone?.Invoke();
+                whenDone?.Invoke(card);
             }        
             void DidNot()
             {
@@ -183,7 +183,7 @@ public class GeneralEffects
             }
         }
     }
-    public void AskRetreat(Player player, string cardName, int logged, Action whenDone = null, Action whenFailed = null)
+    public void AskRetreat(Player player, string cardName, int logged, Action<int> whenDone = null, Action whenFailed = null)
     {
         Log.inst.NewDecisionContainer(() => MayRetreat());
         void MayRetreat()
@@ -201,7 +201,7 @@ public class GeneralEffects
             void RetreatMe((int area, int troops, int scouts) display)
             {
                 player.TroopRPC(1, display.area, display.area-1, logged);
-                whenDone?.Invoke();
+                whenDone?.Invoke(display.area);
             }        
             void DidNot()
             {
@@ -210,7 +210,7 @@ public class GeneralEffects
             }
         }
     }
-    public void AskRemoveScout(Player player, string cardName, int logged, Action whenDone = null, Action whenFailed = null)
+    public void AskRemoveScout(Player player, string cardName, int logged, Action<int> whenDone = null, Action whenFailed = null)
     {
         Log.inst.NewDecisionContainer(() => MayRemoveScout());
         void MayRemoveScout()
@@ -228,7 +228,7 @@ public class GeneralEffects
             void RemoveMe((int area, int troops, int scouts) display)
             {
                 player.ScoutRPC(-1, display.area, logged);
-                whenDone?.Invoke();
+                whenDone?.Invoke(display.area);
             }        
             void DidNot()
             {
@@ -245,7 +245,7 @@ public class GeneralEffects
             if (player.GetActions() < amount)
             {
                 DidNot();
-            return;
+                return;
             }
             List<TextButtonInfo> textButtonInfos = new() {new(AutoTranslate.Confirm(), DidIt), new(AutoTranslate.Decline(), DidNot)};
             MakeDecision.inst.ChooseTextButton(textButtonInfos, AutoTranslate.Ask_Pay(amount.ToString(), AutoTranslate.ActionIcon()));

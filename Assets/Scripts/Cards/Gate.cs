@@ -7,6 +7,6 @@ public class Gate : CardType
     }
     public override void DoInstructions(Player player, int thisArea, int logged)
     {
-        ForceAdvance(player, logged, Mathf.FloorToInt(player.GetScouts()[thisArea]/2f));
+        ForceAdvance(player, logged, Mathf.FloorToInt(player.GetScouts()[thisArea]/3f));
     }
 }

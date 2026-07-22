@@ -8,6 +8,6 @@ public class Recruit : CardType
     }
     public override void DoInstructions(Player player, int thisArea, int logged)
     {
-        AskSpendAction(player, this.dataFile.cardName, 1, logged, () => ForceAddScout(player, logged, 2));
+        AskDiscard(player, this.dataFile.cardName, logged, card => ForceAddScout(player, logged, 2));
     }
 }

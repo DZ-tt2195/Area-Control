@@ -236,7 +236,7 @@ public class CreateGame : PhotonCompatible
         for (int i = 1; i<=4; i++)
             ui.listOfDisplays[i].ChangeInfo(i, troops[i], scouts[i], $"{troops[i]} {AutoTranslate.TroopIcon()} {scouts[i]} {AutoTranslate.ScoutIcon()}");
     }
-    public void CalculateControllers()
+    public List<Player> CalculateControllers()
     {
         for (int i = 1; i<=4; i++)
         {
@@ -253,11 +253,12 @@ public class CreateGame : PhotonCompatible
             for (int j = 0; j<listOfPlayers.Count; j++)
             {
                 if (listOfPlayers[j] == best.controller)
-                    listOfPlayerUI[j].listOfDisplays[i].selectMe.button.image.color = Color.yellow;
+                    listOfPlayerUI[j].listOfDisplays[i].selectMe.button.image.color = Color.orange;
                 else
                     listOfPlayerUI[j].listOfDisplays[i].selectMe.button.image.color = Color.gray;
             }
         }
+        return whoControls;
     }
     public bool IsControlling(Player player, int area)
     {

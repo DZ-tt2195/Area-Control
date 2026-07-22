@@ -9,7 +9,6 @@ public class Transport : CardType
     }
     public override void DoInstructions(Player player, int thisArea, int logged)
     {
-        if (thisArea < 4)
-            AskSpendAction(player, this.dataFile.cardName, 1, logged, () => player.TroopRPC(1, thisArea, thisArea+1, logged));
+        AskSpendAction(player, this.dataFile.cardName, 1, logged, () => ForceAdvance(player, logged, 1));
     }
 }
