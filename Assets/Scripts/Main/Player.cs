@@ -304,6 +304,7 @@ public class Player : PhotonCompatible
         CreateGame.inst.SwitchToPlayer(this);
         InstantChangePlayerProp(this, ConstantStrings.Waiting, false);
         endPause = true;
+        AudioManager.instance.NewTurn();
 
         int[] array = (int[])GetPlayerProperty(this, ConstantStrings.DrewThisTurn);
         List<Card> drewThisTurn = ConvertIntArray(array);
@@ -417,6 +418,12 @@ public class Player : PhotonCompatible
 
         if (uiDictionary[ConstantStrings.MyHand] || uiDictionary[ConstantStrings.MyActions] || uiDictionary[ConstantStrings.MyCoins] || uiDictionary[ConstantStrings.MyScouts] || uiDictionary[ConstantStrings.MyTroops])
             CreateGame.inst.UpdatePlayerUI(this, $"{this.name}: {myHand.Count} {AutoTranslate.CardIcon()}, {myActions} {AutoTranslate.ActionIcon()}, {myCoins} {AutoTranslate.CoinIcon()}");
+
+        if (uiDictionary[ConstantStrings.MyTroops] || uiDictionary[ConstantStrings.MyScouts])
+            AudioManager.instance.TroopScout();
+        
+        if (uiDictionary[ConstantStrings.MyCoins] || uiDictionary[ConstantStrings.MyActions])
+            AudioManager.instance.CoinAction();
 
         foreach (var key in uiKeys)
             uiDictionary[key] = false;

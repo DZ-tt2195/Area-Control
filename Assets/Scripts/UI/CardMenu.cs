@@ -48,8 +48,8 @@ public class CardMenu : PhotonCompatible
     public void ChooseFromList(CardSelect clicked, List<CardData> allData, bool vertical)
     {
         mostRecentClick = clicked;
-        storeHorizontalButtons.transform.parent.gameObject.SetActive(!vertical);
-        storeVerticalButtons.transform.parent.gameObject.SetActive(vertical);
+        storeHorizontalButtons.gameObject.SetActive(!vertical);
+        storeVerticalButtons.gameObject.SetActive(vertical);
 
         if (vertical)
         {
@@ -89,15 +89,15 @@ public class CardMenu : PhotonCompatible
     {
         mostRecentClick.SetCardImage(number);
         mostRecentClick = null;
-        storeVerticalButtons.transform.parent.gameObject.SetActive(false);
-        storeHorizontalButtons.transform.parent.gameObject.SetActive(false);
+        storeVerticalButtons.gameObject.SetActive(false);
+        storeHorizontalButtons.gameObject.SetActive(false);
     }
     void Advance()
     {
         if (step == 0)
         {
-            storeVerticalButtons.transform.parent.gameObject.SetActive(false);
-            storeHorizontalButtons.transform.parent.gameObject.SetActive(false);
+            storeVerticalButtons.gameObject.SetActive(false);
+            storeHorizontalButtons.gameObject.SetActive(false);
             for (int i = 0; i < storeHorizontalButtons.transform.childCount; i++)
             {
                 Button nextButton = storeHorizontalButtons.transform.GetChild(i).gameObject.GetComponent<Button>();

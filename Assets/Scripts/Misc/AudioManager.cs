@@ -14,8 +14,10 @@ public class AudioManager : MonoBehaviour
     [Foldout("Sound effects", true)]
     [SerializeField] AudioClip menuSound; public void Menu(float volume = 0.3f) => PlaySound(menuSound, volume);
     [SerializeField] AudioClip cardSound; public void Card(float volume = 0.3f) => PlaySound(cardSound, volume);
-    [SerializeField] AudioClip tokenSound; public void Token(float volume = 0.3f) => PlaySound(tokenSound, volume);
+    [SerializeField] AudioClip troopScoutSound; public void TroopScout(float volume = 0.3f) => PlaySound(troopScoutSound, volume);
+    [SerializeField] AudioClip coinActionSound; public void CoinAction(float volume = 0.3f) => PlaySound(coinActionSound, volume);
     [SerializeField] AudioClip gameOverSound; public void GameOver(float volume = 0.3f) => PlaySound(gameOverSound, volume);
+    [SerializeField] AudioClip newTurnSound; public void NewTurn(float volume = 0.3f) => PlaySound(newTurnSound, volume);
     private void Awake()
     {
         if (instance == null)

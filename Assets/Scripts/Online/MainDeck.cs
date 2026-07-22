@@ -17,21 +17,21 @@ public class MainDeck : PhotonCompatible
     }
     void CreateDeck()
     {
-        List<int> startingcustomerDeck = new();
-        List<int> customerIDs = new();
+        List<int> startingTacticDeck = new();
+        List<int> tacticIDs = new();
         for (int i = 0; i<GameFiles.inst.tacticFiles.Count; i++)
         {
             for (int j = 0; j<2; j++)
             {
                 GameObject nextCard = MakeObject(cardPrefab.gameObject);
                 PhotonView cardPV = nextCard.GetComponent<PhotonView>();
-                startingcustomerDeck.Add(cardPV.ViewID);
-                customerIDs.Add(i);
+                startingTacticDeck.Add(cardPV.ViewID);
+                tacticIDs.Add(i);
             }
         }
-        customerIDs = customerIDs.Shuffle();
-        InstantChangeRoomProp(ConstantStrings.MasterDeck, startingcustomerDeck.ToArray());
-        DoFunction(() => CreateCards(TypesOfCards.Tactic.ToString(), startingcustomerDeck.ToArray(), customerIDs.ToArray()));
+        tacticIDs = tacticIDs.Shuffle();
+        InstantChangeRoomProp(ConstantStrings.MasterDeck, startingTacticDeck.ToArray());
+        DoFunction(() => CreateCards(TypesOfCards.Tactic.ToString(), startingTacticDeck.ToArray(), tacticIDs.ToArray()));
     }
     [PunRPC]
     void CreateCards(string typeToFind, int[] arrayOfPVs, int[] cardNames)

@@ -70,6 +70,7 @@ public class CreateGame : PhotonCompatible
     }
     void Start()
     {
+        playerDropdown.gameObject.SetActive((int)GetRoomProperty(ConstantStrings.CanPlay) >= 2);
         if (!PhotonNetwork.OfflineMode)
         {
             string playerName = PlayerPrefs.GetString(ConstantStrings.MyUserName);

@@ -678,8 +678,10 @@ MonoBehaviour:
   mixer: {fileID: 24100000, guid: 6339f169c292e402dbb565e5a7ad1793, type: 2}
   menuSound: {fileID: 8300000, guid: 492488b5c92b84851a2ddd2ec6b3fef6, type: 3}
   cardSound: {fileID: 8300000, guid: 78b4475a0f7d0435e8daec6996c54d33, type: 3}
-  tokenSound: {fileID: 8300000, guid: 22fd7c5ac3ba747dbbd94e89b55082b2, type: 3}
+  troopScoutSound: {fileID: 8300000, guid: 22fd7c5ac3ba747dbbd94e89b55082b2, type: 3}
+  coinActionSound: {fileID: 8300000, guid: 8d6be07c4a04d4830a7e36c9d5ea7c95, type: 3}
   gameOverSound: {fileID: 8300000, guid: 10ecb72f7cb594c378637e18bb61f52c, type: 3}
+  newTurnSound: {fileID: 8300000, guid: 50d4652df79a74f4688e9e4559bededa, type: 3}
 --- !u!82 &300021391
 AudioSource:
   m_ObjectHideFlags: 0

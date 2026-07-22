@@ -315,6 +315,7 @@ public class Log : PhotonCompatible
 
     public void InvokeUndo(DecisionContainer toThisPoint, bool pop)
     {
+        AudioManager.instance.Menu();
         ClearCurrentDecision();
         ClearParents(currentContainer);
         currentContainer = null;
@@ -367,7 +368,6 @@ public class Log : PhotonCompatible
         action.Invoke();
         return next;
     }
-
     public DecisionContainer NewDecisionContainer(Action action, int logged = 0)
     {
         DecisionContainer next = new(currentContainer, logged, action);
@@ -395,7 +395,6 @@ public class Log : PhotonCompatible
     {
         storeUndoPoint = apply;
     }
-
     public void PopStack()
     {
         forward = true;
@@ -415,7 +414,6 @@ public class Log : PhotonCompatible
         }
         StartCoroutine(WaitAndContinue());
     }
-
     IEnumerator WaitAndContinue()
     {
         float time = 0f;
