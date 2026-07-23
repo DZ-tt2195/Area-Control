@@ -9,5 +9,7 @@ public class Farmland : CardType
     {
         if (CreateGame.inst.IsControlling(player, thisArea))
             player.CoinRPC(2*player.GetActions(), logged);
+        else
+            Log.inst.AddMyText(false, OnlineTranslate.Online_Miss_Ability(player.name, this.dataFile.cardName), logged);                
     }
 }

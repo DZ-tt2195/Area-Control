@@ -12,5 +12,7 @@ public class Castle : CardType
         if (CreateGame.inst.IsControlling(player, thisArea) && 
         (player.GetScouts()[thisArea] == 0 || player.GetTroops()[thisArea] == 0))
             player.CoinRPC(4, logged);
+        else
+            Log.inst.AddMyText(false, OnlineTranslate.Online_Miss_Ability(player.name, this.dataFile.cardName), logged);                
     }
 }

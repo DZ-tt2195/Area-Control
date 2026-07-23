@@ -9,6 +9,12 @@ public class Transport : CardType
     }
     public override void DoInstructions(Player player, int thisArea, int logged)
     {
-        AskSpendAction(player, this.dataFile.cardName, 1, logged, () => ForceAdvance(player, logged, 1));
+        AskSpendAction(player, this.dataFile.cardName, 1, logged, Reward);
+        
+        void Reward(bool didIt)
+        {
+            if (didIt)
+                ChooseAdvance(player, logged, 1);
+        }
     }
 }

@@ -16,5 +16,7 @@ public class Camp : CardType
         }
         if (best.area == thisArea)
             player.ActionRPC(1, logged);
+        else
+            Log.inst.AddMyText(false, OnlineTranslate.Online_Miss_Ability(player.name, this.dataFile.cardName), logged);                
     }
 }

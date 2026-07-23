@@ -10,7 +10,11 @@ public class Battlefield : CardType
         if (!CreateGame.inst.IsControlling(player, thisArea))
         {
             player.DrawCardRPC(1, logged);
-            ForceRetreat(player, logged, 1);
+            ChooseRetreat(player, this.dataFile.cardName, true, logged, 1);
+        }
+        else
+        {
+            Log.inst.AddMyText(false, OnlineTranslate.Online_Miss_Ability(player.name, this.dataFile.cardName), logged);                
         }
     }
 }

@@ -9,5 +9,7 @@ public class Ponder : CardType
     {
         if (player.GetCoins() == 0)
             player.DrawCardRPC(1, logged);
+        else
+            Log.inst.AddMyText(false, OnlineTranslate.Online_Miss_Ability(player.name, this.dataFile.cardName), logged);                
     }
 }

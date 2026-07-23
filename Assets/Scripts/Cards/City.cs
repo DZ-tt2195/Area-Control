@@ -9,5 +9,8 @@ public class City : CardType
     {
         if (CreateGame.inst.IsControlling(player, thisArea))
             player.ActionRPC(Mathf.FloorToInt(player.GetHand().Count/2f), logged);
+        else
+            Log.inst.AddMyText(false, OnlineTranslate.Online_Miss_Ability(player.name, this.dataFile.cardName), logged);                
+
     }
 }

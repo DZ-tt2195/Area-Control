@@ -7,6 +7,6 @@ public class Assemble : CardType
     }
     public override void DoInstructions(Player player, int thisArea, int logged)
     {
-        player.CoinRPC(player.GetDoneThisTurn(ThisTurn.TroopsAdvanced), logged);
+        player.CoinRPC(player.GetDoneThisTurn(NumThisTurn.TroopsAdvanced).Count, logged);
     }
 }

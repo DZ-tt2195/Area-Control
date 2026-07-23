@@ -19,8 +19,15 @@ public class Pasture : CardType
 
         void Removed(int num)
         {
-            player.ScoutRPC(-num, thisArea, logged);
-            player.CoinRPC(2*num, logged);
+            if (num == 0)
+            {
+                Log.inst.AddMyText(false, OnlineTranslate.Online_Choose_Zero(player.name), logged);                
+            }
+            else
+            {
+                player.ScoutRPC(-num, thisArea, logged);
+                player.CoinRPC(2*num, logged);
+            }
         }
     }
 }

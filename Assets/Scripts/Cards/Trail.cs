@@ -9,11 +9,14 @@ public class Trail : CardType
     }
     public override void DoInstructions(Player player, int thisArea, int logged)
     {
-        AskRetreat(player, this.dataFile.cardName, logged, TrailBonus);
-        void TrailBonus(int area)
+        ChooseRetreat(player, this.dataFile.cardName, false, logged, 1, Reward);
+        void Reward(int num)
         {
-            for (int i = 0; i<2; i++)
-                GetTravelBonus(player, thisArea, logged);
+            if (num == 1)
+            {
+                for (int i = 0; i<2; i++)
+                    GetTravelBonus(player, thisArea, logged);
+            }
         }
     }
 }

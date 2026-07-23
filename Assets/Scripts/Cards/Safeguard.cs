@@ -10,8 +10,11 @@ public class Safeguard : CardType
         foreach (TroopScoutDisplay display in CreateGame.inst.GetAllDisplays(player))
         {
             if (display.info.scouts == 0)
+            {
+                Log.inst.AddMyText(false, OnlineTranslate.Online_Miss_Ability(player.name, this.dataFile.cardName), logged);                
                 return;
+            }
         }
-        ForceAdvance(player, logged, 1);
+        ChooseAdvance(player, logged, 1);
     }
 }

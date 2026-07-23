@@ -9,24 +9,17 @@ public class Garrison : CardType
     }
     public override void DoInstructions(Player player, int thisArea, int logged)
     {
-        if (player.GetScouts()[thisArea] >= 2)
-        {
-            List<TextButtonInfo> textButtonInfos = new() {new(AutoTranslate.Confirm(), DidIt), new(AutoTranslate.Decline(), DidNot)};
-            MakeDecision.inst.ChooseTextButton(textButtonInfos, AutoTranslate.Ask_Remove());
+        AskSpendCoin(player, this.dataFile.cardName, 3, logged, Reward);
 
-            void DidIt()
+        void Reward(bool didIt)
+        {
+            if (didIt)
             {
                 foreach (TroopScoutDisplay display in CreateGame.inst.GetAllDisplays(player))
                 {
-                    if (display.info.area == thisArea)
-                        player.ScoutRPC(-2, display.info.area);
-                    else
+                    if (display.info.area != thisArea)
                         player.ScoutRPC(1, display.info.area);
                 }
-            }
-            void DidNot()
-            {
-                Log.inst.AddMyText(false, OnlineTranslate.Online_Decline_Ability(player.name, nameof(Garrison)), logged);
             }
         }
     }

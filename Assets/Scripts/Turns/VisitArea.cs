@@ -27,9 +27,9 @@ public class VisitArea : Turn
         int currentTurn = TurnManager.inst.GetInt(ConstantStrings.TurnNumber);
         GetTravelBonus(player, currentTurn, 0);
 
-        Card card = CreateGame.inst.GetArea(currentTurn);
-        Log.inst.NewDecisionContainer(() => card.thisCard.DoInstructions(player, currentTurn, 0));
+        Card thisArea = CreateGame.inst.GetArea(currentTurn);
         Log.inst.NewDecisionContainer(() => PlayCards(player, currentTurn));
+        Log.inst.NewDecisionContainer(() => thisArea.thisCard.DoInstructions(player, currentTurn, 0));
     }
     void PlayCards(Player player, int area)
     {
@@ -38,16 +38,16 @@ public class VisitArea : Turn
         if (canPlay.Count == 0) return;
 
         MakeDecision.inst.ChooseCardOnScreen(canPlay, AutoTranslate.Ask_Play(), PlayThis, false);
-        MakeDecision.inst.ChooseTextButton(new() {new TextButtonInfo(AutoTranslate.Decline(), EndTurn)}, AutoTranslate.Ask_Play(), false);
+        MakeDecision.inst.ChooseTextButton(new() {new TextButtonInfo(AutoTranslate.Decline(), NoPlay)}, AutoTranslate.Ask_Play(), false);
 
         void PlayThis(Card card)
         {
             PlayCard(player, card, area, 1);
             Log.inst.NewDecisionContainer(() => PlayCards(player, area));
         }
-        void EndTurn()
+        void NoPlay()
         {
-            Log.inst.AddMyText(true, OnlineTranslate.Online_End_Turn(player.name));            
+            Log.inst.AddMyText(true, OnlineTranslate.Online_No_Play(player.name));            
         }
     }
     public override void MasterEnd()

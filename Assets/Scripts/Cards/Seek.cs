@@ -9,7 +9,12 @@ public class Seek : CardType
     }
     public override void DoInstructions(Player player, int thisArea, int logged)
     {
-        if (player.GetDoneThisTurn(ThisTurn.CoinsGained) >= 5)
-            ForceAdvance(player, logged, 1);
+        int total = 0;
+        foreach (int num in player.GetDoneThisTurn(NumThisTurn.CoinsGained))
+            total+=num;
+        if (total >= 5)
+            ChooseAddScout(player, logged, 2);
+        else
+        Log.inst.AddMyText(false, OnlineTranslate.Online_Miss_Ability(player.name, this.dataFile.cardName), logged);                
     }
 }

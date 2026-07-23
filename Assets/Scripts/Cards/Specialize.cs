@@ -12,15 +12,15 @@ public class Specialize : CardType
         if (canPlay.Count == 0) return;
 
         MakeDecision.inst.ChooseCardOnScreen(canPlay, AutoTranslate.Ask_Play(), PlayThis, false);
-        MakeDecision.inst.ChooseTextButton(new() {new TextButtonInfo(AutoTranslate.Decline(), EndTurn)}, AutoTranslate.Ask_Play(), false);
+        MakeDecision.inst.ChooseTextButton(new() {new TextButtonInfo(AutoTranslate.Decline(), NoPlay)}, AutoTranslate.Ask_Play(), false);
 
         void PlayThis(Card card)
         {
             PlayCard(player, card, thisArea, logged, 2, false);
         }
-        void EndTurn()
+        void NoPlay()
         {
-            Log.inst.AddMyText(true, OnlineTranslate.Online_Decline_Ability(player.name, this.dataFile.cardName));            
+            Log.inst.AddMyText(true, OnlineTranslate.Online_Miss_Ability(player.name, this.dataFile.cardName));            
         }
     }
 }
