@@ -13,8 +13,8 @@ public class Seek : CardType
         foreach (int num in player.GetDoneThisTurn(NumThisTurn.CoinsGained))
             total+=num;
         if (total >= 5)
-            ChooseAddScout(player, logged, 2);
+            player.ScoutRPC(2, thisArea, logged);
         else
-        Log.inst.AddMyText(false, OnlineTranslate.Online_Miss_Ability(player.name, this.dataFile.cardName), logged);                
+            Log.inst.AddMyText(false, OnlineTranslate.Online_Miss_Ability(player.name, this.dataFile.cardName), logged);                
     }
 }

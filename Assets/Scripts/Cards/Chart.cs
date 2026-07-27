@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using UnityEngine;
 
 public class Chart : CardType
@@ -8,10 +9,10 @@ public class Chart : CardType
     public override void DoInstructions(Player player, int thisArea, int logged)
     {
         ChooseDiscard(player, this.dataFile.cardName, false, logged, 1, Reward);
-        void Reward(int num)
+        void Reward(List<Card> discarded)
         {
-            if (num == 1)
-                ChooseAdvance(player, logged, 1);
+            if (discarded.Count == 1)
+                ChooseAdvance(player, this.dataFile.cardName, logged, 1);
         }
     }
 }

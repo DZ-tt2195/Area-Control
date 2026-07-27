@@ -7,8 +7,8 @@ Parry	 +1 ScoutIcon in one Area you Control, and +1 ScoutIcon in one Area you do
 Analyze	If you spent 3 ActionIcon or more this turn, +2 CardIcon.	3	1	Martin Hoffmann \nDominion: Seaside \n(Tactician)	CareTurn, DrawCard	TRUE
 Continue	If you drew 2 CardIcon or more this turn, +2 ActionIcon.	3	1	Marcel-Andre Casasola Merkle \nDominion: Seaside \n(Caravan)	AddAction, CareTurn	TRUE
 Specialize	You may play 1 CardIcon, repeating its instructions (not the TroopIcon).	4	1	Claus Stephan \nDominion: Allies \n(Specialist)	AddAction	TRUE
-Transport	You may spend 1 ActionIcon for +1 TroopIcon.	3	2	Elisa Cella \nDominion: Rising Sun \n(Riverboat)	LoseAction, AdvanceTroop	TRUE
 Report	You may remove 2 ScoutIcon for +2 ActionIcon.	3	2	Julien Delval \nDominion: Hinterlands \n(Scheme)	LoseScout, AddAction	TRUE
+Transport	You may spend 1 ActionIcon for +1 TroopIcon.	3	2	Elisa Cella \nDominion: Rising Sun \n(Riverboat)	LoseAction, AdvanceTroop	TRUE
 Raid	 +2 CoinIcon per Area you Control.	4	2	Jesse Mead \nDominion: Adventures \n(Raid)	AddCoin, CareControl	TRUE
 Train	 +1 ScoutIcon per Area you Control.	4	2	Zoltan Boros \nMTG: Guilds of Ravnica \n(Blade Instructor)	AddScout, CareControl	TRUE
 Launch	If you have 5 CardIcon or more in hand, +1 ActionIcon.	5	2	Simon Jannerland \nDominion: Seaside \n(Wharf)	AddAction	TRUE
@@ -18,14 +18,14 @@ Collaborate	 +1 ScoutIcon per 2 ScoutIcon you have (round down).	7	2	Hans Krill 
 Survey	You may spend 1 ActionIcon for +1 CardIcon.	6	3	Claus Stephan \nDominion: Adventures \n(Ranger)	LoseAction, DrawCard	TRUE
 Chart	You may discard 1 CardIcon for +1 TroopIcon.	7	3	Ryan Laukat \nDominion \n(Adventurer)	DiscardCard, AdvanceTroop	TRUE
 Visit	You may remove 1 ScoutIcon to get this Area's Travel Bonus.	7	3	Claus Stephan \nDominion \n(Village)	TravelBonus, LoseScout	TRUE
-Seek	If you gained 5 CoinIcon or more this turn, +2 ScoutIcon.	8	3	Claus Stephan \nDominion: Seaside \n(Pirate)	CareTurn, AddScout	TRUE
+Seek	If you gained 5 CoinIcon or more this turn, +2 ScoutIcon, both in this Area.	8	3	Claus Stephan \nDominion: Seaside \n(Pirate)	CareTurn, AddScout	TRUE
 Direct	 +1 ActionIcon per Area you Control.	9	3	Julien Delval \nDominion: Plunder \n(First Mate)	AddAction, CareControl	TRUE
 Plan	 +1 CardIcon per Area you Control.	9	3	Harald Lieske \nDominion: Allies \n(Battle Plan)	DrawCard, CareControl	TRUE
 Explore	 +1 ScoutIcon in each Area you have 0 TroopIcon in.	10	3	Anthony Palumbo \nMTG: Ixalan \n(Seekers' Squire)	AddScout, CareTroop	TRUE
-Invest	 +1 CoinIcon per CoinIcon you have (after paying to play this).	10	3	Grant Hansen \nDominion: Plunder \n(Doubloons)	AddCoin	TRUE
+Invest	 +1 CoinIcon per CoinIcon you have (after paying to play this).	12	3	Grant Hansen \nDominion: Plunder \n(Doubloons)	AddCoin	TRUE
 Balance	 +1 CoinIcon per TroopIcon you have in Area 2 or 3, whichever has less.	13	4	Bastien L. Deharme \nMTG: Ixalan \n(Axis of Mortality)	AddCoin, CareTroop	TRUE
 Demand	For each Area you control, get its Travel Bonus.	13	4	Grant Hansen \nDominion: Rising Sun \n(Receive Tribute)	TravelBonus, CareControl	TRUE
 March	 +1 TroopIcon per Area you Control.	14	4	Lorraine Fajardo \nDominion: Cornucopia \n(Followers)	AdvanceTroop, CareControl	TRUE
 Experiment	Draw until you have 3 CardIcon in hand.	15	4	Jason Slavin \nDominion: Renaissance \n(Experiment)	DrawCard	TRUE
 Oversee	Set your ActionIcon to 2.	15	4	Ryan Pancoast \nMTG: Ikoria: Lair of Behemoths \n(General Kudro of Drannith)	AddAction	TRUE
-Infiltrate	 +3 ScoutIcon all in one Area.	16	4	Elisa Cella \nDominion: Rising Sun \n(Ninja)	AddScout	TRUE
+Infiltrate	 +3 ScoutIcon, all in one Area.	16	4	Elisa Cella \nDominion: Rising Sun \n(Ninja)	AddScout	TRUE

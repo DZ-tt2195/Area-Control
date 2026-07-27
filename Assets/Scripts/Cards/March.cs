@@ -7,6 +7,6 @@ public class March : CardType
     }
     public override void DoInstructions(Player player, int thisArea, int logged)
     {
-        ChooseAdvance(player, logged, CreateGame.inst.AllControl(player, true).Count);
+        ChooseAdvance(player, this.dataFile.cardName, logged, CreateGame.inst.AllControl(player, true).Count);
     }
 }

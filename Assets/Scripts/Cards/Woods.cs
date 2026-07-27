@@ -12,12 +12,12 @@ public class Woods : CardType
         if (player.GetScouts()[thisArea] >= 1)
         {
             List<TextButtonInfo> textButtonInfos = new() {new(AutoTranslate.Confirm(), DidIt), new(AutoTranslate.Decline(), DidNot)};
-            MakeDecision.inst.ChooseTextButton(textButtonInfos, AutoTranslate.Ask_Remove());
+            MakeDecision.inst.ChooseTextButton(textButtonInfos, AutoTranslate.Ask_Remove(Translator.inst.Translate(this.dataFile.cardName)));
             
             void DidIt()
             {
                 player.ScoutRPC(-1, thisArea, logged);
-                ChooseAdvance(player, logged, 1);
+                ChooseAdvance(player, this.dataFile.cardName, logged, 1);
             }
             void DidNot()
             {

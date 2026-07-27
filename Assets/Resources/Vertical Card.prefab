@@ -440,7 +440,7 @@ GameObject:
   - component: {fileID: 7691344747110982220}
   - component: {fileID: 2697119288209658759}
   m_Layer: 0
-  m_Name: Image
+  m_Name: Face Down
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

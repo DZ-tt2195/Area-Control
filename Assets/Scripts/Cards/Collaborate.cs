@@ -11,6 +11,6 @@ public class Collaborate : CardType
     public override void DoInstructions(Player player, int thisArea, int logged)
     {
         int allScouts = MyExtensions.SumOfArray(player.GetScouts());
-        ChooseAddScout(player, logged, Mathf.FloorToInt(allScouts/2f));
+        ChooseAddScout(player, this.dataFile.cardName, logged, Mathf.FloorToInt(allScouts/2f));
     }
 }

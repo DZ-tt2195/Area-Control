@@ -151,8 +151,8 @@ RectTransform:
   m_Children: []
   m_Father: {fileID: 593920748}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 0.2717908}
+  m_AnchorMax: {x: 1, y: 0.7282092}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 20, y: 20}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -4925,7 +4925,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &495590935
 RectTransform:
   m_ObjectHideFlags: 0
@@ -5473,7 +5473,7 @@ RectTransform:
   m_Father: {fileID: 1634582741}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 20, y: 20}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -7349,7 +7349,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &674736714
 RectTransform:
   m_ObjectHideFlags: 0
@@ -13617,7 +13617,7 @@ MonoBehaviour:
   m_text: Option A
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 31e79ddad7b2d41c395ada76a18cbcdd, type: 2}
-  m_sharedMaterial: {fileID: -3852492252101762229, guid: 8c64c47af7c1c4fb5b88d184433c6c44, type: 2}
+  m_sharedMaterial: {fileID: -3852492252101762229, guid: 31e79ddad7b2d41c395ada76a18cbcdd, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -15610,7 +15610,7 @@ MonoBehaviour:
   m_HandleRect: {fileID: 1905485010}
   m_Direction: 2
   m_Value: 0
-  m_Size: 0.76
+  m_Size: 1
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
@@ -18266,7 +18266,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: +1 <link="CardIcon"><sprite="CardIcon" name="CardIcon">
+  m_text: +1 <link="Actionicon"><sprite="ActionIcon" name="ActionIcon">
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 31e79ddad7b2d41c395ada76a18cbcdd, type: 2}
   m_sharedMaterial: {fileID: -3852492252101762229, guid: 31e79ddad7b2d41c395ada76a18cbcdd, type: 2}
@@ -18293,7 +18293,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 100
+  m_fontSize: 94.55
   m_fontSizeBase: 20
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -20260,7 +20260,7 @@ RectTransform:
   m_Father: {fileID: 1073482125}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 1, y: 0.76}
+  m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 20, y: 20}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -21253,7 +21253,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -850, y: 836}
+  m_AnchoredPosition: {x: -643, y: 1118}
   m_SizeDelta: {x: 300, y: 75}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1970410456
@@ -21641,7 +21641,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: +1 <link="ActionIcon"><sprite="ActionIcon" name="ActionIcon">
+  m_text: +1 <link="CardIcon"><sprite="CardIcon" name="CardIcon">
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 31e79ddad7b2d41c395ada76a18cbcdd, type: 2}
   m_sharedMaterial: {fileID: -3852492252101762229, guid: 31e79ddad7b2d41c395ada76a18cbcdd, type: 2}
@@ -21668,7 +21668,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 94.55
+  m_fontSize: 100
   m_fontSizeBase: 20
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -22258,15 +22258,16 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "Each Round: \n1. Redetermine who Controls each Area (highest total of
-    <link=\"TroopIcon\"><sprite=\"Troopicon\" name=\"Troopicon\"> + <link=\"ScoutIcon\"><sprite=\"ScoutIcon\"
-    name=\"ScoutIcon\">).\n2. Visit the next Area and get its Travel Bonus. \n3.
-    Follow the Area's instructions. \n4. You may spend <link=\"ActionIcon\"><sprite=\"ActionIcon\"
-    name=\"ActionIcon\"> to play <link=\"CardIcon\"><sprite=\"CardIcon\" name=\"CardIcon\">
-    from your hand (paying its <link=\"CoinIcon\"><sprite=\"CoinIcon\" name=\"CoinIcon\">
-    cost). \n5. If a player has all their <link=\"TroopIcon\"><sprite=\"Troopicon\"
-    name=\"Troopicon\"> in Area 4 (<link=\"ScoutIcon\"><sprite=\"ScoutIcon\" name=\"ScoutIcon\">
-    doesn't matter), they win."
+  m_text: 'Each Round: \n1. Redetermine who Controls each Area (highest total of
+    <link="TroopIcon"><sprite="Troopicon" name="Troopicon"> + <link="ScoutIcon"><sprite="ScoutIcon"
+    name="ScoutIcon">). \n2. All players move to the next Area and get its Travel
+    Bonus. \n3. You may repeatedly spend <link="ActionIcon"><sprite="ActionIcon"
+    name="ActionIcon"> to play <link="CardIcon"><sprite="CardIcon" name="CardIcon">
+    from your hand (paying its <link="CoinIcon"><sprite="CoinIcon" name="CoinIcon">
+    cost). \n4. Once you''ve stopped playing, follow the Area''s instructions. \n5.
+    If a player has all their <link="TroopIcon"><sprite="Troopicon" name="Troopicon">
+    in Area 4 (<link="ScoutIcon"><sprite="ScoutIcon" name="ScoutIcon"> doesn''t matter),
+    they win.'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 31e79ddad7b2d41c395ada76a18cbcdd, type: 2}
   m_sharedMaterial: {fileID: -3852492252101762229, guid: 31e79ddad7b2d41c395ada76a18cbcdd, type: 2}
@@ -22293,7 +22294,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 79.7
+  m_fontSize: 72.4
   m_fontSizeBase: 36
   m_fontWeight: 400
   m_enableAutoSizing: 1

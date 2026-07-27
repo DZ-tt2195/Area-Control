@@ -21,7 +21,7 @@ public class Parry : CardType
                 return;
             } 
 
-            MakeDecision.inst.ChooseDisplayOnScreen(canAdd, AutoTranslate.Force_Add(1.ToString(), 1.ToString()), AddMe);
+            MakeDecision.inst.ChooseDisplayOnScreen(canAdd, AutoTranslate.Force_Add(Translator.inst.Translate(this.dataFile.cardName), 1.ToString(), 1.ToString()), AddMe);
             void AddMe((int area, int troops, int scouts) display)
             {
                 player.ScoutRPC(1, display.area, logged);

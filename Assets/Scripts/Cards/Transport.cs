@@ -14,7 +14,7 @@ public class Transport : CardType
         void Reward(bool didIt)
         {
             if (didIt)
-                ChooseAdvance(player, logged, 1);
+                ChooseAdvance(player, this.dataFile.cardName, logged, 1);
         }
     }
 }

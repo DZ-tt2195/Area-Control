@@ -15,7 +15,7 @@ public class Pasture : CardType
     void ScoutSlider(Player player, int thisArea, int logged)
     {
         List<int> numbers = MakeDecision.NumbersInOrder(0, player.GetScouts()[thisArea]);
-        MakeDecision.inst.ChooseFromSlider(numbers, AutoTranslate.Ask_Remove(), Removed);
+        MakeDecision.inst.ChooseFromSlider(numbers, AutoTranslate.Ask_Remove(Translator.inst.Translate(this.dataFile.cardName)), Removed);
 
         void Removed(int num)
         {

@@ -10,6 +10,7 @@ public static string Online_Next_Turn (string Area) => $"Online_Next_Turn\tArea\
 public static string Online_Add_Resource (string Player,string Num,string Resource) => $"Online_Add_Resource\tPlayer\t{Player}\tNum\t{Num}\tResource\t{Resource}";
 public static string Online_Lose_Resource (string Player,string Num,string Resource) => $"Online_Lose_Resource\tPlayer\t{Player}\tNum\t{Num}\tResource\t{Resource}";
 public static string Online_Advance_Troop (string Player,string Num,string Num1,string Num2) => $"Online_Advance_Troop\tPlayer\t{Player}\tNum\t{Num}\tNum1\t{Num1}\tNum2\t{Num2}";
+public static string Online_Fail_Advance (string Player) => $"Online_Fail_Advance\tPlayer\t{Player}";
 public static string Online_Retreat_Troop (string Player,string Num,string Num1,string Num2) => $"Online_Retreat_Troop\tPlayer\t{Player}\tNum\t{Num}\tNum1\t{Num1}\tNum2\t{Num2}";
 public static string Online_Add_Scout (string Player,string Num,string AreaNum) => $"Online_Add_Scout\tPlayer\t{Player}\tNum\t{Num}\tAreaNum\t{AreaNum}";
 public static string Online_Remove_Scout (string Player,string Num,string AreaNum) => $"Online_Remove_Scout\tPlayer\t{Player}\tNum\t{Num}\tAreaNum\t{AreaNum}";

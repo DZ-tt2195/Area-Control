@@ -15,6 +15,6 @@ public class Safeguard : CardType
                 return;
             }
         }
-        ChooseAdvance(player, logged, 1);
+        ChooseAdvance(player, this.dataFile.cardName, logged, 1);
     }
 }

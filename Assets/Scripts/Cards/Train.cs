@@ -7,6 +7,6 @@ public class Train : CardType
     }
     public override void DoInstructions(Player player, int thisArea, int logged)
     {
-        ChooseAddScout(player, logged, CreateGame.inst.AllControl(player, true).Count);
+        ChooseAddScout(player, this.dataFile.cardName, logged, CreateGame.inst.AllControl(player, true).Count);
     }
 }

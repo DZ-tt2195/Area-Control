@@ -1,16 +1,21 @@
 cardName	textBox	artCredit	notes	coded
-Barracks	If you have the same number of TroopIcon and ScoutIcon here (it could be 0), +1 CardIcon.	Martin Hoffmann \nDominion: Renaissance \n(Barracks)	CareTroop, DrawCard, CareScout	TRUE
-Battlefield	If you don't Control this, +1 CardIcon and -1 TroopIcon.	Harald Lieske \nDominion: Allies \n(Territory)	DrawCard, RetreatTroop, CareControl	TRUE
-Camp	If this is the Area you have the most ScoutIcon in, +1 ActionIcon.	Garret DeChellis \nDominion: Allies \n(Tent)	CareScout, AddAction	TRUE
-Canal	If this turn, you advanced at least 1 TroopIcon either into or out of this Area, +1 CardIcon.	Joshua Stewart \nDominion: Renaissance \n(Canal)	CareTroop, DrawCard, CareTurn	TRUE
-Castle	If you Control this while having 0 TroopIcon and/or 0 ScoutIcon in it, +4 CoinIcon.	Julien Delval \nDominion: Empires \n(Opulent Castle)	AddCoin, CareControl, CareTroop, CareScout	TRUE
-City	If you Control this, +1 ActionIcon per 2 CardIcon in your hand (round down).	Lynell Ingram \nDominion: Allies \n(Capital City)	AddAction, CareControl	TRUE
+Barracks	-1 TroopIcon. If you do, +1 ScoutIcon in this Area, and +1 ScoutIcon in that TroopIcon's current Area.	Martin Hoffmann \nDominion: Renaissance \n(Barracks)	RetreatTroop, AddScout	TRUE
+Battlefield	If you don't Control this, +1 ActionIcon and -1 TroopIcon.	Harald Lieske \nDominion: Allies \n(Territory)	AddAction, RetreatTroop, CareControl	TRUE
+Camp	If this is the Area you have the most ScoutIcon in, +2 ScoutIcon, both in a different Area.	Garret DeChellis \nDominion: Allies \n(Tent)	CareScout, AddScout	TRUE
+Canal	If this turn, one of your TroopIcon either left or entered this Area, +1 CardIcon.	Joshua Stewart \nDominion: Renaissance \n(Canal)	CareTroop, DrawCard, CareTurn	TRUE
+Castle	If you Control this while having 0 TroopIcon or 0 ScoutIcon here, +4 CoinIcon.	Julien Delval \nDominion: Empires \n(Opulent Castle)	AddCoin, CareControl, CareTroop, CareScout	TRUE
+City	If you Control this, you may discard 1 CardIcon for +2 ActionIcon.	Lynell Ingram \nDominion: Allies \n(Capital City)	CareControl, DiscardCard, AddAction	TRUE
+Desert	-2 ScoutIcon. If you removed exactly 1 ScoutIcon from here, +2 CardIcon.	Jim Nelson \nMTG: Planechase Plains \n(Sea of Sand)	LoseScout, CareScout, DrawCard	TRUE
 Farmland	If you Control this, +2 CoinIcon per ActionIcon you have.	Eric J. Carter \nDominion: Hinterlands \n(Farmland)	AddCoin, CareControl	TRUE
-Garrison	You may pay 3 CoinIcon for +1 ScoutIcon in each other Area.	Garret DeChellis \nDominion: Allies \n(Garrison)	LoseCoin, AddScout	TRUE
-Gate	 +1 TroopIcon per 3 ScoutIcon you have here (round down).	Harald Lieske \nDominion: Renaissance \n(City Gate)	AdvanceTroop, CareScout	TRUE
+Garrison	You may pay 4 CoinIcon for +1 ScoutIcon in each other Area.	Garret DeChellis \nDominion: Allies \n(Garrison)	LoseCoin, AddScout	TRUE
+Gate	If you Control this, you may pay 4 CoinIcon for +2 TroopIcon.	Harald Lieske \nDominion: Renaissance \n(City Gate)	CareControl, LoseCoin, AdvanceTroop	TRUE
+Inn	If you have the same number of TroopIcon and ScoutIcon here (it could be 0), +1 ActionIcon.	Allen Morris \nMTG: Final Fantasy \n(Adventurer's Inn)	CareTroop, AddAction, CareScout	TRUE
 Island	If you have 4 TroopIcon or more here, +1 TroopIcon from Area 1.	Franz Vohwinkel \nDominion: Seaside \n(Island)	AdvanceTroop, CareTroop	TRUE
+Laboratory	For each ScoutIcon you have here, +1 ActionIcon and -1 CoinIcon.	John Stanko \nMTG: Innistrad \n(Rooftop Storm)	CareScout, AddAction, LoseCoin	TRUE
 Mine	You may spend 1 ActionIcon, for +1 CoinIcon per TroopIcon you have here.	Claus Stephan \nDominion \n(Mine)	LoseAction, AddCoin, CareTroop	TRUE
-Passage	If you have 2 TroopIcon or less here, +1 ActionIcon.	Marcel-Andre Casasola Merkle \nDominion: Intrigue \n(Secret Passage)	AddAction, CareTroop	TRUE
+Mountain	If you Control this, +1 CardIcon per 2 CardIcon in your hand (round down).	Chris Rahn \nMTG: Magic Origins \n(Animist's Awakening)	DrawCard, CareControl	TRUE
+Passage	If you have 2 TroopIcon or less here, +1 CardIcon.	Marcel-Andre Casasola Merkle \nDominion: Intrigue \n(Secret Passage)	DrawCard, CareTroop	FALSE
 Pasture	 +1 ScoutIcon here. Then remove any amount of your ScoutIcon here for +2 CoinIcon each.	Matthias Catrein \nDominion: Nocturne \n(Pasture)	AddScout, LoseScout, AddCoin	TRUE
+Thoroughfare	 +1 TroopIcon per 3 ScoutIcon you have here (round down).	Claus Stephan \nDominion: Empires \n(Triumphal Arch)	AdvanceTroop, CareScout	TRUE
 Trail	You may retreat 1 TroopIcon to get this Area's Travel Bonus twice.	Marcel-Andre Casasola Merkle \nDominion: Hinterlands \n(Trail)	RetreatTroop, TravelBonus	TRUE
 Woods	You may remove 1 ScoutIcon from here for +1 TroopIcon.	Kurt Miller \nDominion: Adventures \n(Haunted Woods)	LoseScout, AdvanceTroop	TRUE

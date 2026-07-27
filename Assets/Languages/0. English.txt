@@ -1,5 +1,5 @@
 Game_Designer	by Thomas Tang (DZ)
-Last_Update	Last Updated: July 23, 2026
+Last_Update	Last Updated: July 26, 2026
 Blank	
 Translator_Credit	Original Language
 Language	Language
@@ -54,9 +54,9 @@ Short	Short
 Long	Long
 Switch_Player	Switch Player
 Rules	Rules
-Rules_Summary	Each Round: \n1. Redetermine who Controls each Area (highest total of TroopIcon + ScoutIcon). \n2. All players move to the next Area and get its Travel Bonus. \n3. You may repeatedly spend ActionIcon to play CardIcon from your hand (paying its CoinIcon cost). \n4. Follow the Area's instructions. \n5. If a player has all their TroopIcon in Area 4 (ScoutIcon doesn't matter), they win.
+Rules_Summary	Each Round: \n1. Redetermine who Controls each Area (highest total of TroopIcon + ScoutIcon). \n2. All players move to the next Area and get its Travel Bonus. \n3. You may repeatedly spend ActionIcon to play CardIcon from your hand (paying its CoinIcon cost). \n4. Once you've stopped playing, follow the Area's instructions. \n5. If a player has all their TroopIcon in Area 4 (ScoutIcon doesn't matter), they win.
 Travel_Bonus	Travel Bonus
-Travel_Bonus_Text	Area 1: +1 ActionIcon; Area 2: +3 CoinIcon; Area 3: +1 CardIcon; Area 4: +3 CoinIcon
+Travel_Bonus_Text	Area 1: +1 CardIcon; Area 2: +3 CoinIcon; Area 3: +1 ActionIcon; Area 4: +3 CoinIcon
 CardIcon	CardIcon
 CoinIcon	CoinIcon
 ActionIcon	ActionIcon
@@ -68,24 +68,23 @@ Control_Text	Most TroopIcon + ScoutIcon in an Area.
 Online_Next_Turn	Visiting $Area$
 Online_Add_Resource	$Player$ gains $Num$ $Resource$.
 Online_Lose_Resource	$Player$ loses $Num$ $Resource$.
-Force_Advance	Advance TroopIcon ($Num1$ / $Num2$).
-Ask_Advance	Advance TroopIcon?
+Force_Advance	$Card$: Advance TroopIcon ($Num1$ / $Num2$).
+Ask_Advance	$Card$: Advance TroopIcon?
 Online_Advance_Troop	$Player$ advances $Num$ TroopIcon from Area $Num1$ to $Num2$.
-Fail_Advance	$Player$ can't advance any TroopIcon.
-Force_Retreat	Retreat TroopIcon ($Num1$ / $Num2$).
-Ask_Retreat	Retreat TroopIcon?
+Online_Fail_Advance	$Player$ can't advance any TroopIcon.
+Force_Retreat	$Card$: Retreat TroopIcon ($Num1$ / $Num2$).
+Ask_Retreat	$Card$: Retreat TroopIcon?
 Online_Retreat_Troop	$Player$ retreats $Num$ TroopIcon from Area $Num1$ to $Num2$.
-Ask_Pay	Pay $Num$ $Resource$?
-Force_Add	Add ScoutIcon ($Num1$ / $Num2$).
-Ask_Add	Add ScoutIcon?
+Ask_Pay	$Card$: Pay $Num$ $Resource$?
+Force_Add	$Card$: Add ScoutIcon ($Num1$ / $Num2$).
 Online_Add_Scout	$Player$ adds $Num$ ScoutIcon to Area $AreaNum$.
-Force_Remove	Remove ScoutIcon ($Num1$ / $Num2$).
-Ask_Remove	Remove ScoutIcon?
+Force_Remove	$Card$: Remove ScoutIcon ($Num1$ / $Num2$).
+Ask_Remove	$Card$: Remove ScoutIcon?
 Online_Remove_Scout	$Player$ removes $Num$ ScoutIcon from Area $AreaNum$.
 Online_Draw_Card	$Player$ draws $Card$.
 Online_Draw_Card_Others	$Player$ draws 1 CardIcon.
-Force_Discard	Discard CardIcon ($Num1$ / $Num2$).
-Ask_Discard	Discard CardIcon?
+Force_Discard	$Card$: Discard CardIcon ($Num1$ / $Num2$).
+Ask_Discard	$Card$: Discard CardIcon?
 Online_Discard_Card	$Player$ discards $Card$.
 Online_Discard_Card_Others	$Player$ discards 1 CardIcon.
 Ask_Play	Play CardIcon?
@@ -151,21 +150,19 @@ Parry_Text	 +1 ScoutIcon in one Area you Control, and +1 ScoutIcon in one Area y
 Farmland	Farmland
 Farmland_Text	If you Control this, +2 CoinIcon per ActionIcon you have.
 Garrison	Garrison
-Garrison_Text	You may pay 3 CoinIcon for +1 ScoutIcon in each other Area.
-City	City
-City_Text	If you Control this, +1 ActionIcon per 2 CardIcon in your hand (round down).
+Garrison_Text	You may pay 4 CoinIcon for +1 ScoutIcon in each other Area.
 Battlefield	Battlefield
-Battlefield_Text	If you don't Control this, +1 CardIcon and -1 TroopIcon.
+Battlefield_Text	If you don't Control this, +1 ActionIcon and -1 TroopIcon.
 Island 	Island
 Island_Text	If you have 4 TroopIcon or more here, +1 TroopIcon from Area 1.
 Passage	Passage
-Passage_Text	If you have 2 TroopIcon or less here, +1 ActionIcon.
+Passage_Text	If you have 2 TroopIcon or less here, +1 CardIcon.
 Mine	Mine
 Mine_Text	You may spend 1 ActionIcon, for +1 CoinIcon per TroopIcon you have here.
 Pasture	Pasture
 Pasture_Text	 +1 ScoutIcon here. Then remove any amount of your ScoutIcon here for +2 CoinIcon each.
-Gate	Gate
-Gate_Text	 +1 TroopIcon per 3 ScoutIcon you have here (round down).
+Thoroughfare	Thoroughfare
+Thoroughfare_Text	 +1 TroopIcon per 3 ScoutIcon you have here (round down).
 Visit	Visit
 Visit_Text	You may remove 1 ScoutIcon to get this Area's Travel Bonus.
 Demand	Demand
@@ -179,13 +176,13 @@ Specialize_Text	You may play 1 CardIcon, repeating its instructions (not the Tro
 Assemble	Assemble
 Assemble_Text	 +1 CoinIcon per TroopIcon you advanced this turn (including the TroopIcon from this).
 Camp	Camp
-Camp_Text	If this is the Area you have the most ScoutIcon in, +1 ActionIcon.
-Barracks	Barracks
-Barracks_Text	If you have the same number of TroopIcon and ScoutIcon here (it could be 0), +1 CardIcon.
+Camp_Text	If this is the Area you have the most ScoutIcon in, +2 ScoutIcon, both in a different Area.
+Inn	Inn
+Inn_Text	If you have the same number of TroopIcon and ScoutIcon here (it could be 0), +1 ActionIcon.
 Analyze	Analyze
 Analyze_Text	If you spent 3 ActionIcon or more this turn, +2 CardIcon.
 Infiltrate	Infiltrate
-Infiltrate_Text	 +3 ScoutIcon all in one Area.
+Infiltrate_Text	 +3 ScoutIcon, all in one Area.
 Ponder	Ponder
 Ponder_Text	If you have 0 CoinIcon, +1 CardIcon.
 Safeguard	Safeguard
@@ -193,14 +190,26 @@ Safeguard_Text	If you have at least 1 ScoutIcon in each Area, +1 TroopIcon.
 Collaborate	Collaborate
 Collaborate_Text	 +1 ScoutIcon per 2 ScoutIcon you have (round down).
 Seek	Seek
-Seek_Text	If you gained 5 CoinIcon or more this turn, +2 ScoutIcon.
+Seek_Text	If you gained 5 CoinIcon or more this turn, +2 ScoutIcon, both in this Area.
 Oversee	Oversee
 Oversee_Text	Set your ActionIcon to 2.
 Trade	Trade
 Trade_Text	You may discard 1 CardIcon for +5 CoinIcon.
 Castle	Castle
-Castle_Text	If you Control this while having 0 TroopIcon and/or 0 ScoutIcon in it, +4 CoinIcon.
+Castle_Text	If you Control this while having 0 TroopIcon or 0 ScoutIcon here, +4 CoinIcon.
 Woods	Woods
 Woods_Text	You may remove 1 ScoutIcon from here for +1 TroopIcon.
 Canal	Canal
-Canal_Text	If this turn, you advanced at least 1 TroopIcon either into or out of this Area, +1 CardIcon.
+Canal_Text	If this turn, one of your TroopIcon either left or entered this Area, +1 CardIcon.
+Desert	Desert
+Desert_Text	-2 ScoutIcon. If you removed exactly 1 ScoutIcon from here, +2 CardIcon.
+Laboratory	Laboratory
+Laboratory_Text	For each ScoutIcon you have here, +1 ActionIcon and -1 CoinIcon.
+Barracks	Barracks
+Barracks_Text	-1 TroopIcon. If you do, +1 ScoutIcon in this Area, and +1 ScoutIcon in that TroopIcon's current Area.
+City	City
+City_Text	If you Control this, you may discard 1 CardIcon for +2 ActionIcon.
+Gate	Gate
+Gate_Text	If you Control this, you may pay 4 CoinIcon for +2 TroopIcon.
+Mountain	Mountain
+Mountain_Text	If you Control this, +1 CardIcon per 2 CardIcon in your hand (round down).

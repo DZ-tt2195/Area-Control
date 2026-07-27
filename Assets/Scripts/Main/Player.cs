@@ -438,7 +438,6 @@ public class Player : PhotonCompatible
 
         if (uiDictionary[ConstantStrings.MyHand])
         {
-            if (this.transform.parent != null && !forcedUpdate) AudioManager.instance.Card();
             List<Vector2> handPositions = ObjectPositions(myHand.Count, -1125, 475, 225, -550, true);
             for (int i = 0; i < myHand.Count; i++)
             {
@@ -472,12 +471,15 @@ public class Player : PhotonCompatible
         if (uiDictionary[ConstantStrings.MyHand] || uiDictionary[ConstantStrings.MyActions] || uiDictionary[ConstantStrings.MyCoins] || uiDictionary[ConstantStrings.MyScouts] || uiDictionary[ConstantStrings.MyTroops])
             CreateGame.inst.UpdatePlayerUI(this, $"{this.name}: {myHand.Count} {AutoTranslate.CardIcon()}, {myActions} {AutoTranslate.ActionIcon()}, {myCoins} {AutoTranslate.CoinIcon()}");
 
-        if (uiDictionary[ConstantStrings.MyTroops] || uiDictionary[ConstantStrings.MyScouts])
-            AudioManager.instance.TroopScout();
-        
-        if (uiDictionary[ConstantStrings.MyCoins] || uiDictionary[ConstantStrings.MyActions])
-            AudioManager.instance.CoinAction();
-
+        if (this.transform.parent != null && !forcedUpdate) 
+        {
+            if (uiDictionary[ConstantStrings.MyHand])
+                AudioManager.instance.Card();
+            if (uiDictionary[ConstantStrings.MyTroops] || uiDictionary[ConstantStrings.MyScouts])
+                AudioManager.instance.TroopScout();
+            if (uiDictionary[ConstantStrings.MyCoins] || uiDictionary[ConstantStrings.MyActions])
+                AudioManager.instance.CoinAction();
+        }
         foreach (var key in uiKeys)
             uiDictionary[key] = false;
     }

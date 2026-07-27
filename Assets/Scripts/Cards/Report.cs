@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using UnityEngine;
 
 public class Report : CardType
@@ -8,9 +9,9 @@ public class Report : CardType
     public override void DoInstructions(Player player, int thisArea, int logged)
     {
         ChooseRemoveScout(player, this.dataFile.cardName, false, logged, 2, Reward);
-        void Reward(int num)
+        void Reward(List<int> removed)
         {
-            if (num == 2)
+            if (removed.Count == 2)
                 player.ActionRPC(2, logged);
         }
     }

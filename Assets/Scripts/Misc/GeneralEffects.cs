@@ -8,22 +8,22 @@ public class GeneralEffects
 {
 
 #region New Decision
-    public void ChooseDiscard(Player player, string cardName, bool firstMandatory, int logged, int maxNum, Action<int> whenDone = null)
+    public void ChooseDiscard(Player player, string cardName, bool firstMandatory, int logged, int maxNum, Action<List<Card>> whenDone = null)
     {
         if (maxNum > 1)
-            Log.inst.NewDecisionContainer(() => DoDiscard(firstMandatory, 0));
+            Log.inst.NewDecisionContainer(() => DoDiscard(firstMandatory, new()));
         
-        void DoDiscard(bool mandatory, int currentNum)
+        void DoDiscard(bool mandatory, List<Card> currentDiscards)
         {
             List<Card> canDiscard = player.GetHand();
             if (canDiscard.Count < maxNum)
             {
                 if (mandatory) DidNot();
-                else whenDone.Invoke(currentNum);
+                else whenDone.Invoke(currentDiscards);
                 return;
             }
 
-            string instructionText = mandatory ? AutoTranslate.Force_Discard(currentNum+1.ToString(), maxNum.ToString()) : AutoTranslate.Ask_Discard();
+            string instructionText = mandatory ? AutoTranslate.Force_Discard(Translator.inst.Translate(cardName), currentDiscards.Count+1.ToString(), maxNum.ToString()) : AutoTranslate.Ask_Discard(Translator.inst.Translate(cardName));
             MakeDecision.inst.ChooseCardOnScreen(canDiscard, instructionText, DiscardMe, mandatory);
             if (!mandatory)
                 MakeDecision.inst.ChooseTextButton(new() {new TextButtonInfo(AutoTranslate.Decline(), DidNot)}, instructionText, false);
@@ -31,51 +31,56 @@ public class GeneralEffects
             void DiscardMe(Card card)
             {
                 player.DiscardCardRPC(card, logged);
-                int newNum = currentNum+1;
-                if (newNum < maxNum)
-                    Log.inst.NewDecisionContainer(() => DoDiscard(true, newNum));
+                List<Card> newList = new();
+                newList.AddRange(currentDiscards); newList.Add(card);
+
+                if (newList.Count < maxNum)
+                    Log.inst.NewDecisionContainer(() => DoDiscard(true, newList));
                 else
-                    whenDone?.Invoke(newNum);
+                    whenDone?.Invoke(newList);
             }        
             void DidNot()
             {
                 Log.inst.AddMyText(false, OnlineTranslate.Online_Miss_Ability(player.name, cardName), logged);
-                whenDone?.Invoke(currentNum);
+                whenDone?.Invoke(currentDiscards);
             }
         }
     }
-    public void ChooseAdvance(Player player, int logged, int maxNum, Action<int> whenDone = null) 
+    public void ChooseAdvance(Player player, string cardName, int logged, int maxNum, Action<List<int>> whenDone = null) 
     {
         if (maxNum > 1)
-            Log.inst.NewDecisionContainer(() => DoAdvance(0));
+            Log.inst.NewDecisionContainer(() => DoAdvance(new()));
 
-        void DoAdvance(int currentNum)
+        void DoAdvance(List<int> currentAdvances)
         {
             List<TroopScoutDisplay> canAdvance = CreateGame.inst.GetAllDisplays(player).Where(display => display.info.area != 4 && display.info.troops >= 1).ToList();
             if (canAdvance.Count == 0)         
             {
-                whenDone?.Invoke(currentNum);
+                Log.inst.AddMyText(false, OnlineTranslate.Online_Fail_Advance(player.name));
+                whenDone?.Invoke(currentAdvances);
                 return;
             }
 
-            MakeDecision.inst.ChooseDisplayOnScreen(canAdvance, AutoTranslate.Force_Advance(currentNum.ToString(), maxNum.ToString()), AdvanceMe);
+            MakeDecision.inst.ChooseDisplayOnScreen(canAdvance, AutoTranslate.Force_Advance(Translator.inst.Translate(cardName), currentAdvances.Count+1.ToString(), maxNum.ToString()), AdvanceMe);
             void AdvanceMe((int area, int troops, int scouts) display)
             {
                 player.TroopRPC(1, display.area, display.area+1, logged);
-                int newNum = currentNum+1;
-                if (newNum < maxNum)
-                    Log.inst.NewDecisionContainer(() => DoAdvance(newNum));
+                List<int> newList = new();
+                newList.AddRange(currentAdvances); newList.Add(display.area);
+
+                if (newList.Count < maxNum)
+                    Log.inst.NewDecisionContainer(() => DoAdvance(newList));
                 else
-                    whenDone?.Invoke(newNum);
+                    whenDone?.Invoke(newList);
             }
         }
     }
-    public void ChooseRetreat(Player player, string cardName, bool firstMandatory, int logged, int maxNum, Action<int> whenDone = null) 
+    public void ChooseRetreat(Player player, string cardName, bool firstMandatory, int logged, int maxNum, Action<List<int>> whenDone = null) 
     {
         if (maxNum > 1)
-            Log.inst.NewDecisionContainer(() => DoRetreat(firstMandatory, 0));
+            Log.inst.NewDecisionContainer(() => DoRetreat(firstMandatory, new()));
 
-        void DoRetreat(bool mandatory, int currentNum)
+        void DoRetreat(bool mandatory, List<int> currentRetreats)
         {
             List<TroopScoutDisplay> canRetreat = CreateGame.inst.GetAllDisplays(player).Where(display => display.info.area != 1 && display.info.troops >= 1).ToList();
             int numTroops = 0;
@@ -85,11 +90,11 @@ public class GeneralEffects
             if (numTroops < maxNum)
             {
                 if (mandatory) DidNot();
-                else whenDone.Invoke(currentNum);
+                else whenDone.Invoke(currentRetreats);
                 return;
             }
 
-            string instructionText = mandatory ? AutoTranslate.Force_Retreat(currentNum.ToString(), maxNum.ToString()) : AutoTranslate.Ask_Retreat();
+            string instructionText = mandatory ? AutoTranslate.Force_Retreat(Translator.inst.Translate(cardName), currentRetreats+1.ToString(), maxNum.ToString()) : AutoTranslate.Ask_Retreat(Translator.inst.Translate(cardName));
             MakeDecision.inst.ChooseDisplayOnScreen(canRetreat, instructionText, RetreatMe, mandatory);
             if (!mandatory)
                 MakeDecision.inst.ChooseTextButton(new() {new TextButtonInfo(AutoTranslate.Decline(), DidNot)}, instructionText, false);
@@ -97,49 +102,49 @@ public class GeneralEffects
             void RetreatMe((int area, int troops, int scouts) display)
             {
                 player.TroopRPC(1, display.area, display.area-1, logged);
-                int newNum = currentNum+1;
-                if (newNum < maxNum)
-                    Log.inst.NewDecisionContainer(() => DoRetreat(true, newNum));
+                List<int> newList = new();
+                newList.AddRange(currentRetreats); newList.Add(display.area);
+
+                if (newList.Count < maxNum)
+                    Log.inst.NewDecisionContainer(() => DoRetreat(true, newList));
                 else
-                    whenDone?.Invoke(newNum);
+                    whenDone?.Invoke(newList);
             }        
             void DidNot()
             {
                 Log.inst.AddMyText(false, OnlineTranslate.Online_Miss_Ability(player.name, cardName), logged);
-                whenDone?.Invoke(currentNum);
+                whenDone?.Invoke(currentRetreats);
             }
         }
     }
-    public void ChooseAddScout(Player player, int logged, int maxNum, Action whenDone = null) 
+    public void ChooseAddScout(Player player, string cardName, int logged, int maxNum, Action<List<int>> whenDone = null) 
     {
         if (maxNum > 1)
-            Log.inst.NewDecisionContainer(() => DoAddScout(1));
+            Log.inst.NewDecisionContainer(() => DoAddScout(new()));
     
-        void DoAddScout(int currentNum)
+        void DoAddScout(List<int> currentAdds)
         {
             List<TroopScoutDisplay> canAdd = CreateGame.inst.GetAllDisplays(player);
-            MakeDecision.inst.ChooseDisplayOnScreen(canAdd, AutoTranslate.Force_Add(currentNum.ToString(), maxNum.ToString()), AddMe);
+            MakeDecision.inst.ChooseDisplayOnScreen(canAdd, AutoTranslate.Force_Add(Translator.inst.Translate(cardName), currentAdds.Count+1.ToString(), maxNum.ToString()), AddMe);
             void AddMe((int area, int troops, int scouts) display)
             {
                 player.ScoutRPC(1, display.area, logged);
-                if (currentNum < maxNum)
-                {
-                    int newNum = currentNum+1;
-                    Log.inst.NewDecisionContainer(() => DoAddScout(newNum));
-                }
+                List<int> newList = new();
+                newList.AddRange(currentAdds); newList.Add(display.area);
+
+                if (newList.Count < maxNum)
+                    Log.inst.NewDecisionContainer(() => DoAddScout(newList));
                 else
-                {
-                    whenDone?.Invoke();
-                }
+                    whenDone?.Invoke(newList);
             }
         }
     }
-    public void ChooseRemoveScout(Player player, string cardName, bool firstMandatory, int logged, int maxNum, Action<int> whenDone = null) 
+    public void ChooseRemoveScout(Player player, string cardName, bool firstMandatory, int logged, int maxNum, Action<List<int>> whenDone = null) 
     {
         if (maxNum > 1)
-            Log.inst.NewDecisionContainer(() => DoRemove(firstMandatory, 0));
+            Log.inst.NewDecisionContainer(() => DoRemove(firstMandatory, new()));
 
-        void DoRemove(bool mandatory, int currentNum)
+        void DoRemove(bool mandatory, List<int> currentRemoves)
         {
             List<TroopScoutDisplay> canRemove = CreateGame.inst.GetAllDisplays(player).Where(display => display.info.scouts >= 1).ToList();
             int numScouts = 0;
@@ -149,11 +154,11 @@ public class GeneralEffects
             if (numScouts < maxNum)
             {
                 if (mandatory) DidNot();
-                else whenDone.Invoke(currentNum);
+                else whenDone.Invoke(currentRemoves);
                 return;
             }
 
-            string instructionText = mandatory ? AutoTranslate.Force_Remove(currentNum.ToString(), maxNum.ToString()) : AutoTranslate.Ask_Remove();
+            string instructionText = mandatory ? AutoTranslate.Force_Remove(Translator.inst.Translate(cardName), currentRemoves.Count+1.ToString(), maxNum.ToString()) : AutoTranslate.Ask_Remove(Translator.inst.Translate(cardName));
             MakeDecision.inst.ChooseDisplayOnScreen(canRemove, instructionText, RemoveMe, mandatory);
             if (!mandatory)
                 MakeDecision.inst.ChooseTextButton(new() {new TextButtonInfo(AutoTranslate.Decline(), DidNot)}, instructionText, false);
@@ -161,16 +166,18 @@ public class GeneralEffects
             void RemoveMe((int area, int troops, int scouts) display)
             {
                 player.ScoutRPC(-1, display.area, logged);
-                int newNum = currentNum+1;
-                if (newNum < maxNum)
-                    Log.inst.NewDecisionContainer(() => DoRemove(true, newNum));
+                List<int> newList = new();
+                newList.AddRange(currentRemoves); newList.Add(display.area);
+
+                if (newList.Count < maxNum)
+                    Log.inst.NewDecisionContainer(() => DoRemove(true, newList));
                 else
-                    whenDone?.Invoke(newNum);
+                    whenDone?.Invoke(newList);
             }        
             void DidNot()
             {
                 Log.inst.AddMyText(false, OnlineTranslate.Online_Miss_Ability(player.name, cardName), logged);
-                whenDone?.Invoke(currentNum);
+                whenDone?.Invoke(currentRemoves);
             }
         }
     }
@@ -185,7 +192,7 @@ public class GeneralEffects
                 return;
             }
             List<TextButtonInfo> textButtonInfos = new() {new(AutoTranslate.Confirm(), DidIt), new(AutoTranslate.Decline(), DidNot)};
-            MakeDecision.inst.ChooseTextButton(textButtonInfos, AutoTranslate.Ask_Pay(amount.ToString(), AutoTranslate.ActionIcon()));
+            MakeDecision.inst.ChooseTextButton(textButtonInfos, AutoTranslate.Ask_Pay(Translator.inst.Translate(cardName), amount.ToString(), AutoTranslate.ActionIcon()));
 
             void DidIt()
             {
@@ -210,7 +217,7 @@ public class GeneralEffects
                 return;
             }
             List<TextButtonInfo> textButtonInfos = new() {new(AutoTranslate.Confirm(), DidIt), new(AutoTranslate.Decline(), DidNot)};
-            MakeDecision.inst.ChooseTextButton(textButtonInfos, AutoTranslate.Ask_Pay(amount.ToString(), AutoTranslate.CoinIcon()));
+            MakeDecision.inst.ChooseTextButton(textButtonInfos, AutoTranslate.Ask_Pay(Translator.inst.Translate(cardName), amount.ToString(), AutoTranslate.CoinIcon()));
 
             void DidIt()
             {
@@ -227,21 +234,21 @@ public class GeneralEffects
 #endregion
 
 #region Misc
-    public void GetTravelBonus(Player player, int area, int logged)
+    public void GetTravelBonus(Player player, int area, int logged, int multiplier = 1)
     {
         switch (area)
         {
             case 1:
-                player.ActionRPC(1);
+                player.DrawCardRPC(1*multiplier, logged);
                 break;
             case 2:
-                player.CoinRPC(3);
+                player.CoinRPC(3*multiplier, logged);
                 break;
             case 3:
-                player.DrawCardRPC(1);
+                player.ActionRPC(1*multiplier, logged);
                 break;
             case 4:
-                player.CoinRPC(3);
+                player.CoinRPC(3*multiplier, logged);
                 break;
         }        
     }
@@ -251,7 +258,7 @@ public class GeneralEffects
         if (payAction) player.ActionRPC(-1, logged+1);
         player.CoinRPC(-card.dataFile.coinCost, logged+1);
         player.DiscardCardRPC(card, -1);
-        ChooseAdvance(player, logged+1, card.dataFile.troopAdvance);
+        ChooseAdvance(player, card.name, logged+1, card.dataFile.troopAdvance);
         for (int i = 0; i<iterations; i++)
             Log.inst.NewDecisionContainer(() => card.thisCard.DoInstructions(player, area, logged+1));
     }

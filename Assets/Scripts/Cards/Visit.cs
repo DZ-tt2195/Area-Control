@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using UnityEngine;
 
 public class Visit : CardType
@@ -8,9 +9,9 @@ public class Visit : CardType
     public override void DoInstructions(Player player, int thisArea, int logged)
     {
         ChooseRemoveScout(player, this.dataFile.cardName, false, logged, 1, Reward);
-        void Reward(int num)
+        void Reward(List<int> removed)
         {
-            if (num == 1)
+            if (removed.Count == 1)
                 GetTravelBonus(player, thisArea, logged);
         }
     }

@@ -10,13 +10,10 @@ public class Trail : CardType
     public override void DoInstructions(Player player, int thisArea, int logged)
     {
         ChooseRetreat(player, this.dataFile.cardName, false, logged, 1, Reward);
-        void Reward(int num)
+        void Reward(List<int> retreated)
         {
-            if (num == 1)
-            {
-                for (int i = 0; i<2; i++)
-                    GetTravelBonus(player, thisArea, logged);
-            }
+            if (retreated.Count == 1)
+                GetTravelBonus(player, thisArea, logged, 2);
         }
     }
 }

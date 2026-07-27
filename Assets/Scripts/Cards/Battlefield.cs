@@ -9,7 +9,7 @@ public class Battlefield : CardType
     {
         if (!CreateGame.inst.IsControlling(player, thisArea))
         {
-            player.DrawCardRPC(1, logged);
+            player.ActionRPC(1, logged);
             ChooseRetreat(player, this.dataFile.cardName, true, logged, 1);
         }
         else

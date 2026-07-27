@@ -9,7 +9,7 @@ public class Garrison : CardType
     }
     public override void DoInstructions(Player player, int thisArea, int logged)
     {
-        AskSpendCoin(player, this.dataFile.cardName, 3, logged, Reward);
+        AskSpendCoin(player, this.dataFile.cardName, 4, logged, Reward);
 
         void Reward(bool didIt)
         {
