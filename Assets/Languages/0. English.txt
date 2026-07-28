@@ -1,5 +1,5 @@
 Game_Designer	by Thomas Tang (DZ)
-Last_Update	Last Updated: July 26, 2026
+Last_Update	Last Updated: July 29, 2026
 Blank	
 Translator_Credit	Original Language
 Language	Language
@@ -180,7 +180,7 @@ Camp_Text	If this is the Area you have the most ScoutIcon in, +2 ScoutIcon, both
 Inn	Inn
 Inn_Text	If you have the same number of TroopIcon and ScoutIcon here (it could be 0), +1 ActionIcon.
 Analyze	Analyze
-Analyze_Text	If you spent 3 ActionIcon or more this turn, +2 CardIcon.
+Analyze_Text	If you spent 3 ActionIcon or more this turn (including when playing this), +2 CardIcon.
 Infiltrate	Infiltrate
 Infiltrate_Text	 +3 ScoutIcon, all in one Area.
 Ponder	Ponder
@@ -206,7 +206,7 @@ Desert_Text	-2 ScoutIcon. If you removed exactly 1 ScoutIcon from here, +2 CardI
 Laboratory	Laboratory
 Laboratory_Text	For each ScoutIcon you have here, +1 ActionIcon and -1 CoinIcon.
 Barracks	Barracks
-Barracks_Text	-1 TroopIcon. If you do, +1 ScoutIcon in this Area, and +1 ScoutIcon in that TroopIcon's current Area.
+Barracks_Text	-1 TroopIcon from Area 4. If you did, +1 ScoutIcon in this Area, and +1 ScoutIcon in Area 4.
 City	City
 City_Text	If you Control this, you may discard 1 CardIcon for +2 ActionIcon.
 Gate	Gate

@@ -4,7 +4,7 @@ Trade	You may discard 1 CardIcon for +5 CoinIcon.	0	1	Lorraine Fajardo \nDominio
 Safeguard	If you have at least 1 ScoutIcon in each Area, +1 TroopIcon.	1	1	Claus Stephan \nDominion: Menagerie \n(Cavalry)	CareScout, AdvanceTroop	TRUE
 Stockpile	 +1 CoinIcon per CardIcon in your hand.	1	1	Grant Hansen \nDominion: Menagerie \n(Stockpile)	AddCoin	TRUE
 Parry	 +1 ScoutIcon in one Area you Control, and +1 ScoutIcon in one Area you don't Control.	2	1	Claus Stephan \nDominion: Rising Sun \n(Practice)	AddScout, CareControl	TRUE
-Analyze	If you spent 3 ActionIcon or more this turn, +2 CardIcon.	3	1	Martin Hoffmann \nDominion: Seaside \n(Tactician)	CareTurn, DrawCard	TRUE
+Analyze	If you spent 3 ActionIcon or more this turn (including when playing this), +2 CardIcon.	3	1	Martin Hoffmann \nDominion: Seaside \n(Tactician)	CareTurn, DrawCard	TRUE
 Continue	If you drew 2 CardIcon or more this turn, +2 ActionIcon.	3	1	Marcel-Andre Casasola Merkle \nDominion: Seaside \n(Caravan)	AddAction, CareTurn	TRUE
 Specialize	You may play 1 CardIcon, repeating its instructions (not the TroopIcon).	4	1	Claus Stephan \nDominion: Allies \n(Specialist)	AddAction	TRUE
 Report	You may remove 2 ScoutIcon for +2 ActionIcon.	3	2	Julien Delval \nDominion: Hinterlands \n(Scheme)	LoseScout, AddAction	TRUE

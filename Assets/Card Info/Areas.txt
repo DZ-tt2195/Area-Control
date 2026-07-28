@@ -1,5 +1,5 @@
 cardName	textBox	artCredit	notes	coded
-Barracks	-1 TroopIcon. If you do, +1 ScoutIcon in this Area, and +1 ScoutIcon in that TroopIcon's current Area.	Martin Hoffmann \nDominion: Renaissance \n(Barracks)	RetreatTroop, AddScout	TRUE
+Barracks	-1 TroopIcon from Area 4. If you did, +1 ScoutIcon in this Area, and +1 ScoutIcon in Area 4.	Martin Hoffmann \nDominion: Renaissance \n(Barracks)	RetreatTroop, AddScout	TRUE
 Battlefield	If you don't Control this, +1 ActionIcon and -1 TroopIcon.	Harald Lieske \nDominion: Allies \n(Territory)	AddAction, RetreatTroop, CareControl	TRUE
 Camp	If this is the Area you have the most ScoutIcon in, +2 ScoutIcon, both in a different Area.	Garret DeChellis \nDominion: Allies \n(Tent)	CareScout, AddScout	TRUE
 Canal	If this turn, one of your TroopIcon either left or entered this Area, +1 CardIcon.	Joshua Stewart \nDominion: Renaissance \n(Canal)	CareTroop, DrawCard, CareTurn	TRUE
@@ -14,7 +14,7 @@ Island	If you have 4 TroopIcon or more here, +1 TroopIcon from Area 1.	Franz Voh
 Laboratory	For each ScoutIcon you have here, +1 ActionIcon and -1 CoinIcon.	John Stanko \nMTG: Innistrad \n(Rooftop Storm)	CareScout, AddAction, LoseCoin	TRUE
 Mine	You may spend 1 ActionIcon, for +1 CoinIcon per TroopIcon you have here.	Claus Stephan \nDominion \n(Mine)	LoseAction, AddCoin, CareTroop	TRUE
 Mountain	If you Control this, +1 CardIcon per 2 CardIcon in your hand (round down).	Chris Rahn \nMTG: Magic Origins \n(Animist's Awakening)	DrawCard, CareControl	TRUE
-Passage	If you have 2 TroopIcon or less here, +1 CardIcon.	Marcel-Andre Casasola Merkle \nDominion: Intrigue \n(Secret Passage)	DrawCard, CareTroop	FALSE
+Passage	If you have 2 TroopIcon or less here, +1 CardIcon.	Marcel-Andre Casasola Merkle \nDominion: Intrigue \n(Secret Passage)	DrawCard, CareTroop	TRUE
 Pasture	 +1 ScoutIcon here. Then remove any amount of your ScoutIcon here for +2 CoinIcon each.	Matthias Catrein \nDominion: Nocturne \n(Pasture)	AddScout, LoseScout, AddCoin	TRUE
 Thoroughfare	 +1 TroopIcon per 3 ScoutIcon you have here (round down).	Claus Stephan \nDominion: Empires \n(Triumphal Arch)	AdvanceTroop, CareScout	TRUE
 Trail	You may retreat 1 TroopIcon to get this Area's Travel Bonus twice.	Marcel-Andre Casasola Merkle \nDominion: Hinterlands \n(Trail)	RetreatTroop, TravelBonus	TRUE
