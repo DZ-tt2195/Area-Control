@@ -165,6 +165,8 @@ public class CreateGame : PhotonCompatible
         Log.inst.ChangeScrolling();
         foreach (Player player in listOfPlayers)
             player.UpdateUI(forced);
+        if (forced)
+            CalculateControllers();
     }
     public void SwitchToPlayer(Player player) => playerDropdown.value = listOfPlayers.IndexOf(player);
     public void SwitchToPlayer(int value)
@@ -218,7 +220,7 @@ public class CreateGame : PhotonCompatible
     public List<TroopScoutDisplay> GetAllDisplays(Player player)
     {
         int num = listOfPlayers.IndexOf(player);
-        List<TroopScoutDisplay> allDisplays = listOfPlayerUI[num].listOfDisplays;
+        List<TroopScoutDisplay> allDisplays = new(listOfPlayerUI[num].listOfDisplays);
         allDisplays.RemoveAt(0);
         return allDisplays;
     }

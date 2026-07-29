@@ -10,7 +10,7 @@ public class GeneralEffects
 #region New Decision
     public void ChooseDiscard(Player player, string cardName, bool firstMandatory, int logged, int maxNum, Action<List<Card>> whenDone = null)
     {
-        if (maxNum > 1)
+        if (maxNum >= 1)
             Log.inst.NewDecisionContainer(() => DoDiscard(firstMandatory, new()));
         
         void DoDiscard(bool mandatory, List<Card> currentDiscards)
@@ -23,7 +23,7 @@ public class GeneralEffects
                 return;
             }
 
-            string instructionText = mandatory ? AutoTranslate.Force_Discard(Translator.inst.Translate(cardName), currentDiscards.Count+1.ToString(), maxNum.ToString()) : AutoTranslate.Ask_Discard(Translator.inst.Translate(cardName));
+            string instructionText = mandatory ? AutoTranslate.Force_Discard(Translator.inst.Translate(cardName), (currentDiscards.Count+1).ToString(), maxNum.ToString()) : AutoTranslate.Ask_Discard(Translator.inst.Translate(cardName));
             MakeDecision.inst.ChooseCardOnScreen(canDiscard, instructionText, DiscardMe, mandatory);
             if (!mandatory)
                 MakeDecision.inst.ChooseTextButton(new() {new TextButtonInfo(AutoTranslate.Decline(), DidNot)}, instructionText, false);
@@ -48,7 +48,7 @@ public class GeneralEffects
     }
     public void ChooseAdvance(Player player, string cardName, int logged, int maxNum, Action<List<int>> whenDone = null) 
     {
-        if (maxNum > 1)
+        if (maxNum >= 1)
             Log.inst.NewDecisionContainer(() => DoAdvance(new()));
 
         void DoAdvance(List<int> currentAdvances)
@@ -61,7 +61,7 @@ public class GeneralEffects
                 return;
             }
 
-            MakeDecision.inst.ChooseDisplayOnScreen(canAdvance, AutoTranslate.Force_Advance(Translator.inst.Translate(cardName), currentAdvances.Count+1.ToString(), maxNum.ToString()), AdvanceMe);
+            MakeDecision.inst.ChooseDisplayOnScreen(canAdvance, AutoTranslate.Force_Advance(Translator.inst.Translate(cardName), (currentAdvances.Count+1).ToString(), maxNum.ToString()), AdvanceMe);
             void AdvanceMe((int area, int troops, int scouts) display)
             {
                 player.TroopRPC(1, display.area, display.area+1, logged);
@@ -77,7 +77,7 @@ public class GeneralEffects
     }
     public void ChooseRetreat(Player player, string cardName, bool firstMandatory, int logged, int maxNum, Action<List<int>> whenDone = null) 
     {
-        if (maxNum > 1)
+        if (maxNum >= 1)
             Log.inst.NewDecisionContainer(() => DoRetreat(firstMandatory, new()));
 
         void DoRetreat(bool mandatory, List<int> currentRetreats)
@@ -119,13 +119,13 @@ public class GeneralEffects
     }
     public void ChooseAddScout(Player player, string cardName, int logged, int maxNum, Action<List<int>> whenDone = null) 
     {
-        if (maxNum > 1)
+        if (maxNum >= 1)
             Log.inst.NewDecisionContainer(() => DoAddScout(new()));
     
         void DoAddScout(List<int> currentAdds)
         {
             List<TroopScoutDisplay> canAdd = CreateGame.inst.GetAllDisplays(player);
-            MakeDecision.inst.ChooseDisplayOnScreen(canAdd, AutoTranslate.Force_Add(Translator.inst.Translate(cardName), currentAdds.Count+1.ToString(), maxNum.ToString()), AddMe);
+            MakeDecision.inst.ChooseDisplayOnScreen(canAdd, AutoTranslate.Force_Add(Translator.inst.Translate(cardName), (currentAdds.Count+1).ToString(), maxNum.ToString()), AddMe);
             void AddMe((int area, int troops, int scouts) display)
             {
                 player.ScoutRPC(1, display.area, logged);
@@ -141,7 +141,7 @@ public class GeneralEffects
     }
     public void ChooseRemoveScout(Player player, string cardName, bool firstMandatory, int logged, int maxNum, Action<List<int>> whenDone = null) 
     {
-        if (maxNum > 1)
+        if (maxNum >= 1)
             Log.inst.NewDecisionContainer(() => DoRemove(firstMandatory, new()));
 
         void DoRemove(bool mandatory, List<int> currentRemoves)
@@ -158,7 +158,7 @@ public class GeneralEffects
                 return;
             }
 
-            string instructionText = mandatory ? AutoTranslate.Force_Remove(Translator.inst.Translate(cardName), currentRemoves.Count+1.ToString(), maxNum.ToString()) : AutoTranslate.Ask_Remove(Translator.inst.Translate(cardName));
+            string instructionText = mandatory ? AutoTranslate.Force_Remove(Translator.inst.Translate(cardName), (currentRemoves.Count+1).ToString(), maxNum.ToString()) : AutoTranslate.Ask_Remove(Translator.inst.Translate(cardName));
             MakeDecision.inst.ChooseDisplayOnScreen(canRemove, instructionText, RemoveMe, mandatory);
             if (!mandatory)
                 MakeDecision.inst.ChooseTextButton(new() {new TextButtonInfo(AutoTranslate.Decline(), DidNot)}, instructionText, false);
@@ -183,7 +183,9 @@ public class GeneralEffects
     }
     public void AskSpendAction(Player player, string cardName, int amount, int logged, Action<bool> whenDone = null)
     {
-        Log.inst.NewDecisionContainer(() => MaySpendAction());
+        if (amount >= 1)
+            Log.inst.NewDecisionContainer(() => MaySpendAction());
+        
         void MaySpendAction()
         {
             if (player.GetActions() < amount)
@@ -208,7 +210,9 @@ public class GeneralEffects
     }
     public void AskSpendCoin(Player player, string cardName, int amount, int logged, Action<bool> whenDone = null)
     {
-        Log.inst.NewDecisionContainer(() => MaySpendCoin());
+        if (amount >= 1)
+            Log.inst.NewDecisionContainer(() => MaySpendCoin());
+        
         void MaySpendCoin()
         {
             if (player.GetCoins() < amount)
@@ -258,6 +262,7 @@ public class GeneralEffects
         if (payAction) player.ActionRPC(-1, logged+1);
         player.CoinRPC(-card.dataFile.coinCost, logged+1);
         player.DiscardCardRPC(card, -1);
+
         ChooseAdvance(player, card.name, logged+1, card.dataFile.troopAdvance);
         for (int i = 0; i<iterations; i++)
             Log.inst.NewDecisionContainer(() => card.thisCard.DoInstructions(player, area, logged+1));

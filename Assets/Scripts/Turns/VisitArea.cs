@@ -5,11 +5,9 @@ public class VisitArea : Turn
     public override void MasterStart()
     {
         int currentTurn = TurnManager.inst.GetInt(ConstantStrings.TurnNumber);
-        Card card = CreateGame.inst.GetArea(currentTurn);
         List<Player> whoControls = CreateGame.inst.CalculateControllers();
 
         Log.inst.MasterText(true, AutoTranslate.Blank());
-
         for (int i = 1; i<whoControls.Count; i++)
         {
             if (whoControls[i] != null)
@@ -19,17 +17,15 @@ public class VisitArea : Turn
         }
 
         Log.inst.MasterText(true, AutoTranslate.Blank());
-        Log.inst.MasterText(true, OnlineTranslate.Online_Next_Turn(card.name));
+        Log.inst.MasterText(true, OnlineTranslate.Online_Next_Turn(CreateGame.inst.GetArea(currentTurn).name));
     }
     public override void ForPlayer(Player player)
     {
-        CreateGame.inst.CalculateControllers();
         int currentTurn = TurnManager.inst.GetInt(ConstantStrings.TurnNumber);
         GetTravelBonus(player, currentTurn, 0);
 
-        Card thisArea = CreateGame.inst.GetArea(currentTurn);
         Log.inst.NewDecisionContainer(() => PlayCards(player, currentTurn));
-        Log.inst.NewDecisionContainer(() => thisArea.thisCard.DoInstructions(player, currentTurn, 0));
+        Log.inst.NewDecisionContainer(() => DoArea(player, CreateGame.inst.GetArea(currentTurn), currentTurn));
     }
     void PlayCards(Player player, int area)
     {
@@ -42,13 +38,18 @@ public class VisitArea : Turn
 
         void PlayThis(Card card)
         {
-            PlayCard(player, card, area, 1);
+            PlayCard(player, card, area, 0);
             Log.inst.NewDecisionContainer(() => PlayCards(player, area));
         }
         void NoPlay()
         {
             Log.inst.AddMyText(true, OnlineTranslate.Online_No_Play(player.name));            
         }
+    }
+    void DoArea(Player player, Card card, int area)
+    {
+        Log.inst.AddMyText(false, OnlineTranslate.Online_Resolve_Card(player.name, card.name), 0);
+        Log.inst.NewDecisionContainer(() => card.thisCard.DoInstructions(player, area, 1));
     }
     public override void MasterEnd()
     {

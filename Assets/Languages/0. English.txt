@@ -65,7 +65,8 @@ TroopIcon_Text	TroopIcon: Move all your TroopIcon to Area 4 to win.
 ScoutIcon	ScoutIcon
 Control	Control
 Control_Text	Most TroopIcon + ScoutIcon in an Area.
-Online_Next_Turn	Visiting $Area$
+Online_Next_Turn	New Turn: $Card$
+Online_Resolve_Card	$Player$ resolves $Card$.
 Online_Add_Resource	$Player$ gains $Num$ $Resource$.
 Online_Lose_Resource	$Player$ loses $Num$ $Resource$.
 Force_Advance	$Card$: Advance TroopIcon ($Num1$ / $Num2$).
