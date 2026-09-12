@@ -195,9 +195,24 @@ public class TurnManager : PhotonCompatible
         }
         PhotonNetwork.CurrentRoom.SetCustomProperties(masterPropertyToChange);
         masterPropertyToChange.Clear();
-        CreateGame.inst.mainPlayer.ClearCards();
-    }
 
+        Player thisPlayer = CreateGame.inst.mainPlayer;
+        InstantChangePlayerProp(thisPlayer, ConstantStrings.DrewThisTurn, new int[0]);
+
+        int[] discardedArray = (int[])GetPlayerProperty(thisPlayer, ConstantStrings.MyDiscard);
+        if (discardedArray.Length > 0)
+        {
+            DoFunction(() => MakeCardsNull(discardedArray), RpcTarget.All);
+            MainDeck.inst.ReceiveDiscardRPC(ConvertIntArray(discardedArray));
+            InstantChangePlayerProp(thisPlayer, ConstantStrings.MyDiscard, new int[0]);
+        }
+    }
+    [PunRPC]
+    void MakeCardsNull(int[] removed)
+    {
+        foreach (int next in removed)
+            PhotonView.Find(next).transform.SetParent(null);
+    }
     #endregion
 
 #region Ending

@@ -25,6 +25,8 @@ public static string Volume () => Translator.inst.Translate("Volume", new() {});
 public static string Pause_Setting () => Translator.inst.Translate("Pause_Setting", new() {});
 public static string Undo_Setting () => Translator.inst.Translate("Undo_Setting", new() {});
 public static string Click_Setting () => Translator.inst.Translate("Click_Setting", new() {});
+public static string Extras () => Translator.inst.Translate("Extras", new() {});
+public static string Open_Customizer () => Translator.inst.Translate("Open_Customizer", new() {});
 public static string Sound_Credits () => Translator.inst.Translate("Sound_Credits", new() {});
 public static string Reconnect () => Translator.inst.Translate("Reconnect", new() {});
 public static string Tutorial_1 () => Translator.inst.Translate("Tutorial_1", new() {});
@@ -189,4 +191,6 @@ public static string Gate () => Translator.inst.Translate("Gate", new() {});
 public static string Gate_Text () => Translator.inst.Translate("Gate_Text", new() {});
 public static string Mountain () => Translator.inst.Translate("Mountain", new() {});
 public static string Mountain_Text () => Translator.inst.Translate("Mountain_Text", new() {});
+public static string Update_0 () => Translator.inst.Translate("Update_0", new() {});
+public static string Update_0_Text () => Translator.inst.Translate("Update_0_Text", new() {});
 }

@@ -13,6 +13,7 @@ public class CardSelect : MonoBehaviour
     List<CardData> allData;
     [SerializeField] TypesOfCards myType; 
     bool vertical;
+    public CardData myData {get; private set;}
 
     private void Awake()
     {
@@ -33,7 +34,6 @@ public class CardSelect : MonoBehaviour
         randomButton.onClick.AddListener(() => SetCardImage(-1));
         chooseButton.onClick.AddListener(() => CardMenu.instance.ChooseFromList(this, allData, vertical));
     }
-
     private void Start()
     {
         if (PlayerPrefs.HasKey(this.name) && PlayerPrefs.GetInt(this.name) >= 0)
@@ -41,18 +41,21 @@ public class CardSelect : MonoBehaviour
         else
             SetCardImage(-1);
     }
-    public void SetCardImage(int number)
+    public CardData SetCardImage(int number)
     {
         if (number < 0)
         {
             PlayerPrefs.SetInt(this.name, -1);
             layout.FillInCards(null, 0, vertical);
+            myData = null;
         }
         else
         {
             PlayerPrefs.SetInt(this.name, number);
             layout.FillInCards(allData[number], 1, vertical);
+            myData = allData[number];
         }
         PlayerPrefs.Save();
+        return myData;
     }
 }

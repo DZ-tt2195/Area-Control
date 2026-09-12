@@ -23,6 +23,8 @@ Volume	Volume
 Pause_Setting	Enable pauses for reading
 Undo_Setting	Ask at end of turn if you want to undo anything
 Click_Setting	Ask when there's only one option to choose
+Extras	Extras
+Open_Customizer	Open Customizer
 Sound_Credits	Sound Credits
 Reconnect	Reconnect
 Tutorial_1	To play multiplayer: Have 1 person create a room, then their room should be displayed below. Everyone also must have joined the same server region.
@@ -34,7 +36,7 @@ Player_Count	$Current$ / $Max$ Players
 Type_in_username	You have to type in a username.
 Attempt_to_reconnect	Attempting to reconnect to $Room$'s room...
 Failed_to_reconnect	Failed to reconnect to $Room$'s room.
-Choose_Cards	Choose Areas for this game
+Choose_Cards	Choose up to 4 Areas
 Custom_Area_1	Area 1
 Custom_Area_2	Area 2
 Custom_Area_3	Area 3
@@ -214,3 +216,5 @@ Gate	Gate
 Gate_Text	If you Control this, you may pay 4 CoinIcon for +2 TroopIcon.
 Mountain	Mountain
 Mountain_Text	If you Control this, +1 CardIcon per 2 CardIcon in your hand (round down).
+Update_0	Sep X, 2026
+Update_0_Text	Moved UI behind an Extras button \nAdded 10 more Tactics

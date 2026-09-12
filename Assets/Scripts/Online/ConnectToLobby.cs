@@ -16,6 +16,8 @@ public class ConnectToLobby : MonoBehaviourPunCallbacks
     [SerializeField] TMP_Text error;
 
     [Foldout("Part 1", true)]
+    [SerializeField] Button openExtras;
+    [SerializeField] Transform allExtras;
     [SerializeField] Transform part1;
     [SerializeField] TMP_InputField username;
     [SerializeField] Button reconnectButton;
@@ -52,6 +54,13 @@ public class ConnectToLobby : MonoBehaviourPunCallbacks
 
     private void Start()
     {
+        openExtras.onClick.AddListener(() => 
+        {
+            allExtras.gameObject.SetActive(true);
+            openExtras.gameObject.SetActive(false);
+            AudioManager.instance.Menu();
+        });
+
         Translations();
         part2.gameObject.SetActive(true);
         joinManually.onClick.AddListener(() => JoinRoom(joinInput.text));
@@ -93,6 +102,7 @@ public class ConnectToLobby : MonoBehaviourPunCallbacks
     }
     void Translations()
     {
+        openExtras.GetComponentInChildren<TMP_Text>().text = AutoTranslate.Extras();
         enterUsename.text = AutoTranslate.Enter_username();
         singlePlayer.text = AutoTranslate.Single_Player();
         encyclopedia.text = AutoTranslate.Encyclopedia();

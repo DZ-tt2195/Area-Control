@@ -402,24 +402,6 @@ public class Player : PhotonCompatible
             }
         }    
     }
-    public void ClearCards()
-    {
-        InstantChangePlayerProp(this, ConstantStrings.DrewThisTurn, new int[0]);
-
-        int[] discardedArray = (int[])GetPlayerProperty(this, ConstantStrings.MyDiscard);
-        if (discardedArray.Length > 0)
-        {
-            DoFunction(() => MakeCardsNull(discardedArray), RpcTarget.All);
-            MainDeck.inst.ReceiveDiscardRPC(ConvertIntArray(discardedArray));
-            InstantChangePlayerProp(this, ConstantStrings.MyDiscard, new int[0]);
-        }        
-    }
-    [PunRPC]
-    void MakeCardsNull(int[] removed)
-    {
-        foreach (int next in removed)
-            PhotonView.Find(next).transform.SetParent(null);
-    }
     #endregion
 
 #region UI

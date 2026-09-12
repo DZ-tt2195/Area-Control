@@ -59,6 +59,7 @@ public class MainDeck : PhotonCompatible
     {
         if (PhotonNetwork.IsMasterClient)
         {
+            int extraCards = 5;
             List<Card> masterDeck = TurnManager.inst.GetCardList(ConstantStrings.MasterDeck);
             foreach (Player player in CreateGame.inst.GetPlayers())
             {
@@ -66,17 +67,17 @@ public class MainDeck : PhotonCompatible
                 if (numToDraw > 0)
                 {
                     List<Card> toGiveOut = new();
-                    if (numToDraw+5 > masterDeck.Count) 
+                    if (numToDraw+extraCards > masterDeck.Count) 
                         masterDeck.AddRange(ShuffleDiscard());
 
-                    for (int i = 0; i<numToDraw+5; i++)
+                    for (int i = 0; i<numToDraw+extraCards; i++)
                     {
                         Card nextCard = masterDeck[0];
                         masterDeck.RemoveAt(0);
                         toGiveOut.Add(nextCard);
                     }
                      
-                    InstantChangeRoomProp(ConstantStrings.MasterDeck, TurnManager.ConvertCardList(masterDeck));
+                    InstantChangeRoomProp(ConstantStrings.MasterDeck, ConvertCardList(masterDeck));
                     player.ReceiveCardsRPC(toGiveOut);
                     break;
                 }
@@ -86,14 +87,14 @@ public class MainDeck : PhotonCompatible
     public void ReceiveDiscardRPC(List<Card> discarded)
     {
         if (discarded.Count > 1)
-            DoFunction(() => ReceiveDiscard(TurnManager.ConvertCardList(discarded)), RpcTarget.MasterClient);
+            DoFunction(() => ReceiveDiscard(ConvertCardList(discarded)), RpcTarget.MasterClient);
     }
     [PunRPC]
     void ReceiveDiscard(int[] discarded)
     {
         List<Card> masterDiscard = TurnManager.inst.GetCardList(ConstantStrings.MasterDiscard);
-        masterDiscard.AddRange(TurnManager.ConvertIntArray(discarded));
-        InstantChangeRoomProp(ConstantStrings.MasterDiscard, TurnManager.ConvertCardList(masterDiscard));
+        masterDiscard.AddRange(ConvertIntArray(discarded));
+        InstantChangeRoomProp(ConstantStrings.MasterDiscard, ConvertCardList(masterDiscard));
     }
     List<Card> ShuffleDiscard()
     {
