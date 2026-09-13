@@ -84,7 +84,7 @@ public class GeneralEffects
             List<TroopScoutDisplay> canRetreat = CreateGame.inst.GetAllDisplays(player).Where(display => display.info.area != 1 && display.info.troops >= 1).ToList();
             int numTroops = 0;
             foreach (TroopScoutDisplay display in canRetreat)
-                numTroops+=display.info.scouts;
+                numTroops+=display.info.troops;
 
             if (numTroops < maxNum && !mandatory)
             {

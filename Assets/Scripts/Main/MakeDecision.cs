@@ -80,13 +80,11 @@ public class MakeDecision : PhotonCompatible
             textButtons.Add((child.GetComponent<ButtonSelect>(), child.transform.GetComponentInChildren<TMP_Text>()));
             child.gameObject.SetActive(false);
         }
-        /*
         foreach (Transform child in findCardButtons)
         {
             cardButtons.Add((child.GetComponent<ButtonSelect>(), child.GetComponent<CardLayout>()));
             child.gameObject.SetActive(false);
-        }*/
-
+        }
     }
     void UpdateSliderText(float value)
     {
