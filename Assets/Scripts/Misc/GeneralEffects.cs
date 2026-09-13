@@ -16,10 +16,9 @@ public class GeneralEffects
         void DoDiscard(bool mandatory, List<Card> currentDiscards)
         {
             List<Card> canDiscard = player.GetHand();
-            if (canDiscard.Count < maxNum)
+            if (canDiscard.Count < maxNum && !mandatory)
             {
-                if (mandatory) DidNot();
-                else whenDone.Invoke(currentDiscards);
+                DidNot();
                 return;
             }
 
@@ -87,10 +86,9 @@ public class GeneralEffects
             foreach (TroopScoutDisplay display in canRetreat)
                 numTroops+=display.info.scouts;
 
-            if (numTroops < maxNum)
+            if (numTroops < maxNum && !mandatory)
             {
-                if (mandatory) DidNot();
-                else whenDone.Invoke(currentRetreats);
+                DidNot();
                 return;
             }
 
@@ -151,10 +149,9 @@ public class GeneralEffects
             foreach (TroopScoutDisplay display in canRemove)
                 numScouts+=display.info.scouts;
 
-            if (numScouts < maxNum)
+            if (numScouts < maxNum && !mandatory)
             {
-                if (mandatory) DidNot();
-                else whenDone.Invoke(currentRemoves);
+                DidNot();
                 return;
             }
 

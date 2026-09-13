@@ -117,10 +117,6 @@ public class CreateGame : PhotonCompatible
         IEnumerator MakePlayer()
         {
             yield return new WaitForSeconds(1f);
-            while (CardMenu.instance.gameObject.activeSelf)
-            {
-                yield return null;
-            }
             MakeObject(playerPrefab.gameObject);
         }
         VisualCards((int[])GetRoomProperty(ConstantStrings.AreaList));

@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 public class Specialize : CardType
 {
-    public Specialize(CardData dataFile) : base(dataFile)
+    public Specialize(Card card, CardData dataFile) : base(card, dataFile)
     {
     }
     public override void DoInstructions(Player player, int thisArea, int logged)

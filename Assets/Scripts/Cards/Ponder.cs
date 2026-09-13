@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class Ponder : CardType
 {
-    public Ponder(CardData dataFile) : base(dataFile)
+    public Ponder(Card card, CardData dataFile) : base(card, dataFile)
     {
     }
     public override void DoInstructions(Player player, int thisArea, int logged)

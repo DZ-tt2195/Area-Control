@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class Direct : CardType
 {
-    public Direct(CardData dataFile) : base(dataFile)
+    public Direct(Card card, CardData dataFile) : base(card, dataFile)
     {
     }
     public override void DoInstructions(Player player, int thisArea, int logged)

@@ -279,7 +279,8 @@ public class ConnectToLobby : MonoBehaviourPunCallbacks
             { ConstantStrings.AreaList, new int[0]},
             { ConstantStrings.TurnNumber, 1 },
             { ConstantStrings.MasterDeck, new int[0]},
-            { ConstantStrings.MasterDiscard, new int[0]}
+            { ConstantStrings.MasterDiscard, new int[0]},
+            { ConstantStrings.BetweenEffects, new string[0]}
         };
         return roomProps;
     }

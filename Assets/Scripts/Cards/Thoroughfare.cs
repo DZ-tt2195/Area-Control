@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class Thoroughfare : CardType
 {
-    public Thoroughfare(CardData dataFile) : base(dataFile)
+    public Thoroughfare(Card card, CardData dataFile) : base(card, dataFile)
     {
     }
     public override void DoInstructions(Player player, int thisArea, int logged)

@@ -3,7 +3,7 @@ using UnityEngine;
 
 public class Laboratory : CardType
 {
-    public Laboratory(CardData dataFile) : base(dataFile)
+    public Laboratory(Card card, CardData dataFile) : base(card, dataFile)
     {
     }
     public override void DoInstructions(Player player, int thisArea, int logged)

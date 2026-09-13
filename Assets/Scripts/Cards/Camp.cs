@@ -5,7 +5,7 @@ using System.Linq;
 
 public class Camp : CardType
 {
-    public Camp(CardData dataFile) : base(dataFile)
+    public Camp(Card card, CardData dataFile) : base(card, dataFile)
     {
     }
     public override void DoInstructions(Player player, int thisArea, int logged)

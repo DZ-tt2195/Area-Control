@@ -3,7 +3,7 @@ using UnityEngine;
 
 public class Desert : CardType
 {
-    public Desert(CardData dataFile) : base(dataFile)
+    public Desert(Card card, CardData dataFile) : base(card, dataFile)
     {
     }
     public override void DoInstructions(Player player, int thisArea, int logged)

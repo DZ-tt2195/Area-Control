@@ -34,7 +34,7 @@ public class Card : PhotonCompatible
         this.transform.localScale = Vector3.Lerp(scale, canvas.transform.localScale, 0.5f);
 
         this.dataFile = dataFile;
-        thisCard = (CardType)Activator.CreateInstance(Type.GetType(dataFile.cardName), dataFile);
+        thisCard = (CardType)Activator.CreateInstance(Type.GetType(dataFile.cardName), this, dataFile);
         this.layout.FillInCards(dataFile, startingAlpha, vertical);
     }
 

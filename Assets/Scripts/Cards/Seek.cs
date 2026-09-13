@@ -4,7 +4,7 @@ using System.Linq;
 
 public class Seek : CardType
 {
-    public Seek(CardData dataFile) : base(dataFile)
+    public Seek(Card card, CardData dataFile) : base(card, dataFile)
     {
     }
     public override void DoInstructions(Player player, int thisArea, int logged)

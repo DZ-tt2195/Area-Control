@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class Explore : CardType
 {
-    public Explore(CardData dataFile) : base(dataFile)
+    public Explore(Card card, CardData dataFile) : base(card, dataFile)
     {
     }
     public override void DoInstructions(Player player, int thisArea, int logged)

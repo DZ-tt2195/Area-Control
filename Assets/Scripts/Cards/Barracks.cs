@@ -4,7 +4,7 @@ using System.Collections;
 
 public class Barracks : CardType
 {
-    public Barracks(CardData dataFile) : base(dataFile)
+    public Barracks(Card card, CardData dataFile) : base(card, dataFile)
     {
     }
     public override void DoInstructions(Player player, int thisArea, int logged)

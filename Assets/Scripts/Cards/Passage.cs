@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class Passage : CardType
 {
-    public Passage(CardData dataFile) : base(dataFile)
+    public Passage(Card card, CardData dataFile) : base(card, dataFile)
     {
     }
     public override void DoInstructions(Player player, int thisArea, int logged)

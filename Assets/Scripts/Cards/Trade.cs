@@ -3,7 +3,7 @@ using UnityEngine;
 
 public class Trade : CardType
 {
-    public Trade(CardData dataFile) : base(dataFile)
+    public Trade(Card card, CardData dataFile) : base(card, dataFile)
     {
     }
     public override void DoInstructions(Player player, int thisArea, int logged)

@@ -6,6 +6,7 @@ public static string Online_Player_Reconnected (string Player) => $"Online_Playe
 public static string Online_Player_Disconnected (string Player) => $"Online_Player_Disconnected\tPlayer\t{Player}";
 public static string Online_Player_Quit (string Player) => $"Online_Player_Quit\tPlayer\t{Player}";
 public static string Online_Waiting_on_Players (string Num) => $"Online_Waiting_on_Players\tNum\t{Num}";
+public static string Online_Between_Turns () => $"Online_Between_Turns";
 public static string Online_Next_Turn (string Card) => $"Online_Next_Turn\tCard\t{Card}";
 public static string Online_Resolve_Card (string Player,string Card) => $"Online_Resolve_Card\tPlayer\t{Player}\tCard\t{Card}";
 public static string Online_Add_Resource (string Player,string Num,string Resource) => $"Online_Add_Resource\tPlayer\t{Player}\tNum\t{Num}\tResource\t{Resource}";

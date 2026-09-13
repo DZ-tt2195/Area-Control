@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class Battlefield : CardType
 {
-    public Battlefield(CardData dataFile) : base(dataFile)
+    public Battlefield(Card card, CardData dataFile) : base(card, dataFile)
     {
     }
     public override void DoInstructions(Player player, int thisArea, int logged)

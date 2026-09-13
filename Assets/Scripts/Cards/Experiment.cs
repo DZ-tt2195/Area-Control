@@ -4,7 +4,7 @@ using System.Linq;
 
 public class Experiment : CardType
 {
-    public Experiment(CardData dataFile) : base(dataFile)
+    public Experiment(Card card, CardData dataFile) : base(card, dataFile)
     {
     }
     public override void DoInstructions(Player player, int thisArea, int logged)

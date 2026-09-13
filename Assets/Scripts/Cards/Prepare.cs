@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class Prepare : CardType
 {
-    public Prepare(CardData dataFile) : base(dataFile)
+    public Prepare(Card card, CardData dataFile) : base(card, dataFile)
     {
     }
     public override void DoInstructions(Player player, int thisArea, int logged)

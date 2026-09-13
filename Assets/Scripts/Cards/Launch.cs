@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class Launch : CardType
 {
-    public Launch(CardData dataFile) : base(dataFile)
+    public Launch(Card card, CardData dataFile) : base(card, dataFile)
     {
     }
     public override void DoInstructions(Player player, int thisArea, int logged)

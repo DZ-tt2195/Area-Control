@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class Safeguard : CardType
 {
-    public Safeguard(CardData dataFile) : base(dataFile)
+    public Safeguard(Card card, CardData dataFile) : base(card, dataFile)
     {
     }
     public override void DoInstructions(Player player, int thisArea, int logged)

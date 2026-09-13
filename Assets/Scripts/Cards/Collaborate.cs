@@ -5,7 +5,7 @@ using System.Linq;
 
 public class Collaborate : CardType
 {
-    public Collaborate(CardData dataFile) : base(dataFile)
+    public Collaborate(Card card, CardData dataFile) : base(card, dataFile)
     {
     }
     public override void DoInstructions(Player player, int thisArea, int logged)

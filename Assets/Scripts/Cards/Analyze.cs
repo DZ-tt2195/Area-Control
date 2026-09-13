@@ -4,7 +4,7 @@ using System.Collections;
 
 public class Analyze : CardType
 {
-    public Analyze(CardData dataFile) : base(dataFile)
+    public Analyze(Card card, CardData dataFile) : base(card, dataFile)
     {
     }
     public override void DoInstructions(Player player, int thisArea, int logged)

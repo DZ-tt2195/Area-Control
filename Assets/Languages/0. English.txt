@@ -1,5 +1,5 @@
 Game_Designer	by Thomas Tang (DZ)
-Last_Update	Last Updated: July 29, 2026
+Last_Update	Last Updated: September 25, 2026
 Blank	
 Translator_Credit	Original Language
 Language	Language
@@ -24,7 +24,6 @@ Pause_Setting	Enable pauses for reading
 Undo_Setting	Ask at end of turn if you want to undo anything
 Click_Setting	Ask when there's only one option to choose
 Extras	Extras
-Open_Customizer	Open Customizer
 Sound_Credits	Sound Credits
 Reconnect	Reconnect
 Tutorial_1	To play multiplayer: Have 1 person create a room, then their room should be displayed below. Everyone also must have joined the same server region.
@@ -36,7 +35,8 @@ Player_Count	$Current$ / $Max$ Players
 Type_in_username	You have to type in a username.
 Attempt_to_reconnect	Attempting to reconnect to $Room$'s room...
 Failed_to_reconnect	Failed to reconnect to $Room$'s room.
-Choose_Cards	Choose up to 4 Areas
+Open_Customizer	Open Customizer
+Choose_Areas	Choose up to 4 Areas
 Custom_Area_1	Area 1
 Custom_Area_2	Area 2
 Custom_Area_3	Area 3
@@ -67,7 +67,9 @@ TroopIcon_Text	TroopIcon: Move all your TroopIcon to Area 4 to win.
 ScoutIcon	ScoutIcon
 Control	Control
 Control_Text	Most TroopIcon + ScoutIcon in an Area.
-Online_Next_Turn	New Turn: $Card$
+Online_Between_Turns	Between Turns
+Online_Next_Turn	Next Area: $Card$
+Choose_Resolve_Card	Choose the next card to resolve.
 Online_Resolve_Card	$Player$ resolves $Card$.
 Online_Add_Resource	$Player$ gains $Num$ $Resource$.
 Online_Lose_Resource	$Player$ loses $Num$ $Resource$.
@@ -216,5 +218,11 @@ Gate	Gate
 Gate_Text	If you Control this, you may pay 4 CoinIcon for +2 TroopIcon.
 Mountain	Mountain
 Mountain_Text	If you Control this, +1 CardIcon per 2 CardIcon in your hand (round down).
-Update_0	Sep X, 2026
-Update_0_Text	Moved UI behind an Extras button \nAdded 10 more Tactics
+Tactic1	Tactic1
+Tactic1_Text	 +2 CardIcon, -2 CardIcon. Between turns: each other player also gets +2 CardIcon -2 CardIcon.
+Tactic2	Tactic2
+Tactic2_Text	Between turns: each other player removes 2 ScoutIcon.
+Tactic3	Tactic3
+Tactic3_Text	 +2 ScoutIcon in one Area you have 3 TroopIcon or more in.
+Update_0	Sep 25, 2026
+Update_0_Text	Moved UI behind an Extras button \nAdded 10 more Tactics, including effects in-between turns \nFixed a bug with discarding CardIcon, retreating TroopIcon, removing ScoutIcon

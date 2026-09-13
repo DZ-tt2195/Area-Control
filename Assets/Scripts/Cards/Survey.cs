@@ -4,7 +4,7 @@ using System.Collections;
 
 public class Survey : CardType
 {
-    public Survey(CardData dataFile) : base(dataFile)
+    public Survey(Card card, CardData dataFile) : base(card, dataFile)
     {
     }
     public override void DoInstructions(Player player, int thisArea, int logged)

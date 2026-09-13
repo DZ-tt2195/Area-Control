@@ -4,7 +4,7 @@ using System.Linq;
 
 public class Woods : CardType
 {
-    public Woods(CardData dataFile) : base(dataFile)
+    public Woods(Card card, CardData dataFile) : base(card, dataFile)
     {
     }
     public override void DoInstructions(Player player, int thisArea, int logged)

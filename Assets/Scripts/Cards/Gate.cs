@@ -3,7 +3,7 @@ using UnityEngine;
 
 public class Gate : CardType
 {
-    public Gate(CardData dataFile) : base(dataFile)
+    public Gate(Card card, CardData dataFile) : base(card, dataFile)
     {
     }
     public override void DoInstructions(Player player, int thisArea, int logged)

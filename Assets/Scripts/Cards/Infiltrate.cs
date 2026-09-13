@@ -4,7 +4,7 @@ using System.Linq;
 
 public class Infiltrate : CardType
 {
-    public Infiltrate(CardData dataFile) : base(dataFile)
+    public Infiltrate(Card card, CardData dataFile) : base(card, dataFile)
     {
     }
     public override void DoInstructions(Player player, int thisArea, int logged)

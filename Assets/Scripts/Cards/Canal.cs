@@ -3,7 +3,7 @@ using UnityEngine;
 
 public class Canal : CardType
 {
-    public Canal(CardData dataFile) : base(dataFile)
+    public Canal(Card card, CardData dataFile) : base(card, dataFile)
     {
     }
     public override void DoInstructions(Player player, int thisArea, int logged)

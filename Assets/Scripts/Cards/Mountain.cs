@@ -3,7 +3,7 @@ using UnityEngine;
 
 public class Mountain : CardType
 {
-    public Mountain(CardData dataFile) : base(dataFile)
+    public Mountain(Card card, CardData dataFile) : base(card, dataFile)
     {
     }
     public override void DoInstructions(Player player, int thisArea, int logged)

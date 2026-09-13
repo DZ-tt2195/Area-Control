@@ -4,7 +4,7 @@ using System.Linq;
 
 public class Transport : CardType
 {
-    public Transport(CardData dataFile) : base(dataFile)
+    public Transport(Card card, CardData dataFile) : base(card, dataFile)
     {
     }
     public override void DoInstructions(Player player, int thisArea, int logged)

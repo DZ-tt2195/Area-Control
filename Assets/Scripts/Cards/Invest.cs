@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class Invest : CardType
 {
-    public Invest(CardData dataFile) : base(dataFile)
+    public Invest(Card card, CardData dataFile) : base(card, dataFile)
     {
     }
     public override void DoInstructions(Player player, int thisArea, int logged)

@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using System.Linq;
+using Photon.Pun;
 public class VisitArea : Turn
 {
     public override void MasterStart()
@@ -22,7 +23,7 @@ public class VisitArea : Turn
     public override void ForPlayer(Player player)
     {
         int currentTurn = TurnManager.inst.GetInt(ConstantStrings.TurnNumber);
-        GetTravelBonus(player, currentTurn, 0);
+        Log.inst.NewDecisionContainer(() => GetTravelBonus(player, currentTurn, 0));
 
         Log.inst.NewDecisionContainer(() => PlayCards(player, currentTurn));
         Log.inst.NewDecisionContainer(() => DoArea(player, CreateGame.inst.GetArea(currentTurn), currentTurn));
@@ -71,6 +72,14 @@ public class VisitArea : Turn
         {
             PhotonCompatible.InstantChangeRoomProp(ConstantStrings.NextPhase, "");
             TurnManager.inst.TextForEnding(OnlineTranslate.Online_Tie_Game(), -1);            
+        }
+        else
+        {
+            string[] effects = (string[])PhotonCompatible.GetRoomProperty(ConstantStrings.BetweenEffects);
+            if (effects.Length == 0)
+                PhotonCompatible.InstantChangeRoomProp(ConstantStrings.NextPhase, nameof(VisitArea));
+            else
+                PhotonCompatible.InstantChangeRoomProp(ConstantStrings.NextPhase, nameof(BetweenEffects));
         }
     }
 }

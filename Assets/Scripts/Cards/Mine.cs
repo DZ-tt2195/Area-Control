@@ -4,7 +4,7 @@ using System.Linq;
 
 public class Mine : CardType
 {
-    public Mine(CardData dataFile) : base(dataFile)
+    public Mine(Card card, CardData dataFile) : base(card, dataFile)
     {
     }
     public override void DoInstructions(Player player, int thisArea, int logged)

@@ -4,7 +4,7 @@ using System.Linq;
 
 public class Trail : CardType
 {
-    public Trail(CardData dataFile) : base(dataFile)
+    public Trail(Card card, CardData dataFile) : base(card, dataFile)
     {
     }
     public override void DoInstructions(Player player, int thisArea, int logged)

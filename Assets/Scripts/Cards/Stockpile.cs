@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class Stockpile : CardType
 {
-    public Stockpile(CardData dataFile) : base(dataFile)
+    public Stockpile(Card card, CardData dataFile) : base(card, dataFile)
     {
     }
     public override void DoInstructions(Player player, int thisArea, int logged)

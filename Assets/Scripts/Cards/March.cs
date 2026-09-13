@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class March : CardType
 {
-    public March(CardData dataFile) : base(dataFile)
+    public March(Card card, CardData dataFile) : base(card, dataFile)
     {
     }
     public override void DoInstructions(Player player, int thisArea, int logged)

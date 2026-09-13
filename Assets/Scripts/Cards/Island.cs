@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class Island : CardType
 {
-    public Island(CardData dataFile) : base(dataFile)
+    public Island(Card card, CardData dataFile) : base(card, dataFile)
     {
     }
     public override void DoInstructions(Player player, int thisArea, int logged)

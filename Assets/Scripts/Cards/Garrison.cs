@@ -4,7 +4,7 @@ using System.Linq;
 
 public class Garrison : CardType
 {
-    public Garrison(CardData dataFile) : base(dataFile)
+    public Garrison(Card card, CardData dataFile) : base(card, dataFile)
     {
     }
     public override void DoInstructions(Player player, int thisArea, int logged)

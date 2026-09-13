@@ -14,6 +14,7 @@ public class TurnManager : PhotonCompatible
     public static TurnManager inst;
     Dictionary<Player, ExitGames.Client.Photon.Hashtable> playerPropertyToChange;
     ExitGames.Client.Photon.Hashtable masterPropertyToChange;
+    List<string> addForNextTurn = new();
     Dictionary<string, Turn> storedTurns = new();
     [SerializeField] Transform endScreen;
     [SerializeField] TMP_Text summaryText;
@@ -80,6 +81,7 @@ public class TurnManager : PhotonCompatible
             //all players have finished their turn
             if (PhotonNetwork.IsMasterClient && WaitingOnPlayers() == 0 && !(bool)GetRoomProperty(ConstantStrings.GameOver))
             {
+                InstantChangeRoomProp(ConstantStrings.BetweenEffects, new string[0]);
                 foreach (Photon.Realtime.Player nextPlayer in players)
                     DoFunction(() => LockInPropertyChanges(), nextPlayer);
 
@@ -184,6 +186,17 @@ public class TurnManager : PhotonCompatible
         else
             masterPropertyToChange.Add(masterProperty, changeInto);
     }
+    public void WillAddBetweenTurn(Player player, Card card)
+    {
+        Log.inst.NewRollback(NewAddition);
+        void NewAddition()
+        {
+            if (Log.inst.forward)
+                addForNextTurn.Add($"{player.photonView.ViewID}\t{card.photonView.ViewID}");
+            else
+                addForNextTurn.RemoveAt(addForNextTurn.Count-1);
+        }
+    }
     [PunRPC]
     void LockInPropertyChanges()
     {
@@ -196,6 +209,12 @@ public class TurnManager : PhotonCompatible
         PhotonNetwork.CurrentRoom.SetCustomProperties(masterPropertyToChange);
         masterPropertyToChange.Clear();
 
+        if (addForNextTurn.Count >= 1)
+        {
+            DoFunction(() => AddToBetweenTurn(addForNextTurn.ToArray()), RpcTarget.MasterClient);
+            addForNextTurn.Clear();
+        }
+
         Player thisPlayer = CreateGame.inst.mainPlayer;
         InstantChangePlayerProp(thisPlayer, ConstantStrings.DrewThisTurn, new int[0]);
 
@@ -206,6 +225,13 @@ public class TurnManager : PhotonCompatible
             MainDeck.inst.ReceiveDiscardRPC(ConvertIntArray(discardedArray));
             InstantChangePlayerProp(thisPlayer, ConstantStrings.MyDiscard, new int[0]);
         }
+    }
+    [PunRPC]
+    void AddToBetweenTurn(string[] toAdd)
+    {
+        List<string> current = ((string[])GetRoomProperty(ConstantStrings.BetweenEffects)).ToList();
+        current.AddRange(toAdd.ToArray());
+        InstantChangeRoomProp(ConstantStrings.BetweenEffects, current.ToArray());
     }
     [PunRPC]
     void MakeCardsNull(int[] removed)

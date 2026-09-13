@@ -3,7 +3,7 @@ using UnityEngine;
 
 public class City : CardType
 {
-    public City(CardData dataFile) : base(dataFile)
+    public City(Card card, CardData dataFile) : base(card, dataFile)
     {
     }
     public override void DoInstructions(Player player, int thisArea, int logged)

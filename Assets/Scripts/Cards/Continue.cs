@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class Continue : CardType
 {
-    public Continue(CardData dataFile) : base(dataFile)
+    public Continue(Card card, CardData dataFile) : base(card, dataFile)
     {
     }
     public override void DoInstructions(Player player, int thisArea, int logged)

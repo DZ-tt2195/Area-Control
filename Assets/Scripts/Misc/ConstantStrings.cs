@@ -30,4 +30,5 @@ public static class ConstantStrings
     public const string TurnNumber = nameof(TurnNumber);
     public const string MasterDeck = nameof(MasterDeck);
     public const string MasterDiscard = nameof(MasterDiscard);
+    public const string BetweenEffects = nameof(BetweenEffects);
 }

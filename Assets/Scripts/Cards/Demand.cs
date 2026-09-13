@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class Demand : CardType
 {
-    public Demand(CardData dataFile) : base(dataFile)
+    public Demand(Card card, CardData dataFile) : base(card, dataFile)
     {
     }
     public override void DoInstructions(Player player, int thisArea, int logged)

@@ -4,7 +4,7 @@ using System.Linq;
 
 public class Oversee : CardType
 {
-    public Oversee(CardData dataFile) : base(dataFile)
+    public Oversee(Card card, CardData dataFile) : base(card, dataFile)
     {
     }
     public override void DoInstructions(Player player, int thisArea, int logged)

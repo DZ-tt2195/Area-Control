@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class Farmland : CardType
 {
-    public Farmland(CardData dataFile) : base(dataFile)
+    public Farmland(Card card, CardData dataFile) : base(card, dataFile)
     {
     }
     public override void DoInstructions(Player player, int thisArea, int logged)

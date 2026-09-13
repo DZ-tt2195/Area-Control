@@ -4,7 +4,7 @@ using System.Linq;
 
 public class Castle : CardType
 {
-    public Castle(CardData dataFile) : base(dataFile)
+    public Castle(Card card, CardData dataFile) : base(card, dataFile)
     {
     }
     public override void DoInstructions(Player player, int thisArea, int logged)

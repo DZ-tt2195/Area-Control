@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class Raid : CardType
 {
-    public Raid(CardData dataFile) : base(dataFile)
+    public Raid(Card card, CardData dataFile) : base(card, dataFile)
     {
     }
     public override void DoInstructions(Player player, int thisArea, int logged)

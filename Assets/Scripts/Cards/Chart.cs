@@ -3,7 +3,7 @@ using UnityEngine;
 
 public class Chart : CardType
 {
-    public Chart(CardData dataFile) : base(dataFile)
+    public Chart(Card card, CardData dataFile) : base(card, dataFile)
     {
     }
     public override void DoInstructions(Player player, int thisArea, int logged)

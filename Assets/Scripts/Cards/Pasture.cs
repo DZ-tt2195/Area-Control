@@ -4,7 +4,7 @@ using System.Linq;
 
 public class Pasture : CardType
 {
-    public Pasture(CardData dataFile) : base(dataFile)
+    public Pasture(Card card, CardData dataFile) : base(card, dataFile)
     {
     }
     public override void DoInstructions(Player player, int thisArea, int logged)
