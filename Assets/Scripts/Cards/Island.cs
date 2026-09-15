@@ -8,7 +8,7 @@ public class Island : CardType
     public override void DoInstructions(Player player, int thisArea, int logged)
     {
         if (player.GetTroops()[thisArea] >= 4)
-            player.TroopRPC(1, 1, 2, logged);
+            player.CoinRPC(3, logged);
         else
             Log.inst.AddMyText(false, OnlineTranslate.Online_Miss_Ability(player.name, this.dataFile.cardName), logged);                
     }

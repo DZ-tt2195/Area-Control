@@ -40,7 +40,7 @@ public class GeneralEffects
             }        
             void DidNot()
             {
-                Log.inst.AddMyText(false, OnlineTranslate.Online_Miss_Ability(player.name, cardName), logged);
+                Log.inst.AddMyText(false, OnlineTranslate.Online_Miss_Discard(player.name), logged);
                 whenDone?.Invoke(currentDiscards);
             }
         }
@@ -55,7 +55,7 @@ public class GeneralEffects
             List<TroopScoutDisplay> canAdvance = CreateGame.inst.GetAllDisplays(player).Where(display => display.info.area != 4 && display.info.troops >= 1).ToList();
             if (canAdvance.Count == 0)         
             {
-                Log.inst.AddMyText(false, OnlineTranslate.Online_Fail_Advance(player.name));
+                Log.inst.AddMyText(false, OnlineTranslate.Online_Miss_Advance(player.name));
                 whenDone?.Invoke(currentAdvances);
                 return;
             }
@@ -110,7 +110,7 @@ public class GeneralEffects
             }        
             void DidNot()
             {
-                Log.inst.AddMyText(false, OnlineTranslate.Online_Miss_Ability(player.name, cardName), logged);
+                Log.inst.AddMyText(false, OnlineTranslate.Online_Miss_Retreat(player.name), logged);
                 whenDone?.Invoke(currentRetreats);
             }
         }
@@ -173,7 +173,7 @@ public class GeneralEffects
             }        
             void DidNot()
             {
-                Log.inst.AddMyText(false, OnlineTranslate.Online_Miss_Ability(player.name, cardName), logged);
+                Log.inst.AddMyText(false, OnlineTranslate.Online_Miss_Remove(player.name), logged);
                 whenDone?.Invoke(currentRemoves);
             }
         }

@@ -29,7 +29,7 @@ public class BetweenEffects : Turn
         List<CardButtonInfo> cardInfo = new();
         foreach (Card card in listOfCards)
             cardInfo.Add(new CardButtonInfo(card, PickedCard));
-        MakeDecision.inst.ChooseCardInPopup(cardInfo, AutoTranslate.Choose_Resolve_Card());
+        MakeDecision.inst.ChooseCardInPopup(cardInfo, AutoTranslate.Choose_Resolve_Effect());
 
         void PickedCard(Card card)
         {

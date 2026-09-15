@@ -36,7 +36,7 @@ Type_in_username	You have to type in a username.
 Attempt_to_reconnect	Attempting to reconnect to $Room$'s room...
 Failed_to_reconnect	Failed to reconnect to $Room$'s room.
 Open_Customizer	Open Customizer
-Choose_Areas	Choose up to 4 Areas
+Choose_Areas	Choose up to 4 Areas (only the host's cards are used)
 Custom_Area_1	Area 1
 Custom_Area_2	Area 2
 Custom_Area_3	Area 3
@@ -69,35 +69,39 @@ Control	Control
 Control_Text	Most TroopIcon + ScoutIcon in an Area.
 Online_Between_Turns	Between Turns
 Online_Next_Turn	Next Area: $Card$
-Choose_Resolve_Card	Choose the next card to resolve.
+Choose_Resolve_Effect	Choose the next effect to resolve.
 Online_Resolve_Card	$Player$ resolves $Card$.
 Online_Add_Resource	$Player$ gains $Num$ $Resource$.
 Online_Lose_Resource	$Player$ loses $Num$ $Resource$.
 Force_Advance	$Card$: Advance TroopIcon ($Num1$ / $Num2$).
 Ask_Advance	$Card$: Advance TroopIcon?
 Online_Advance_Troop	$Player$ advances $Num$ TroopIcon from Area $Num1$ to $Num2$.
-Online_Fail_Advance	$Player$ can't advance any TroopIcon.
+Online_Miss_Advance	$Player$ doesn't advance TroopIcon.
 Force_Retreat	$Card$: Retreat TroopIcon ($Num1$ / $Num2$).
 Ask_Retreat	$Card$: Retreat TroopIcon?
 Online_Retreat_Troop	$Player$ retreats $Num$ TroopIcon from Area $Num1$ to $Num2$.
+Online_Miss_Retreat	$Player$ doesn't retreat TroopIcon.
 Ask_Pay	$Card$: Pay $Num$ $Resource$?
 Force_Add	$Card$: Add ScoutIcon ($Num1$ / $Num2$).
 Online_Add_Scout	$Player$ adds $Num$ ScoutIcon to Area $AreaNum$.
 Force_Remove	$Card$: Remove ScoutIcon ($Num1$ / $Num2$).
 Ask_Remove	$Card$: Remove ScoutIcon?
 Online_Remove_Scout	$Player$ removes $Num$ ScoutIcon from Area $AreaNum$.
+Online_Miss_Remove	$Player$ doesn't remove ScoutIcon.
 Online_Draw_Card	$Player$ draws $Card$.
 Online_Draw_Card_Others	$Player$ draws 1 CardIcon.
 Force_Discard	$Card$: Discard CardIcon ($Num1$ / $Num2$).
 Ask_Discard	$Card$: Discard CardIcon?
 Online_Discard_Card	$Player$ discards $Card$.
 Online_Discard_Card_Others	$Player$ discards 1 CardIcon.
+Online_Miss_Discard	$Player$ doesn't discard CardIcon.
 Ask_Play	Play CardIcon?
 Online_Play_Card	$Player$ plays $Card$.
 Choose_One	$Card$: Choose an option.
 Card_Use_Ability	$Card$: Use ability?
 Online_Choose_Zero	$Player$ chooses 0.
-Online_Miss_Ability	$Player$ misses $Card$.
+Online_Avoid_Ability	$Player$ avoids $Card$'s effect.
+Online_Miss_Ability	$Player$ misses $Card$'s ability.
 Online_No_Play	$Player$ stops playing CardIcon.
 Confirm	Confirm
 Decline	Decline
@@ -159,7 +163,7 @@ Garrison_Text	You may pay 4 CoinIcon for +1 ScoutIcon in each other Area.
 Battlefield	Battlefield
 Battlefield_Text	If you don't Control this, +1 ActionIcon and -1 TroopIcon.
 Island 	Island
-Island_Text	If you have 4 TroopIcon or more here, +1 TroopIcon from Area 1.
+Island_Text	If you have 4 TroopIcon or more here, +3 CoinIcon.
 Passage	Passage
 Passage_Text	If you have 2 TroopIcon or less here, +1 CardIcon.
 Mine	Mine
@@ -201,7 +205,7 @@ Oversee_Text	Set your ActionIcon to 2.
 Trade	Trade
 Trade_Text	You may discard 1 CardIcon for +5 CoinIcon.
 Castle	Castle
-Castle_Text	If you Control this while having 0 TroopIcon or 0 ScoutIcon here, +4 CoinIcon.
+Castle_Text	If you Control this while having 0 TroopIcon or 0 ScoutIcon here, +1 TroopIcon.
 Woods	Woods
 Woods_Text	You may remove 1 ScoutIcon from here for +1 TroopIcon.
 Canal	Canal
@@ -219,10 +223,16 @@ Gate_Text	If you Control this, you may pay 4 CoinIcon for +2 TroopIcon.
 Mountain	Mountain
 Mountain_Text	If you Control this, +1 CardIcon per 2 CardIcon in your hand (round down).
 Tactic1	Tactic1
-Tactic1_Text	 +2 CardIcon, -2 CardIcon. Between turns: each other player also gets +2 CardIcon -2 CardIcon.
+Tactic1_Text	 +2 CardIcon, -2 CardIcon. Between turns: each other player does the same.
 Tactic2	Tactic2
 Tactic2_Text	Between turns: each other player removes 2 ScoutIcon.
 Tactic3	Tactic3
 Tactic3_Text	 +2 ScoutIcon in one Area you have 3 TroopIcon or more in.
+Tactic4	Tactic4
+Tactic4_Text	Betwen turns: each other player may discard 1 CardIcon; if they don't, they lose 1 ActionIcon.
+Tactic5	Tactic5
+Tactic5_Text	 +1 CoinIcon per Scout you have.
+Tactic6	Tactic6
+Tactic6_Text	 +1 ActionIcon. Between turns: each other player also gets +1 ActionIcon.
 Update_0	Sep 25, 2026
-Update_0_Text	Moved UI behind an Extras button \nAdded 10 more Tactics, including effects in-between turns \nFixed a bug with discarding CardIcon, retreating TroopIcon, removing ScoutIcon
+Update_0_Text	Moved UI behind an Extras button \nAdded 10 more Tactics, including effects in-between turns \nTweaked a couple existing cards \nFixed bugs with card effects

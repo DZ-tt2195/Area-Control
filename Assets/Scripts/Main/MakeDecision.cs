@@ -45,7 +45,7 @@ public class TextButtonInfo
         this.textColor = textColor;
     }
 }
-[System.Serializable]
+[Serializable]
 public class ListUI
 {
     public GameObject mainThing;
@@ -80,7 +80,7 @@ public class MakeDecision : PhotonCompatible
         confirmText.text = AutoTranslate.Confirm();
 
         slider.onValueChanged.AddListener(UpdateSliderText);
-        slider.gameObject.SetActive(false);
+        ClearDecisions();
     }
     void UpdateSliderText(float value)
     {
@@ -303,9 +303,6 @@ public class MakeDecision : PhotonCompatible
         slider.gameObject.SetActive(false);
         cardButtonUI.mainThing.gameObject.SetActive(false);
         textButtonUI.mainThing.gameObject.SetActive(false);
-
-        foreach (var next in allCardButtons) next.Item1.gameObject.SetActive(false);
-        foreach (var next in allTextButtons) next.Item1.gameObject.SetActive(false);
     }
     public static List<int> NumbersInOrder(int minimum, int maximum)
     {
