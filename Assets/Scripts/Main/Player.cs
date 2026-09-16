@@ -1,12 +1,12 @@
 using Photon.Pun;
 using UnityEngine;
-using TMPro;
 using MyBox;
 using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine.UI;
 using System.Linq;
+using TMPro;
 public enum CardThisTurn {CardsDrew, CardsDiscarded}
 public enum NumThisTurn {CoinsGained, CoinsLost, ActionsGained, ActionsLost, TroopsAdvanced, TroopsRetreated, ScoutsAdded, ScoutsLost}
 public class Player : PhotonCompatible
@@ -182,6 +182,11 @@ public class Player : PhotonCompatible
             return;
 
         int actualAmount = (myCoins + num < 0) ? -1*myCoins : num;
+        if (num < 0 && actualAmount == 0)
+        {
+            Log.inst.AddMyText(important, OnlineTranslate.Online_No_Loss(this.name, nameof(AutoTranslate.CoinIcon)), logged);
+            return;
+        }
 
         if (actualAmount > 0)
             Log.inst.AddMyText(important, OnlineTranslate.Online_Add_Resource(this.name, actualAmount.ToString(), nameof(AutoTranslate.CoinIcon)), logged);
@@ -217,6 +222,11 @@ public class Player : PhotonCompatible
             return;
 
         int actualAmount = (myActions + num < 0) ? -1*myActions : num;
+        if (num < 0 && actualAmount == 0)
+        {
+            Log.inst.AddMyText(important, OnlineTranslate.Online_No_Loss(this.name, nameof(AutoTranslate.ActionIcon)), logged);
+            return;
+        }
 
         if (actualAmount > 0)
             Log.inst.AddMyText(important, OnlineTranslate.Online_Add_Resource(this.name, actualAmount.ToString(), nameof(AutoTranslate.ActionIcon)), logged);
@@ -256,6 +266,11 @@ public class Player : PhotonCompatible
             return;
 
         int actualAmount = (myScouts[area] + num < 0) ? -1*myScouts[area] : num;
+        if (num < 0 && actualAmount == 0)
+        {
+            Log.inst.AddMyText(important, OnlineTranslate.Online_Miss_Remove(this.name), logged);
+            return;
+        }
 
         if (actualAmount > 0)
             Log.inst.AddMyText(important, OnlineTranslate.Online_Add_Scout(this.name, actualAmount.ToString(), area.ToString()), logged);
@@ -294,6 +309,17 @@ public class Player : PhotonCompatible
             return;
 
         int actualAmount = (myTroops[oldArea] + num < 0) ? -1*myScouts[oldArea] : num;
+        if (newArea < oldArea && actualAmount == 0)
+        {
+            Log.inst.AddMyText(important, OnlineTranslate.Online_Miss_Retreat(this.name), logged);
+            return;
+        }
+        else if (newArea > oldArea && actualAmount == 0)
+        {
+            Log.inst.AddMyText(important, OnlineTranslate.Online_Miss_Advance(this.name), logged);
+            return;
+        }
+
         if (actualAmount > 0)
             Log.inst.AddMyText(important, OnlineTranslate.Online_Advance_Troop(this.name, actualAmount.ToString(), oldArea.ToString(), newArea.ToString()), logged);
         else

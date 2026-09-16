@@ -204,6 +204,8 @@ public static string Tactic5 () => Translator.inst.Translate("Tactic5", new() {}
 public static string Tactic5_Text () => Translator.inst.Translate("Tactic5_Text", new() {});
 public static string Tactic6 () => Translator.inst.Translate("Tactic6", new() {});
 public static string Tactic6_Text () => Translator.inst.Translate("Tactic6_Text", new() {});
+public static string Tactic7 () => Translator.inst.Translate("Tactic7", new() {});
+public static string Tactic7_Text () => Translator.inst.Translate("Tactic7_Text", new() {});
 public static string Update_0 () => Translator.inst.Translate("Update_0", new() {});
 public static string Update_0_Text () => Translator.inst.Translate("Update_0_Text", new() {});
 }

@@ -11,6 +11,7 @@ public static string Online_Next_Turn (string Card) => $"Online_Next_Turn\tCard\
 public static string Online_Resolve_Card (string Player,string Card) => $"Online_Resolve_Card\tPlayer\t{Player}\tCard\t{Card}";
 public static string Online_Add_Resource (string Player,string Num,string Resource) => $"Online_Add_Resource\tPlayer\t{Player}\tNum\t{Num}\tResource\t{Resource}";
 public static string Online_Lose_Resource (string Player,string Num,string Resource) => $"Online_Lose_Resource\tPlayer\t{Player}\tNum\t{Num}\tResource\t{Resource}";
+public static string Online_No_Loss (string Player,string Resource) => $"Online_No_Loss\tPlayer\t{Player}\tResource\t{Resource}";
 public static string Online_Advance_Troop (string Player,string Num,string Num1,string Num2) => $"Online_Advance_Troop\tPlayer\t{Player}\tNum\t{Num}\tNum1\t{Num1}\tNum2\t{Num2}";
 public static string Online_Miss_Advance (string Player) => $"Online_Miss_Advance\tPlayer\t{Player}";
 public static string Online_Retreat_Troop (string Player,string Num,string Num1,string Num2) => $"Online_Retreat_Troop\tPlayer\t{Player}\tNum\t{Num}\tNum1\t{Num1}\tNum2\t{Num2}";

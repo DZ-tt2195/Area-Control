@@ -15,5 +15,9 @@ public class Barracks : CardType
             player.ScoutRPC(1, thisArea, logged);
             player.ScoutRPC(1, 4, logged);
         }
+        else
+        {
+            Log.inst.AddMyText(false, OnlineTranslate.Online_Miss_Ability(player.name, nameof(Barracks)), logged);
+        }
     }
 }

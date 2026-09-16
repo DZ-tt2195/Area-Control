@@ -73,6 +73,7 @@ Choose_Resolve_Effect	Choose the next effect to resolve.
 Online_Resolve_Card	$Player$ resolves $Card$.
 Online_Add_Resource	$Player$ gains $Num$ $Resource$.
 Online_Lose_Resource	$Player$ loses $Num$ $Resource$.
+Online_No_Loss	$Player$ doesn't lose $Resource$.
 Force_Advance	$Card$: Advance TroopIcon ($Num1$ / $Num2$).
 Ask_Advance	$Card$: Advance TroopIcon?
 Online_Advance_Troop	$Player$ advances $Num$ TroopIcon from Area $Num1$ to $Num2$.
@@ -227,12 +228,14 @@ Tactic1_Text	 +2 CardIcon, -2 CardIcon. Between turns: each other player does th
 Tactic2	Tactic2
 Tactic2_Text	Between turns: each other player removes 2 ScoutIcon.
 Tactic3	Tactic3
-Tactic3_Text	 +2 ScoutIcon in one Area you have 3 TroopIcon or more in.
+Tactic3_Text	 +1 ScoutIcon. Then you get the Travel Bonus for the Area you added the ScoutIcon to.
 Tactic4	Tactic4
-Tactic4_Text	Betwen turns: each other player may discard 1 CardIcon; if they don't, they lose 1 ActionIcon.
+Tactic4_Text	Betwen turns: each other player may lose 1 ActionIcon; if they don't, they discard 1 CardIcon.
 Tactic5	Tactic5
 Tactic5_Text	 +1 CoinIcon per Scout you have.
 Tactic6	Tactic6
 Tactic6_Text	 +1 ActionIcon. Between turns: each other player also gets +1 ActionIcon.
+Tactic7	Tactic7
+Tactic7_Text	Between turns: each other player retreats 1 TroopIcon from Area 4.
 Update_0	Sep 25, 2026
-Update_0_Text	Moved UI behind an Extras button \nAdded 10 more Tactics, including effects in-between turns \nTweaked a couple existing cards \nFixed bugs with card effects
+Update_0_Text	Moved UI behind an Extras button \nAdded 10 more Tactics, including effects in-between turns \nRaised the costs on some existing tactics; switched bonuses on Castle and Island \nFixed bugs with card effects \nClarified some messages in the log
