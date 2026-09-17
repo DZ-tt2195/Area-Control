@@ -12,11 +12,11 @@ public class Lead : CardType
         int lowestTroops = 100;
         int[] playerTroops = player.GetTroops();
 
-        for (int i = 0; i<playerTroops.Length; i++)
+        for (int i = 1; i<playerTroops.Length; i++)
         {
             if (playerTroops[i] < lowestTroops)
                 lowestTroops = playerTroops[i];
         }
-        
+        ChooseAdvance(player, nameof(Lead), logged, lowestTroops);
     }
 }

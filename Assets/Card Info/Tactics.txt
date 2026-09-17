@@ -8,8 +8,8 @@ Parry	 +1 ScoutIcon in one Area you Control, and +1 ScoutIcon in one Area you do
 Assign	 +1 ScoutIcon. Then you get the Travel Bonus for the Area you added the ScoutIcon to.	3	1	Julien Delval \nDominion: Renaissance \n(Recruiter)	AddScout, TravelBonus	TRUE
 Analyze	If you spent 3 ActionIcon or more this turn (including when playing this), +2 CardIcon.	4	1	Martin Hoffmann \nDominion: Seaside \n(Tactician)	CareTurn, DrawCard	TRUE
 Continue	If you drew 2 CardIcon or more this turn, +2 ActionIcon.	4	1	Marcel-Andre Casasola Merkle \nDominion: Seaside \n(Caravan)	AddAction, CareTurn	TRUE
+Lead	 +1 TroopIcon per TroopIcon you have in the Area with the fewest TroopIcon (it could be 0).	5	1	Martin Hoffmann \nDominion \n(Harbinger)	CareTroop, AdvanceTroop	TRUE
 Specialize	You may play 1 CardIcon, repeating its instructions (not the TroopIcon).	5	1	Claus Stephan \nDominion: Allies \n(Specialist)	AddAction	TRUE
-Lead	 +1 TroopIcon per TroopIcon you have in the Area with the fewest TroopIcon (it could be 0).	6	1	Martin Hoffmann \nDominion \n(Harbinger)	CareTroop, AdvanceTroop	TRUE
 Scavenge	 +2 CardIcon, -2 CardIcon. Between turns: each other player does the same.	2	2	Franz Vohwinkel \nDominion: Dark Ages \n(Scavenger)	DrawCard, DiscardCard, BetweenTurn	TRUE
 Report	You may remove 2 ScoutIcon for +2 ActionIcon.	3	2	Julien Delval \nDominion: Hinterlands \n(Scheme)	LoseScout, AddAction	TRUE
 Transport	You may spend 1 ActionIcon for +1 TroopIcon.	3	2	Elisa Cella \nDominion: Rising Sun \n(Riverboat)	LoseAction, AdvanceTroop	TRUE

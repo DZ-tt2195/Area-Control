@@ -244,4 +244,4 @@ Defend_Text	For the Area you have the most TroopIcon in, get the Travel Bonus tw
 Tax	Tax
 Tax_Text	Between turns: each other player loses 1 CoinIcon for each ActionIcon and CardIcon they have.
 Update_0	Sep 18, 2026
-Update_0_Text	Moved UI behind an Extras button \nAdded 10 more Tactics, including effects in-between turns \nTweaked some existing tactics; switched bonuses on Castle and Island \nFixed bugs with card effects \nClarified some messages in the log
+Update_0_Text	Moved UI and customizer behind an Extra button \nAdded 10 more Tactics, including effects in-between turns \nTweaked some existing tactics; switched bonuses on Castle and Island \nFixed bugs with card effects \nClarified some messages in the log
