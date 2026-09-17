@@ -17,6 +17,7 @@ public static string Online_Miss_Advance (string Player) => $"Online_Miss_Advanc
 public static string Online_Retreat_Troop (string Player,string Num,string Num1,string Num2) => $"Online_Retreat_Troop\tPlayer\t{Player}\tNum\t{Num}\tNum1\t{Num1}\tNum2\t{Num2}";
 public static string Online_Miss_Retreat (string Player) => $"Online_Miss_Retreat\tPlayer\t{Player}";
 public static string Online_Add_Scout (string Player,string Num,string AreaNum) => $"Online_Add_Scout\tPlayer\t{Player}\tNum\t{Num}\tAreaNum\t{AreaNum}";
+public static string Online_Miss_Add (string Player) => $"Online_Miss_Add\tPlayer\t{Player}";
 public static string Online_Remove_Scout (string Player,string Num,string AreaNum) => $"Online_Remove_Scout\tPlayer\t{Player}\tNum\t{Num}\tAreaNum\t{AreaNum}";
 public static string Online_Miss_Remove (string Player) => $"Online_Miss_Remove\tPlayer\t{Player}";
 public static string Online_Draw_Card (string Player,string Card) => $"Online_Draw_Card\tPlayer\t{Player}\tCard\t{Card}";

@@ -12,6 +12,8 @@ public class GeneralEffects
     {
         if (maxNum >= 1)
             Log.inst.NewDecisionContainer(() => DoDiscard(firstMandatory, new()));
+        else
+            Log.inst.AddMyText(false, OnlineTranslate.Online_Miss_Discard(player.name), logged);
         
         void DoDiscard(bool mandatory, List<Card> currentDiscards)
         {
@@ -49,6 +51,8 @@ public class GeneralEffects
     {
         if (maxNum >= 1)
             Log.inst.NewDecisionContainer(() => DoAdvance(new()));
+        else
+            Log.inst.AddMyText(false, OnlineTranslate.Online_Miss_Advance(player.name));
 
         void DoAdvance(List<int> currentAdvances)
         {
@@ -78,6 +82,8 @@ public class GeneralEffects
     {
         if (maxNum >= 1)
             Log.inst.NewDecisionContainer(() => DoRetreat(firstMandatory, new()));
+        else
+            Log.inst.AddMyText(false, OnlineTranslate.Online_Miss_Retreat(player.name), logged);
 
         void DoRetreat(bool mandatory, List<int> currentRetreats)
         {
@@ -119,6 +125,8 @@ public class GeneralEffects
     {
         if (maxNum >= 1)
             Log.inst.NewDecisionContainer(() => DoAddScout(new()));
+        else
+            Log.inst.AddMyText(false, OnlineTranslate.Online_Miss_Add(player.name), logged);
     
         void DoAddScout(List<int> currentAdds)
         {
@@ -141,6 +149,8 @@ public class GeneralEffects
     {
         if (maxNum >= 1)
             Log.inst.NewDecisionContainer(() => DoRemove(firstMandatory, new()));
+        else
+            Log.inst.AddMyText(false, OnlineTranslate.Online_Miss_Remove(player.name), logged);
 
         void DoRemove(bool mandatory, List<int> currentRemoves)
         {

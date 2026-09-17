@@ -123,6 +123,7 @@ public class Translator : PhotonCompatible
         if (!PlayerPrefs.GetString("Language").Equals(newLanguage))
         {
             PlayerPrefs.SetString("Language", newLanguage);
+            PlayerPrefs.Save();
             TranslateScreen();
         }
     }

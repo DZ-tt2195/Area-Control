@@ -1,5 +1,6 @@
 using System;
 using System.Collections;
+using System.Linq;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
@@ -63,12 +64,8 @@ public class KeywordTooltip : MonoBehaviour
         if (text.Length == 0)
             return "";
 
-        string answer = Regex.Replace(text, "(?<=[a-z])(?=[A-Z])", " ");
-        answer = Regex.Replace(answer, @",(\s*(\n|$))", "$1");
-        answer = Regex.Replace(answer, @"-(\s*(\n|$))", "$1");
-        answer = answer.Replace("-u003e", "->");
+        string answer = text;
 
-        answer = text;
         foreach (KeywordHover link in linkedKeywords)
         {
             answer = answer.Replace(link.translated, $"<link=\"{link.original}\"><u>" +

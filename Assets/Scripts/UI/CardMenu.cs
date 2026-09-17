@@ -62,11 +62,11 @@ public class CardMenu : MonoBehaviour
         }
         
         openCustomizer.GetComponentInChildren<TMP_Text>().text = AutoTranslate.Open_Customizer();
-        chooseCards.text = AutoTranslate.Choose_Areas();
-        area1.text = KeywordTooltip.instance.EditText(AutoTranslate.Custom_Area_1());
-        area2.text = KeywordTooltip.instance.EditText(AutoTranslate.Custom_Area_2());
-        area3.text = KeywordTooltip.instance.EditText(AutoTranslate.Custom_Area_3());
-        area4.text = KeywordTooltip.instance.EditText(AutoTranslate.Custom_Area_4());
+        chooseCards.text = AutoTranslate.Customize_Areas();
+        area1.text = KeywordTooltip.instance.EditText(AutoTranslate.Area_1());
+        area2.text = KeywordTooltip.instance.EditText(AutoTranslate.Area_2());
+        area3.text = KeywordTooltip.instance.EditText(AutoTranslate.Area_3());
+        area4.text = KeywordTooltip.instance.EditText(AutoTranslate.Area_4());
         confirm.text = AutoTranslate.Confirm();
     }
     public void ChooseFromList(CardSelect clicked, List<CardData> allData, bool vertical)

@@ -1,8 +1,8 @@
 using UnityEngine;
 
-public class Tactic7 : CardType
+public class Deny : CardType
 {
-    public Tactic7(Card card, CardData dataFile) : base(card, dataFile)
+    public Deny(Card card, CardData dataFile) : base(card, dataFile)
     {
     }
     public override void DoInstructions(Player player, int thisArea, int logged)

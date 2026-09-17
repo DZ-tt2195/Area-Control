@@ -1,8 +1,8 @@
 using UnityEngine;
 
-public class Tactic6 : CardType
+public class Delegate : CardType
 {
-    public Tactic6(Card card, CardData dataFile) : base(card, dataFile)
+    public Delegate(Card card, CardData dataFile) : base(card, dataFile)
     {
     }
     public override void DoInstructions(Player player, int thisArea, int logged)

@@ -1,10 +1,9 @@
 using System.Collections.Generic;
-using ExitGames.Client.Photon.StructWrapping;
 using UnityEngine;
 
-public class Tactic4 : CardType
+public class Disrupt : CardType
 {
-    public Tactic4(Card card, CardData dataFile) : base(card, dataFile)
+    public Disrupt(Card card, CardData dataFile) : base(card, dataFile)
     {
     }
     public override void DoInstructions(Player player, int thisArea, int logged)
@@ -15,9 +14,9 @@ public class Tactic4 : CardType
     public override void BetweenTurnInstructions(Player player, int logged)
     {
         if (player.GetHand().Count == 0)
-            Log.inst.AddMyText(false, OnlineTranslate.Online_Avoid_Ability(player.name, nameof(Tactic4)), logged);
+            Log.inst.AddMyText(false, OnlineTranslate.Online_Avoid_Ability(player.name, nameof(Disrupt)), logged);
 
-        ChooseDiscard(player, nameof(Tactic4), player.GetActions() == 0, logged, 1, NoDiscard);
+        ChooseDiscard(player, nameof(Disrupt), player.GetActions() == 0, logged, 1, NoDiscard);
         void NoDiscard(List<Card> discarded)
         {
             if (discarded.Count == 0)
